@@ -14,7 +14,7 @@
 </p>
 
 
-Table of content
+## Table of content
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [First steps](#first-steps)
