@@ -24,6 +24,27 @@
 
 ## Installation
 
+Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).
+
+To start the container, run:
+```
+docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+```
+
+Other available parameters:
+
+|parameter|description|
+|------|------|
+|```-e XMX="-Xmx512m"```|change maximum heap|
+|```-e XMS="-Xms512m"```|change minimum heap|
+|```-e PORT```|change Looqbox's port (default 80)|
+|```-e PROXY_HOST="<ip>"```|when parameter exists, use host as proxy (must define proxy_port as well)|
+|```-e PROXY_PORT="<port>"```|when parameter exists, use port as proxy (must define proxy_host as well)|
+
+
+
+
+
 ## First steps
 
 ## Implementation
