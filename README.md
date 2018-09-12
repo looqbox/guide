@@ -18,7 +18,7 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [First steps](#first-steps)
-- [Implementation](#implementation)
+- [Implementation](/implementation/README.md)
 
 ## Introduction
 
@@ -57,7 +57,19 @@ Expected result:
 To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.
 
 
-
 ## First steps
 
-## Implementation
+After completing this section you'll be able to run your first script inside Looqbox.
+
+<!--
+
+- Admin panel 
+- Response panel
+- Create response
+- copy hello world template and add there
+- test scripts
+- there you have it, hurray
+
+-->
+
+Are you ready to learn more about Looqbox? Click [here](/implementation/README.md) to continue.
