@@ -4,3 +4,5 @@ nav:
     - Implementation: implementation.md
 theme: 
   name: bootstrap
+extra_css:
+    - css/extra.css

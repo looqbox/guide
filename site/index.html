@@ -8,11 +8,12 @@
         
         
         <link rel="shortcut icon" href="./img/favicon.ico">
-        <title>Home - Looqbox User Guide</title>
+        <title>Looqbox User Guide - Looqbox User Guide</title>
         <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
         <link href="./css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/highlight.css">
         <link href="./css/base.css" rel="stylesheet">
+        <link href="./css/extra.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -49,7 +50,7 @@
             
             
                 <li class="active">
-                    <a href=".">Home</a>
+                    <a href=".">Looqbox User Guide</a>
                 </li>
             
             
@@ -99,24 +100,24 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="looqbox-user-guide">Looqbox User Guide</h2>
+<h1 id="looqbox-user-guide">Looqbox User Guide</h1>
 <p align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
 </p>
 
-<h3 id="introduction">Introduction</h3>
-<h3 id="installation">Installation</h3>
+<h2 id="introduction">Introduction</h2>
+<h2 id="installation">Installation</h2>
 <p>Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).</p>
 <p>To start the container, run:</p>
 <pre><code>docker run -d --restart=always --name=looqbox-instance -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 </code></pre>
 
-<p>Other available parameters:</p>
+<h3 id="available-parameters">Available parameters</h3>
 <table>
 <thead>
 <tr>
-<th>parameter</th>
-<th>description</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -152,7 +153,7 @@
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </p></p>
 <p>To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.</p>
-<h3 id="first-steps">First steps</h3>
+<h2 id="first-steps">First steps</h2>
 <p>After completing this section you'll be able to run your first script inside Looqbox.</p>
 <!--
 
