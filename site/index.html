@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+        <title>Home - Looqbox User Guide</title>
+        <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+        <link href="./css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.3.7.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+         
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=".">Looqbox User Guide</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="implementation/">Implementation</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                    <li class="disabled">
+                        <a rel="next" >
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="implementation/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+      
+    
+        <li class="main active"><a href="#looqbox-user-guide">Looqbox User Guide</a></li>
+        
+            <li><a href="#introduction">Introduction</a></li>
+        
+            <li><a href="#installation">Installation</a></li>
+        
+            <li><a href="#first-steps">First steps</a></li>
+        
+    
+    
+    </ul>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="looqbox-user-guide">Looqbox User Guide</h2>
+<p align="center">
+  <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
+</p>
+
+<h3 id="introduction">Introduction</h3>
+<h3 id="installation">Installation</h3>
+<p>Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).</p>
+<p>To start the container, run:</p>
+<pre><code>docker run -d --restart=always --name=looqbox-instance -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+</code></pre>
+
+<p>Other available parameters:</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-e XMX="-Xmx512m"</code></td>
+<td>change maximum heap</td>
+</tr>
+<tr>
+<td><code>-e XMS="-Xms512m"</code></td>
+<td>change minimum heap</td>
+</tr>
+<tr>
+<td><code>-e PORT</code></td>
+<td>change Looqbox's port (default 80)</td>
+</tr>
+<tr>
+<td><code>-e PROXY_HOST="&lt;ip&gt;"</code></td>
+<td>when parameter exists, use host as proxy (must define proxy_port as well)</td>
+</tr>
+<tr>
+<td><code>-e PROXY_PORT="&lt;port&gt;"</code></td>
+<td>when parameter exists, use port as proxy (must define proxy_host as well)</td>
+</tr>
+</tbody>
+</table>
+<p>All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server, all you need to do is rerun the docker command above. It will automatically download all files to the new instance.</p>
+<p>To check if looqbox started correctly, run: </p>
+<pre><code>docker logs -f --tail 200 looqbox-instance
+</code></pre>
+
+<p>Expected result:
+<p align="center">
+  <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
+</p></p>
+<p>To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.</p>
+<h3 id="first-steps">First steps</h3>
+<p>After completing this section you'll be able to run your first script inside Looqbox.</p>
+<!--
+
+- Admin panel 
+- Response panel
+- Create response
+- copy hello world template and add there
+- test scripts
+- there you have it, hurray
+
+-->
+
+<p>Are you ready to learn more about Looqbox? Click <a href="./implementation">here</a> to continue.</p></div>
+                </div>
+        </div>
+
+    <hr>
+    <footer class="container">
+        
+        <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+    </footer>
+        <script src="./js/base.js"></script>
+        <script src="./search/require.js"></script>
+        <script src="./search/search.js"></script>
+    </body>
+</html>
