@@ -1,0 +1,11 @@
+footer {
+	display: none;
+}
+
+a {
+	color: #007b50;
+}
+
+a:hover {
+	color: #7fd292;
+}
