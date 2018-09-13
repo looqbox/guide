@@ -1,7 +1,8 @@
 site_name: Looqbox User Guide
-nav:
-    - Home: index.md
-    - Implementation: implementation.md
+# nav:
+#     - Home: index.md
+#     - Implementation: implementation.md
+#     - Tutorial: tutorial.md
 theme: 
   name: bootstrap
 extra_css:

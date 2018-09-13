@@ -1,12 +1,5 @@
 # Implementation
 
-- Implementation Flow
-- Setting up a connection
-- Creating a response
-- Creating User, UserGroup and ResponseGroup
-- Entity By Code and Entity By Name
-- Replacements
-
 ## Implementation Flow
 
 There are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.
@@ -26,7 +19,7 @@ Here is a sequence of questions to illustrate this scenario:
 - sales $date by department
 - sales $date by supplier
 
-## Setting up a connection
+## Database Connection
 
 ## Creating a response
 

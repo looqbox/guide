@@ -1,4 +1,4 @@
-# Looqbox User Guide
+# Home
 
 <p align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
