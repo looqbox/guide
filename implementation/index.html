@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Implementation - Looqbox User Guide</title>
+        <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.3.7.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+         
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Looqbox User Guide</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Home</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">Implementation</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+      
+    
+        <li class="main active"><a href="#implementation">Implementation</a></li>
+        
+            <li><a href="#implementation-flow">Implementation Flow</a></li>
+        
+            <li><a href="#setting-up-a-connection">Setting up a connection</a></li>
+        
+            <li><a href="#creating-a-response">Creating a response</a></li>
+        
+            <li><a href="#creating-user-usergroup-and-responsegroup">Creating User, UserGroup and ResponseGroup</a></li>
+        
+            <li><a href="#entity-by-code-and-entity-by-name">Entity By Code and Entity By Name</a></li>
+        
+            <li><a href="#replacements">Replacements</a></li>
+        
+    
+    
+    </ul>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="implementation">Implementation</h2>
+<ul>
+<li>Implementation Flow</li>
+<li>Setting up a connection</li>
+<li>Creating a response</li>
+<li>Creating User, UserGroup and ResponseGroup</li>
+<li>Entity By Code and Entity By Name</li>
+<li>Replacements</li>
+</ul>
+<h3 id="implementation-flow">Implementation Flow</h3>
+<p>There are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.
+1) Looqbox runs a R script for each question asked by the users. Each of those scripts access a datasource (e.g. MySQL), so the time that a users waits is mainly the response time from the query or API. The maximum recommended time for a response is 2 seconds.
+2) Users usually need a bit of experience with the interface to start asking more complex questions, so starting with short and general questions help new users to navigate.</p>
+<p>We discorage the implementation of complex dashboards in Looqbox, since it usually depends of multiple queries, which result in a long response time.
+To guarantee the best user experience, responses should be implemented in a way that users can ask simple questions, and navigate to more specific information using features like drill down. Navigating between 4 tables of content waiting 2 seconds for each load in much better than waiting 8 seconds for a single dashboard.
+Here is a sequence of questions to illustrate this scenario:
+- sales $date
+- sales $date by store
+- sales $date by department
+- sales $date by supplier</p>
+<h3 id="setting-up-a-connection">Setting up a connection</h3>
+<h3 id="creating-a-response">Creating a response</h3>
+<h3 id="creating-user-usergroup-and-responsegroup">Creating User, UserGroup and ResponseGroup</h3>
+<h3 id="entity-by-code-and-entity-by-name">Entity By Code and Entity By Name</h3>
+<h3 id="replacements">Replacements</h3></div>
+                </div>
+        </div>
+
+    <hr>
+    <footer class="container">
+        
+        <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+    </footer>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+    </body>
+</html>

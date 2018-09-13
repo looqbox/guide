@@ -1,0 +1,69 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Looqbox User Guide\n\n\n\n  \n\n\n\n\n\nIntroduction\n\n\nInstallation\n\n\nLooqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).\n\n\nTo start the container, run:\n\n\ndocker run -d --restart=always --name=looqbox-instance -e CLIENT=\"<client name>\" -e KEY=\"<client key>\" -e RSTUDIO_PASS=\"<choose a password>\" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002\n\n\n\n\nOther available parameters:\n\n\n\n\n\n\n\n\nparameter\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\n-e XMX=\"-Xmx512m\"\n\n\nchange maximum heap\n\n\n\n\n\n\n-e XMS=\"-Xms512m\"\n\n\nchange minimum heap\n\n\n\n\n\n\n-e PORT\n\n\nchange Looqbox's port (default 80)\n\n\n\n\n\n\n-e PROXY_HOST=\"<ip>\"\n\n\nwhen parameter exists, use host as proxy (must define proxy_port as well)\n\n\n\n\n\n\n-e PROXY_PORT=\"<port>\"\n\n\nwhen parameter exists, use port as proxy (must define proxy_host as well)\n\n\n\n\n\n\n\n\nAll script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server, all you need to do is rerun the docker command above. It will automatically download all files to the new instance.\n\n\nTo check if looqbox started correctly, run: \n\n\ndocker logs -f --tail 200 looqbox-instance\n\n\n\n\nExpected result:\n\n\n  \n\n\n\n\nTo update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.\n\n\nFirst steps\n\n\nAfter completing this section you'll be able to run your first script inside Looqbox.\n\n\n\n\n\nAre you ready to learn more about Looqbox? Click \nhere\n to continue.",
+            "title": "Home"
+        },
+        {
+            "location": "/#looqbox-user-guide",
+            "text": "",
+            "title": "Looqbox User Guide"
+        },
+        {
+            "location": "/#introduction",
+            "text": "",
+            "title": "Introduction"
+        },
+        {
+            "location": "/#installation",
+            "text": "Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).  To start the container, run:  docker run -d --restart=always --name=looqbox-instance -e CLIENT=\"<client name>\" -e KEY=\"<client key>\" -e RSTUDIO_PASS=\"<choose a password>\" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002  Other available parameters:     parameter  description      -e XMX=\"-Xmx512m\"  change maximum heap    -e XMS=\"-Xms512m\"  change minimum heap    -e PORT  change Looqbox's port (default 80)    -e PROXY_HOST=\"<ip>\"  when parameter exists, use host as proxy (must define proxy_port as well)    -e PROXY_PORT=\"<port>\"  when parameter exists, use port as proxy (must define proxy_host as well)     All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server, all you need to do is rerun the docker command above. It will automatically download all files to the new instance.  To check if looqbox started correctly, run:   docker logs -f --tail 200 looqbox-instance  Expected result: \n     To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.",
+            "title": "Installation"
+        },
+        {
+            "location": "/#first-steps",
+            "text": "After completing this section you'll be able to run your first script inside Looqbox.   Are you ready to learn more about Looqbox? Click  here  to continue.",
+            "title": "First steps"
+        },
+        {
+            "location": "/implementation/",
+            "text": "Implementation\n\n\n\n\nImplementation Flow\n\n\nSetting up a connection\n\n\nCreating a response\n\n\nCreating User, UserGroup and ResponseGroup\n\n\nEntity By Code and Entity By Name\n\n\nReplacements\n\n\n\n\nImplementation Flow\n\n\nThere are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.\n1) Looqbox runs a R script for each question asked by the users. Each of those scripts access a datasource (e.g. MySQL), so the time that a users waits is mainly the response time from the query or API. The maximum recommended time for a response is 2 seconds.\n2) Users usually need a bit of experience with the interface to start asking more complex questions, so starting with short and general questions help new users to navigate.\n\n\nWe discorage the implementation of complex dashboards in Looqbox, since it usually depends of multiple queries, which result in a long response time.\nTo guarantee the best user experience, responses should be implemented in a way that users can ask simple questions, and navigate to more specific information using features like drill down. Navigating between 4 tables of content waiting 2 seconds for each load in much better than waiting 8 seconds for a single dashboard.\nHere is a sequence of questions to illustrate this scenario:\n- sales $date\n- sales $date by store\n- sales $date by department\n- sales $date by supplier\n\n\nSetting up a connection\n\n\nCreating a response\n\n\nCreating User, UserGroup and ResponseGroup\n\n\nEntity By Code and Entity By Name\n\n\nReplacements",
+            "title": "Implementation"
+        },
+        {
+            "location": "/implementation/#implementation",
+            "text": "Implementation Flow  Setting up a connection  Creating a response  Creating User, UserGroup and ResponseGroup  Entity By Code and Entity By Name  Replacements",
+            "title": "Implementation"
+        },
+        {
+            "location": "/implementation/#implementation-flow",
+            "text": "There are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.\n1) Looqbox runs a R script for each question asked by the users. Each of those scripts access a datasource (e.g. MySQL), so the time that a users waits is mainly the response time from the query or API. The maximum recommended time for a response is 2 seconds.\n2) Users usually need a bit of experience with the interface to start asking more complex questions, so starting with short and general questions help new users to navigate.  We discorage the implementation of complex dashboards in Looqbox, since it usually depends of multiple queries, which result in a long response time.\nTo guarantee the best user experience, responses should be implemented in a way that users can ask simple questions, and navigate to more specific information using features like drill down. Navigating between 4 tables of content waiting 2 seconds for each load in much better than waiting 8 seconds for a single dashboard.\nHere is a sequence of questions to illustrate this scenario:\n- sales $date\n- sales $date by store\n- sales $date by department\n- sales $date by supplier",
+            "title": "Implementation Flow"
+        },
+        {
+            "location": "/implementation/#setting-up-a-connection",
+            "text": "",
+            "title": "Setting up a connection"
+        },
+        {
+            "location": "/implementation/#creating-a-response",
+            "text": "",
+            "title": "Creating a response"
+        },
+        {
+            "location": "/implementation/#creating-user-usergroup-and-responsegroup",
+            "text": "",
+            "title": "Creating User, UserGroup and ResponseGroup"
+        },
+        {
+            "location": "/implementation/#entity-by-code-and-entity-by-name",
+            "text": "",
+            "title": "Entity By Code and Entity By Name"
+        },
+        {
+            "location": "/implementation/#replacements",
+            "text": "",
+            "title": "Replacements"
+        }
+    ]
+}
