@@ -1,4 +1,4 @@
-# Looqbox User Guide
+# Home
 
 <p align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
@@ -52,5 +52,105 @@ After completing this section you'll be able to run your first script inside Loo
 - there you have it, hurray
 
 -->
+
+### Libraries
+
+In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.
+
+```R
+library(looqbox)
+```
+
+### Looq Response
+
+This block is where your script will start the execution, simulating a main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from parser
+
+In this case, we are creating a looqbox standard message box and storing it in msg variable. In the first parameter we're passing a `paste` with the string collected above. The second parameter is the style type to display the box. 
+
+Finally, we are creating a looqbox frame to be placed inside a board with `looq.responseFrame()`
+
+```R
+looq.response <- function(par) {
+  
+  # Receives the value inside a looqbox tag. In this case, we're looking for 
+  # $quotes tag and storing it in quotes
+  quotes <- looq.lookTag("$quotes", par)
+  
+  # Creates a looqbox standard message box and store it in msg variable. In
+  # the first parameter we're passing a paste with the string collected above
+  # the second parameter is the style type to display the box. 
+  msg <- looq.objMessage(
+    paste("Hurray, my installation is working!!\n", quotes),
+    "alert-success"
+  )
+  
+  # Creates a looqbox frame to be placed inside a board
+  looq.responseFrame(msg)
+}
+```
+
+### Testing
+
+This block is used to test your response from **RStudio**, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using **Ctrl + Shift + S** and it will be displayed in your client.
+
+```R
+looq.testQuestion(
+  list(
+    "$quotes" = "My test sentence"
+  )
+)
+```
+
+### Add to your client
+
+<!-- Write about responses with a good image -->
+
+You can find the complete script in our [Github](/templates/helloWorld.R) or copy the code below. 
+
+```R
+# In order to develop a script for Looqbox you should use our Looqbox Package.
+# The package allows you to interact with the interface and help you structure
+# your data to be displayed in our client.
+library(looqbox)
+
+#-----------------------------------------------------------------------------#
+#---  Response
+#---
+#--- This block is where your script will start the execution, simulating a 
+#--- main function. Inside it, you should set your parameters got from parser
+#-----------------------------------------------------------------------------#
+looq.response <- function(par) {
+  
+  # Receives the value inside a looqbox tag. In this case, we're looking for 
+  # $quotes tag and storing it in quotes
+  quotes <- looq.lookTag("$quotes", par)
+  
+  # Creates a looqbox standard message box and store it in msg variable. In
+  # the first parameter we're passing a paste with the string collected above
+  # the second parameter is the style type to display the box. 
+  msg <- looq.objMessage(
+    paste("Hurray, my installation is working!!\n", quotes),
+    "alert-success"
+  )
+  
+  # Creates a looqbox frame to be placed inside a board
+  looq.responseFrame(msg)
+}
+
+#-----------------------------------------------------------------------------#
+#--- Test Block
+#
+#--- This block is used to test your response, allowing you to simulate our
+#--- parser and test your script without saving it in Looqbox client.
+#---
+#--- If you have configured your Looqbox addin correctly, you can run your 
+#--- script using Ctrl + Shift + S and it will be displayed in your client.
+#-----------------------------------------------------------------------------#
+looq.testQuestion(
+  list(
+    "$quotes" = "My test sentence"
+  )
+)
+```
 
 Are you ready to learn more about Looqbox? Click [here](/implementation) to continue.
