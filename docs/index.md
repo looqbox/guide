@@ -11,7 +11,7 @@
 Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).
 
 To start the container, run:
-```
+```bash
 docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 ```
 
@@ -57,7 +57,7 @@ After completing this section you'll be able to run your first script inside Loo
 
 In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.
 
-```R
+```looqbox
 library(looqbox)
 ```
 
@@ -69,7 +69,7 @@ In this case, we are creating a looqbox standard message box and storing it in m
 
 Finally, we are creating a looqbox frame to be placed inside a board with `looq.responseFrame()`
 
-```R
+```looqbox
 looq.response <- function(par) {
   
   # Receives the value inside a looqbox tag. In this case, we're looking for 
@@ -93,7 +93,7 @@ looq.response <- function(par) {
 
 This block is used to test your response from **RStudio**, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using **Ctrl + Shift + S** and it will be displayed in your client.
 
-```R
+```looqbox
 looq.testQuestion(
   list(
     "$quotes" = "My test sentence"
@@ -107,7 +107,7 @@ looq.testQuestion(
 
 You can find the complete script in our [Github](/templates/helloWorld.R) or copy the code below. 
 
-```R
+```looqbox
 # In order to develop a script for Looqbox you should use our Looqbox Package.
 # The package allows you to interact with the interface and help you structure
 # your data to be displayed in our client.
