@@ -1,4 +1,4 @@
-# Tutorial
+# R Tutorial
 
 > This tutorial assume you don't have existing Looqbox R Package previus knowledge.
 
@@ -54,17 +54,74 @@ This is completely optional and not required for this tutorial!
 
 #### Title
 
+```looqbox
+r$title <- "Simple title"
+```
+
+```looqbox
+r$title <- c(
+	"My title",
+	looq.titleWithDate("Períod:", dateInt)
+)
+```
+
 #### Style
+
+```looqbox
+r$valueStyle$Column <- style
+```
+
+```looqbox
+r$valueStyle <- list(
+	"Column" = style
+)
+```
 
 #### Formating my data
 
+```looqbox
+r$valueFormat <- list(
+	"numeric column" = "number:2",
+	"percent column" = "percent:2"
+)
+```
+
 #### Total line
+
+```looqbox
+r$total <- list(
+	`Column 1` = "total",
+	`Column 2` = sum(r$data$`Column 2`)
+)
+```
 
 #### Drill Down
 
+```looqbox
+r$valueLink$Column <- "my question text here"
+```
+
+```looqbox
+r$valueLink$Column <- paste("my question text here with this value", 203)
+```
+
+```looqbox
+r$valueLink$Column <- list(
+	list("text" = "by User", "link" = paste("my question with this column", r$data$Column2))
+)
+```
+
 #### Pagination
 
+```looqbox
+r$paginationSize <- 25
+```
+
 #### Searchbar
+
+```looqbox
+r$searchable <- T
+```
 
 ## Advanced
 
