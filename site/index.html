@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="./img/favicon.ico">
-        <title>Looqbox User Guide - Looqbox User Guide</title>
+        <title>Home - Looqbox User Guide</title>
         <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
         <link href="./css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/highlight.css">
@@ -50,7 +50,7 @@
             
             
                 <li class="active">
-                    <a href=".">Looqbox User Guide</a>
+                    <a href=".">Home</a>
                 </li>
             
             
@@ -86,7 +86,7 @@
     <ul class="nav bs-sidenav">
       
     
-        <li class="main active"><a href="#looqbox-user-guide">Looqbox User Guide</a></li>
+        <li class="main active"><a href="#home">Home</a></li>
         
             <li><a href="#introduction">Introduction</a></li>
         
@@ -100,7 +100,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="looqbox-user-guide">Looqbox User Guide</h1>
+<h1 id="home">Home</h1>
 <p align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
 </p>
@@ -165,6 +165,92 @@
 - there you have it, hurray
 
 -->
+
+<h3 id="libraries">Libraries</h3>
+<p>In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.</p>
+<pre><code class="R">library(looqbox)
+</code></pre>
+
+<h3 id="looq-response">Looq Response</h3>
+<p>This block is where your script will start the execution, simulating a main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from parser</p>
+<p>In this case, we are creating a looqbox standard message box and storing it in msg variable. In the first parameter we're passing a <code>paste</code> with the string collected above. The second parameter is the style type to display the box. </p>
+<p>Finally, we are creating a looqbox frame to be placed inside a board with <code>looq.responseFrame()</code></p>
+<pre><code class="R">looq.response &lt;- function(par) {
+
+  # Receives the value inside a looqbox tag. In this case, we're looking for 
+  # $quotes tag and storing it in quotes
+  quotes &lt;- looq.lookTag(&quot;$quotes&quot;, par)
+
+  # Creates a looqbox standard message box and store it in msg variable. In
+  # the first parameter we're passing a paste with the string collected above
+  # the second parameter is the style type to display the box. 
+  msg &lt;- looq.objMessage(
+    paste(&quot;Hurray, my installation is working!!\n&quot;, quotes),
+    &quot;alert-success&quot;
+  )
+
+  # Creates a looqbox frame to be placed inside a board
+  looq.responseFrame(msg)
+}
+</code></pre>
+
+<h3 id="testing">Testing</h3>
+<p>This block is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be displayed in your client.</p>
+<pre><code class="R">looq.testQuestion(
+  list(
+    &quot;$quotes&quot; = &quot;My test sentence&quot;
+  )
+)
+</code></pre>
+
+<h3 id="add-to-your-client">Add to your client</h3>
+<!-- Write about responses with a good image -->
+
+<p>You can find the complete script in our <a href="./templates/helloWorld.R">Github</a> or copy the code below. </p>
+<pre><code class="R"># In order to develop a script for Looqbox you should use our Looqbox Package.
+# The package allows you to interact with the interface and help you structure
+# your data to be displayed in our client.
+library(looqbox)
+
+#-----------------------------------------------------------------------------#
+#---  Response
+#---
+#--- This block is where your script will start the execution, simulating a 
+#--- main function. Inside it, you should set your parameters got from parser
+#-----------------------------------------------------------------------------#
+looq.response &lt;- function(par) {
+
+  # Receives the value inside a looqbox tag. In this case, we're looking for 
+  # $quotes tag and storing it in quotes
+  quotes &lt;- looq.lookTag(&quot;$quotes&quot;, par)
+
+  # Creates a looqbox standard message box and store it in msg variable. In
+  # the first parameter we're passing a paste with the string collected above
+  # the second parameter is the style type to display the box. 
+  msg &lt;- looq.objMessage(
+    paste(&quot;Hurray, my installation is working!!\n&quot;, quotes),
+    &quot;alert-success&quot;
+  )
+
+  # Creates a looqbox frame to be placed inside a board
+  looq.responseFrame(msg)
+}
+
+#-----------------------------------------------------------------------------#
+#--- Test Block
+#
+#--- This block is used to test your response, allowing you to simulate our
+#--- parser and test your script without saving it in Looqbox client.
+#---
+#--- If you have configured your Looqbox addin correctly, you can run your 
+#--- script using Ctrl + Shift + S and it will be displayed in your client.
+#-----------------------------------------------------------------------------#
+looq.testQuestion(
+  list(
+    &quot;$quotes&quot; = &quot;My test sentence&quot;
+  )
+)
+</code></pre>
 
 <p>Are you ready to learn more about Looqbox? Click <a href="./implementation">here</a> to continue.</p></div>
                 </div>
