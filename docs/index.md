@@ -11,7 +11,7 @@
 Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).
 
 To start the container, run:
-```
+```bash
 docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 ```
 
