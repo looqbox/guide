@@ -30,3 +30,37 @@ h3 {
 p {
 	text-align: justify;
 }
+
+/* looqbox highlight */
+
+pre .looqbox {
+	margin: -9.5px;
+	padding: 17.5px 19.5px ;
+	background-color: #323232f2;
+	color: #fff;
+}
+
+.looqbox .hljs-title {
+	color: #cc7833f2;
+}
+
+
+.looqbox .hljs-keyword {
+	color: #cc7833f2;
+}
+
+.looqbox .hljs-built_in {
+	color: #cc7833f2;
+}
+
+.looqbox .hljs-params {
+	color: #fff;
+}
+
+.looqbox .hljs-comment {
+	color: #bb9458f2;
+}
+
+.looqbox .hljs-string {
+	color: #a2be62f2;
+}
