@@ -70,7 +70,7 @@ Imagine that it's important for a user to ask about sales "sales yesterday" (whi
 
 
 <p align="center">
-  <img src="/img/responses_screen.png" width="1074">
+  <img src="../img/responses_screen.png" width="1074">
 </p>
 
 ## Creating User
