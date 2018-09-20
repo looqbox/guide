@@ -75,6 +75,29 @@ Imagine that it's important for a user to ask about sales "sales yesterday" (whi
 
 ## Creating User
 
+In this section you are able to create users that will have access to Looqbox.
+
+User Login: name used by the user to login.
+
+Short Name: alias for the user.
+
+Email: used when a user forgets the password.
+
+Password: (self explanatory)
+
+User Group: Each user must have a [User Group](#creating-usergroup). User groups are usually divided in roles inside a company (sales, marketing etc)l
+
+Language: default language for this user.
+
+Admin: select if a user can edit user, responses, entities and so on.
+
+Active: (self explanatory)
+
+
+<p align="center">
+  <img src="../img/user_screen.png" width="1074">
+</p>
+
 ## Creating UserGroup 
 
 ## Creating ResponseGroup
