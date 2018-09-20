@@ -131,13 +131,7 @@ It will then, return the company value and assign it to the variable `company`.
 If a certain value is an optional parameter for a question, `looq.lookTag()` also accepts a third parameter for setting a default value (should be a list). 
 
 ```looqbox
-date <- looq.lookTag(
-	
-	c("$date", "$datetime"), 
-	par, 
-	list(c(as.character(Sys.Date()), as.character(Sys.Date() - 1))) 
-
-)
+date <- looq.lookTag("$date", par, list(c('2018-01-01', '2019-01-01')))
 ```
 In the code above, if no `$date` value is recognised by the parser it will choose the default, in this case, the period starting yesterday and ending today (whenever that is).
 
@@ -158,12 +152,11 @@ Now that we've got `looq.response` covered, we'll go inside `get.data`. Think of
 Most of our scripts involve some kind of query to a database, `looq.sqlExecute()` is a funtion that makes this interaction extremely simple. 
 
 ```looqbox
-	# We generally store looq.sqlExecute's output in a variable called r
-	r <- looq.sqlExecute("mySQLDev", sql, list(dateInt[1], dateInt[2], company, value))
+# We generally store looq.sqlExecute's output in a variable called r
+r <- looq.sqlExecute("mySQLDev", sql, list(dateInt[1], dateInt[2], company, value))
 
-	# A simple error test follows the query, checking for data absence
-	if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "to", dateInt[2]))
-
+# A simple error test follows the query, checking for data absence
+if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "to", dateInt[2]))
 ```
 Normally it will take three arguments:
 
@@ -174,20 +167,20 @@ Normally it will take three arguments:
 In a simple manner, `looq.sqlExecute` does exatly what the name implies, it executes your query within the database, but more than that, it lets you insert values in the query. Take the following example string:
 
 ```looqbox
-	sql <- "
-		SELECT
-			EXAMPLE,
-			TEST,
-			FIELD,
-			DATE
-		FROM example.table
-		WHERE 1=1			
-			AND DATE >= DATE_ADD(`1`, INTERVAL +3 HOUR) 
-			AND DATE < DATE_ADD(`2`, INTERVAL +3 HOUR)
-			AND COMPANY = `3`
-			AND VALUE = `4`
-		ORDER BY DATE DESC
-		"
+sql <- "
+	SELECT
+		EXAMPLE,
+		TEST,
+		FIELD,
+		DATE
+	FROM example.table
+	WHERE 1=1			
+		AND DATE >= DATE_ADD(`1`, INTERVAL +3 HOUR) 
+		AND DATE < DATE_ADD(`2`, INTERVAL +3 HOUR)
+		AND COMPANY = `3`
+		AND VALUE = `4`
+	ORDER BY DATE DESC
+"
 ```
 
 The values between backticks (`` ` ` ``)  are recognised by the function and substituted with the variables passed in the third argument of `looq.SQLExecute`, in order of appearance. 
@@ -200,18 +193,18 @@ value <- 1120
 ```
 The query sent to the database would be:
 ```looqbox
-	SELECT
-		EXAMPLE,
-		TEST,
-		FIELD,
-		DATE
-	FROM my.exampleDB
-	WHERE 1=1
-		AND DATE >= DATE_ADD('2018-07-09', INTERVAL +3 HOUR) 
-		AND DATE < DATE_ADD('2018-08-09', INTERVAL +3 HOUR)
-		AND COMPANY = 0
-		AND VALUE = 1120
-	ORDER BY DATE DESC
+SELECT
+	EXAMPLE,
+	TEST,
+	FIELD,
+	DATE
+FROM my.exampleDB
+WHERE 1=1
+	AND DATE >= DATE_ADD('2018-07-09', INTERVAL +3 HOUR) 
+	AND DATE < DATE_ADD('2018-08-09', INTERVAL +3 HOUR)
+	AND COMPANY = 0
+	AND VALUE = 1120
+ORDER BY DATE DESC
 ```
 
 Easy right? And it gets better, `looq.sqlExecute` returns a `looq.objTable`, an object from the package that is ready to be imported to the interface.
