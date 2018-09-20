@@ -56,6 +56,8 @@ See, it wasn't even that hard, and now you're set up to work from your local env
 
 ### Script sctructure
 
+In this section, you'll learn about the structure that your script should be implemented.
+
 #### Dependencies
 
 In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.
