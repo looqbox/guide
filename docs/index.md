@@ -63,11 +63,11 @@ library(looqbox)
 
 ### Looq Response
 
-This block is where your script will start the execution, simulating a main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from parser
+This block is where your script will start the execution, simulating a main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from the parser.
 
 In this case, we are creating a looqbox standard message box and storing it in msg variable. In the first parameter we're passing a `paste` with the string collected above. The second parameter is the style type to display the box. 
 
-Finally, we are creating a looqbox frame to be placed inside a board with `looq.responseFrame()`
+Finally, we are creating a looqbox frame to be placed inside a board with `looq.responseFrame()`.
 
 ```looqbox
 looq.response <- function(par) {
