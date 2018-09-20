@@ -39,11 +39,11 @@ Response Name: use a name to find this response easily later
 
 Response Group: each response must belong to a response group, used to control who can access this resource
 
-<span style="color:grey">Engine: R (default) is the only engine available for scripts</span>
+<span style="color: #999">Engine: R (default) is the only engine available for scripts</span>
 
-<span style="color:grey">Custom evaluation time limit: ATTENTION. Don't modify unless it's extremely necessary. This field is used to modify the default timeout (30s) for a script to respond. Good scripts run under 2 seconds, so there should be really no reason to modify this value</span>
+<span style="color: #999">Custom evaluation time limit: ATTENTION. Don't modify unless it's extremely necessary. This field is used to modify the default timeout (30s) for a script to respond. Good scripts run under 2 seconds, so there should be really no reason to modify this value</span>
 
-<span style="color:grey">Active: (self explanatory)</span>
+<span style="color: #999">Active: (self explanatory)</span>
 
 
 #### Response files
@@ -53,7 +53,7 @@ Response files: Use this area to upload scripts or help files. The main file wil
 
 #### Keyword Group
 
-<span style="color:grey">Language: language that will use this keyword group</span>
+<span style="color: #999">Language: language that will use this keyword group</span>
 
 Keyword: <span style="font-weight: bold;">IMPORTANT</span>. Here you can define which keywords must be present in a sentence to run this response. The script that will be executed will always be chosen by the highest number of entities found inside a question that in linked to a response.
 Keywords can be divided in 2 groups:
@@ -65,7 +65,8 @@ A list of synonyms can be used by separating words with pipes. E.g.: sales|reven
 
 Note that keywords can be optional. This is useful for entites that may appear in a question, but is not fundamental for the main usage case for a response. To illustrate:
 
-Imagine that it's important for a user to ask about sales "sales yesterday" (which returns a table with the sales in each store), but it's also common to modify the answer by asking "sales yesterday store 1, 2 and 3" (which returns a table with the sales of store 1, 2 and 3). In this case, the entity $store is optional, and when available, all values about store (in our example, 1 to 3) will be fowarded to the script within the entity $store.
+> Imagine that it's important for a user to ask about sales "sales yesterday" (which returns a table with the sales in each store), but it's also common to modify the answer by asking "sales yesterday store 1, 2 and 3" (which returns a table with the sales of store 1, 2 and 3). In this case, the entity $store is optional, and when available, all values about store (in our example, 1 to 3) will be fowarded to the script within the entity $store.
+
 
 
 
@@ -123,6 +124,30 @@ Response Group Name: define a name for a responseGroup.
 </p>
 
 ## Entity
+
+Entities are patterns that can be found in the question, and retrieved as values to be used inside scripts.
+
+The most used entity is "$date", which is preimplemented by Looqbox. Other entities can be implemented as you need.
+
+E.g.: "sales last week" -> $date: [2018-09-10, 2018-09-16]
+
+
+### Default entities by Looqbox
+
+#### $date
+
+#### $datePartition
+
+#### $comparative
+
+#### $topN
+
+#### $email
+
+#### $quotes
+
+#### $diamond
+
 
 ### Entity By Code
 

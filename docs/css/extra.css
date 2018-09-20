@@ -16,19 +16,23 @@ a:hover {
 
 h1 {
 	font-size: 28px;
+	color: #444;
 }
 
 
 h2 {
 	font-size: 23px;
+	color: #444;
 }
 
 h3 {
 	font-size: 20px;
+	color: #444;
 }
 
 p {
 	text-align: justify;
+	color: #444;
 }
 
 /* looqbox highlight */
@@ -63,4 +67,11 @@ pre .looqbox {
 
 .looqbox .hljs-string {
 	color: #a2be62f2;
+}
+
+blockquote {
+	font-size: 14px !important;
+	border-left-color: #007b50;
+	background-color: white;
+	color: #444;
 }
