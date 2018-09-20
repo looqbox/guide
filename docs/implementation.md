@@ -100,9 +100,12 @@ Active: (self explanatory)
 
 ## Creating UserGroup 
 
-Response Groups: Define with [Response Groups](#creating-responsegroup)
+User groups are usually divided in roles inside a company (sales, marketing etc).
+When [creating users](#creating-user), you can define which userGroup this user belongs to.
 
-User Group Suggestions: 
+Response Groups: Define which [Response Groups](#creating-responsegroup) are linked to this user group. 
+
+User Group Suggestions: Suggestions added will be shown to users that belong to this userGroup in the favorites and autocomplete.
 
 
 <p align="center">
@@ -110,6 +113,14 @@ User Group Suggestions:
 </p>
 
 ## Creating ResponseGroup
+
+Each [response](#creating-a-response) belongs to a single responseGroup. When [creating userGroups]($creating-usergroup), you can choose multiple responseGroups that access is allowed to the userGroup.
+
+Response Group Name: define a name for a responseGroup. 
+
+<p align="center">
+  <img src="../img/response_group_screen.png" width="1074">
+</p>
 
 ## Entity
 
