@@ -140,6 +140,31 @@
 </ul>
 <h2 id="setting-up-a-connection">Setting up a connection</h2>
 <h2 id="creating-a-response">Creating a response</h2>
+<p>Here you can link keywords to a script. 
+We will divide this section 3 parts.</p>
+<h4 id="basic-info">Basic info</h4>
+<p>Response Name: use a name to find this response easily later</p>
+<p>Response Group: each response must belong to a response group, used to control who can access this resource</p>
+<p><span style="color:grey">Engine: R (default) is the only engine available for scripts</span></p>
+<p><span style="color:grey">Custom evaluation time limit: ATTENTION. Don't modify unless it's extremely necessary. This field is used to modify the default timeout (30s) for a script to respond. Good scripts run under 2 seconds, so there should be really no reason to modify this value</span></p>
+<p><span style="color:grey">Active: (self explanatory)</span></p>
+<h4 id="response-files">Response files</h4>
+<p>Response files: Use this area to upload scripts or help files. The main file will/must always have the same name as the responseName. <span style="font-weight: bold;">IMPORTANT</span>: .r extension MUST be lowercase</p>
+<h4 id="keyword-group">Keyword Group</h4>
+<p><span style="color:grey">Language: language that will use this keyword group</span></p>
+<p>Keyword: <span style="font-weight: bold;">IMPORTANT</span>. Here you can define which keywords must be present in a sentence to run this response. The script that will be executed will always be chosen by the highest number of entities found inside a question that in linked to a response.
+Keywords can be divided in 2 groups:</p>
+<ul>
+<li>simple words: usually stem or a verb in infitive. E.g. for a report about sales, use as keyword "sales", and all variations such as "sell", "sold", "selling" can be registered under <a href="#replacements">Replacements</a>. </li>
+<li>entities: starts with "$", and represent a pattern that can be found in the question. The most used entity is "$date", which is preimplemented by Looqbox. You can create your own entities (see <a href="#entity-by-code">EntityByCode</a> and <a href="#entity-by-name">EntityByName</a>)</li>
+</ul>
+<p>A list of synonyms can be used by separating words with pipes. E.g.: sales|revenue</p>
+<p>Note that keywords can be optional. This is useful for entites that may appear in a question, but is not fundamental for the main usage case for a response. To illustrate:</p>
+<p>Imagine that it's important for a user to ask about sales "sales yesterday" (which returns a table with the sales in each store), but it's also common to modify the answer by asking "sales yesterday store 1, 2 and 3" (which returns a table with the sales of store 1, 2 and 3). In this case, the entity $store is optional, and when available, all values about store (in our example, 1 to 3) will be fowarded to the script within the entity $store.</p>
+<p align="center">
+  <img src="/img/responses_screen.png" width="1074">
+</p>
+
 <h2 id="creating-user">Creating User</h2>
 <h2 id="creating-usergroup">Creating UserGroup</h2>
 <h2 id="creating-responsegroup">Creating ResponseGroup</h2>
