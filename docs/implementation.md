@@ -100,6 +100,15 @@ Active: (self explanatory)
 
 ## Creating UserGroup 
 
+Response Groups: Define with [Response Groups](#creating-responsegroup)
+
+User Group Suggestions: 
+
+
+<p align="center">
+  <img src="../img/user_group_screen.png" width="1074">
+</p>
+
 ## Creating ResponseGroup
 
 ## Entity
