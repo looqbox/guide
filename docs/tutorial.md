@@ -140,7 +140,7 @@ In the code above, if no `$date` value is recognised by the parser it will choos
 #### looq.map
 This function is, perhaps, the core of the whole script.
 ```looqbox
-looq.map(get.data,date,company)
+looq.map(get.data, date, company)
 ```
 What it does is fairly simple, the first argument is your `get.data()` function, and the remaining are  variables defined by `looq.lookTag()`. 
 
@@ -227,35 +227,43 @@ All of the data retrieved from queries or imported from elsewhere will be availa
 
 #### Title
 
-```looqbox
-r$title <- "Simple title"
-r$framedTitle <- "Framed title"
-```
-Creates a title for the table, which will be visible as a header. Another style option is r$framedTitle. Go ahead and try it out!
+You can create a title for your table with `r$title`, which will be visible as a header. Another style option is `r$framedTitle`. Go ahead and try it out!
+
+The `r$title` format accepts multiple lines, creating subtitles or passing other info as a header, `r$framedTitle` accepts only a string, but you may combine them to create interesting headers.
 
 ```looqbox
+# Simple title
+r$title <- "Simple title"
+
+# Example with framed title
+r$framedTitle <- "Framed title"
+
+# Title with date
 r$title <- c(
 	"My title",
 	looq.titleWithDate("Períod:", dateInt)
 )
 ```
-The `r$title` format accepts multiple lines, creating subtitles or passing other info as a header. 
-`r$framedTitle` accepts only a string, but you may combine them to create interesting headers.
 
 #### Style
 
-```looqbox
-r$valueStyle$Column <- style
-```
 Add styling to single or multiple columns through `r$value$Style`. Good examples are values that turn red if negative but green if positive. The color can be defined as either hex(#fff) or rgb(255,255,255). 
 
 ```looqbox
+
+# Styling single column
+r$valueStyle$Column <- style
+
+# Styling multiple columns at once
 r$valueStyle <- list(
-	"Column" = style
+	"Column1" = style,
+	"Column2" = style
 )
 ```
 
 #### Formating my data
+
+`r$valueFormat` lets you format numbers and dates, adding percentages, defining number of decimal points son so on.  You should write the names of each column followed by the format.
 
 ```looqbox
 r$valueFormat <- list(
@@ -263,9 +271,10 @@ r$valueFormat <- list(
 	"percent column" = "percent:2"
 )
 ```
-`r$valueFormat` lets you format numbers and dates, adding percentages, defining number of decimal points son so on.  You should write the names of each column followed by the format.
 
 #### Total line
+
+Add a total line to your table, it can be defined for each column. If a column is left blank it will be filled with `-` by default.
 
 ```looqbox
 r$total <- list(
@@ -273,43 +282,44 @@ r$total <- list(
 	`Column 2` = sum(r$data$`Column 2`)
 )
 ```
-Adds a total line to your table, which should be defined for each column. If a column is left blank it will be filled with `-` by default.
 
 #### Drill Down
 
-```looqbox
-r$valueLink$Column <- "my question text here"
-```
-To add drill down options that link to other scripts, you should use `r$ValueLink$[Your Column Here]`. 
-The question text will be posted as a new question, efectively linking the scripts together. 
+To add drill down options that link to other scripts, you should use `r$ValueLink$[Your Column Here]`. The question text will be posted as a new question, efectively linking the scripts together. 
 
-```looqbox
-r$valueLink$Column <- paste("my question text here with this value", 203)
-```
 Using `paste` or `paste0` we can ad variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired `r$data$column`. 
 
+The `"text"` parameter will add a title to your link, which is essential when multiple drills are made from the same column.
+
 ```looqbox
+# Simple drill
+r$valueLink$Column <- "my question text here"
+
+# Simple drill with variable
+r$valueLink$Column <- paste("my question text here with this value", 203)
+
+# Text box drill
 r$valueLink$Column <- list(
 	list("text" = "by User", "link" = paste("my question with this column", r$data$Column2)),
 	list("text" = "by Company", "link" = paste("my other question with this column", r$data$Column2))
 )
 ```
-The `"text"` parameter will add a title to your link, which is essential when multiple drills are made from the same column.
 
 #### Pagination
+
+Adds pagination of the specified size.
 
 ```looqbox
 r$paginationSize <- 25
 ```
 
-Adds pagination of the specified size.
-
 #### Searchbar
+
+Boolean that adds a searchbar to the table(`FALSE` by default). 
 
 ```looqbox
 r$searchable <- T
 ```
-Boolean that adds a searchbar to the table(`FALSE` by default). 
 
 ## Advanced
 
