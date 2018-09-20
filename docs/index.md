@@ -41,25 +41,22 @@ To update Looqbox and Looqbox's R package, pull the image's newest version and s
 ## Your first script
 
 1. Click in settings in the right upper corner and then in Admin.
-2. Inside the new section, find Responses and click it.
+2. Find Responses and click it.
 3. Press `New +` button and fill it with the following fields:
-  - *Response Name:** helloWorld
-  - **Response Group:** admin
-  - **Engine:** R
-  - **Custom Evaluation time limit?** no
-  - **Active?** yes
-  - **Language:** en-us
-  - **Keyword:**
-    - hello
-    - world
-    - script
-    - $quotes
-  - **Example:** hello world script "this is my first script"
-4. Press `Create new` button.
+    - **Response Name:** helloWorld
+    - **Response Group:** admin
+    - **Language:** pt-br
+    - **Keyword:**
+        - hello
+        - world
+        - script
+        - $quotes
+    - **Example:** hello world script "this is my first script"
+4. Press the green button `Create new` at the botton.
 5. Find `Response Files` and press `new` in `main file missing (new)`.
 6. Press `+ show editor` button.
-7. Copy the complete script in our [Github](/templates/helloWorld.R) or copy the code below, paste it and press `buttonsave` button. 
-8. Go to our home and type hello world script "any message that you want". If the return was a message green box with the message *Hurray, my installation is working!!* in the first line and the message you wrote in the second line, your installation is complete.
+7. Copy the complete script in our [Github](/templates/helloWorld.R) or copy the code below, paste it and press `save` button. 
+8. Click at Looqbox image and type **hello world script "any message that you want"**. If the return was a message green box with the message *Hurray, my installation is working!!* in the first line and the message you wrote in the second line, your installation is complete.
 
 ```looqbox
 # In order to develop a script for Looqbox you should use our Looqbox Package.
@@ -106,5 +103,5 @@ looq.testQuestion(
   )
 )
 ```
-
-Are you ready to learn more about Looqbox? Click [here](/implementation) to continue.
+<br>
+#### Are you ready to learn more about Looqbox? Click [here](/implementation) to continue.
