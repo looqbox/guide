@@ -1,6 +1,6 @@
 # R Tutorial
 
-> This tutorial assume you don't have existing Looqbox R Package previus knowledge.
+> This tutorial assumes you don't have previous knowledge in the Looqbox Package.
 
 <!--
 ## Prerequisites
@@ -19,11 +19,13 @@ You can either write the code in your RStudio Serve, or you can set up a local d
 
 This is the quickest way to get started!
 
-Open [http://localhost:8787](http://localhost:8787), enter your **username** and **password** and you're almost ready to go.
+Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http://localhost:8787)), enter your **username** and **password** and you're almost ready to go.
 
-Go to your looqbox addin and set your admin user.
+Under addins, select Looqbox and enter your admin username.[colocar print] 
 
-You can now skip the second setup option, and go to the [basics section](#basics) to get an overview of React.
+It is also recomended to have Looqbox opened on another tab, as your tests will be published there.
+
+You now have everything you need to begin, go ahead to the [basics section](#basics).
 
 ### Setup 2: Local development environment
 
@@ -35,118 +37,145 @@ This setup option requires a little more work at first glance, but it certainly 
 
 ### Script sctructure
 
+#### Dependencies
 
-All Looqbox scripts follow a simple basic structure which you can see below:
+#### get.data
 
+#### looq.response
+
+#### Test Block
+
+### Essential functions
+
+Now that you have a general understanding of how a script is properly constructed, let us go over a few of the package's most important functions. 
+
+NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation or Looqbox wiki.[ver depois]
+
+#### looq.lookTag
+
+Normally, the first thing your code will do once it enters your `looq.response()`(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in `get.data()`. 
+
+- `looq.lookTag()` acomplishes this task, searching for specific tags and returning their values.
 
 ```looqbox
-library(looqbox)
+company <- looq.lookTag("$company", par)
+```
+In the example above, `looq.lookTag` takes two parameters:
 
-#-----------------------------------------------------------------------------#
-#----  sampleScript
-#-----------------------------------------------------------------------------#
-get.data <- function(dateInt, company, value){
+- `"$company"`: The entity or pattern it will search for. 
+- `par`: the parser string, as received by `looq.response(par)` 
 
-	#Query
+It will then, return the company value and assign it to the variable `company`.
 
-	sql <- paste0("
+If a certain value is an optional parameter for a question, `looq.lookTag()` also accepts a third parameter for setting a default value (should be a list). 
+
+```looqbox
+date <- looq.lookTag(
+	
+	c("$date", "$datetime"), 
+	par, 
+	list(c(as.character(Sys.Date()), as.character(Sys.Date() - 1))) 
+
+)
+```
+In the code above, if no `$date` value is recognised by the parser it will choose the default, in this case, the period starting yesterday and ending today (whenever that is).
+
+#### looq.map
+This function is, perhaps, the core of the whole script.
+```looqbox
+looq.map(get.data,date,company)
+```
+What it does is fairly simple, the first argument is your `get.data()` function, and the remaining are  variables defined by `looq.lookTag()`. 
+
+- `looq.map()` calls the function and passes the variables as arguments to it.
+- Additionally, it wraps everything in a Looqbox response frame making `get.data`'s 
+output intelligible by the interface. 
+
+#### looq.sqlExecute
+Now that we've got `looq.response` covered, we'll go inside `get.data`. Think of it as the backstage of your script, it's where everything is prepared so that your main function keeps neat.
+
+Most of our scripts involve some kind of query to a database, `looq.sqlExecute()` is a funtion that makes this interaction extremely simple. 
+
+```looqbox
+	# We generally store looq.sqlExecute's output in a variable called r
+	r <- looq.sqlExecute("mySQLDev", sql, list(dateInt[1], dateInt[2], company, value))
+
+	# A simple error test follows the query, checking for data absence
+	if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "to", dateInt[2]))
+
+```
+Normally it will take three arguments:
+
+- `"mySQLDB"`: the database's name, as it was registered in the interface under connections.
+- `sql`: a string containing the SQL query (we'll cover it in depth) 
+- `...`: a list of parameters that will be inserted into the query.
+
+In a simple manner, `looq.sqlExecute` does exatly what the name implies, it executes your query within the database, but more than that, it lets you insert values in the query. Take the following example string:
+
+```looqbox
+	sql <- "
 		SELECT
 			EXAMPLE,
 			TEST,
 			FIELD,
 			DATE
-		FROM my.exampleDB
-		WHERE 1=1
+		FROM example.table
+		WHERE 1=1			
 			AND DATE >= DATE_ADD(`1`, INTERVAL +3 HOUR) 
 			AND DATE < DATE_ADD(`2`, INTERVAL +3 HOUR)
 			AND COMPANY = `3`
 			AND VALUE = `4`
 		ORDER BY DATE DESC
-		")
-	
-	r <- looq.sqlExecute("mySQLDev", sql, dateInt[1], dateInt[2], company, value)
-	if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "a", dateInt[2]))
-	r$data$OBJECT_VALUE <- as.integer(r$data$OBJECT_VALUE)
-	
-	#ObjTable
-
-  	r$valueLink$`Object Name` <- list(
-  		list("text" = "Dropdown", "link" = paste("another very interesting script")))
-	
-	
-	target <- paste(action, target)
-	r$title <- c(
-		"Alterações - Analítico",
-		looq.titleForList("Empresa: ", company),
-		looq.titleWithDate("Período: ",dateInt)
-	)
-	
-	r$data$Date <- strtrim(r$data$Date, 19)
-	
-	
-	r$searchable <- TRUE
-	r$paginationSize <- 25
-	
-	r
-	}
-
-#-----------------------------------------------------------------------------#
-#---  Response
-#-----------------------------------------------------------------------------#
-
-looq.response <- function(par){
-	
-	date <- looq.lookTag(c("$date", "$datetime"), par, list(c(as.character(Sys.Date()), as.character(Sys.Date()))))
-	date <- looq.mergeDateAndDatetime(date)
-	company <- looq.lookTag("$company", par)
-	target <- looq.lookTag("originalQuestion", par)
-	target <- looq.findToken(target, "target", "string")
-	action <- looq.lookTag("originalQuestion", par)
-	action <- looq.findToken(action, "acao", "string")
-	
-	
-	looq.map(get.data,date,company,target, action)
-}
-
-#-----------------------------------------------------------------------------#
-#---  Test Block
-#-----------------------------------------------------------------------------#
-looq.testQuestion(
-	list(
-		"$date"=list(c('2018-08-01','2018-09-01')),
-		"$company" = 44
-	)
-)
-
+		"
 ```
 
-#### dependencies
+The values between backticks (`` ` ` ``)  are recognised by the function and substituted with the variables passed in the third argument of `looq.SQLExecute`, in order of appearance. 
 
-#### get.data
+Say that:
+```looqbox
+company <- 0
+dateInt <- c('2018-07-09', '2018-08-09')
+value <- 1120
+```
+The query sent to the database would be:
+```looqbox
+	SELECT
+		EXAMPLE,
+		TEST,
+		FIELD,
+		DATE
+	FROM my.exampleDB
+	WHERE 1=1
+		AND DATE >= DATE_ADD('2018-07-09', INTERVAL +3 HOUR) 
+		AND DATE < DATE_ADD('2018-08-09', INTERVAL +3 HOUR)
+		AND COMPANY = 0
+		AND VALUE = 1120
+	ORDER BY DATE DESC
+```
 
-#### looq.responseFrame
+Easy right? And it gets better, `looq.sqlExecute` returns a `looq.objTable`, an object from the package that is ready to be imported to the interface.
 
-#### test block
+#### looq.objTable and it's fields
+The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as `data.frame` or `tbl` we have developed a special object, which is recognised by the interface and will help you create espoke tables, as it has a number of built-in customization options.
 
-### Essential functions
+Well go through it's most important parameters here, more advanced options will be treated in the 
+[Advanced Section](#advanced).
 
-#### looq.lookTag
+#### Data
+ 
+```looqbox
+r$data
+```
+All of the data retrieved from queries or imported from elsewhere will be available in this variable, which is a `tbl`. 
 
-#### looq.responseFrame
-
-#### looq.map
-
-#### looq.sqlExecute
-
-#### looq.objTable
-
-### Improvements
 
 #### Title
 
 ```looqbox
 r$title <- "Simple title"
+r$framedTitle <- "Framed title"
 ```
+Creates a title for the table, which will be visible as a header. Another style option is r$framedTitle. Go ahead and try it out!
 
 ```looqbox
 r$title <- c(
@@ -154,12 +183,15 @@ r$title <- c(
 	looq.titleWithDate("Períod:", dateInt)
 )
 ```
+The `r$title` format accepts multiple lines, creating subtitles or passing other info as a header. 
+`r$framedTitle` accepts only a string, but you may combine them to create interesting headers.
 
 #### Style
 
 ```looqbox
 r$valueStyle$Column <- style
 ```
+Add styling to single or multiple columns through `r$value$Style`. Good examples are values that turn red if negative but green if positive. The color can be defined as either hex(#fff) or rgb(255,255,255). 
 
 ```looqbox
 r$valueStyle <- list(
@@ -175,6 +207,7 @@ r$valueFormat <- list(
 	"percent column" = "percent:2"
 )
 ```
+`r$valueFormat` lets you format numbers and dates, adding percentages, defining number of decimal points son so on.  You should write the names of each column followed by the format.
 
 #### Total line
 
@@ -184,22 +217,28 @@ r$total <- list(
 	`Column 2` = sum(r$data$`Column 2`)
 )
 ```
+Adds a total line to your table, which should be defined for each column. If a column is left blank it will be filled with `-` by default.
 
 #### Drill Down
 
 ```looqbox
 r$valueLink$Column <- "my question text here"
 ```
+To add drill down options that link to other scripts, you should use `r$ValueLink$[Your Column Here]`. 
+The question text will be posted as a new question, efectively linking the scripts together. 
 
 ```looqbox
 r$valueLink$Column <- paste("my question text here with this value", 203)
 ```
+Using `paste` or `paste0` we can ad variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired `r$data$column`. 
 
 ```looqbox
 r$valueLink$Column <- list(
-	list("text" = "by User", "link" = paste("my question with this column", r$data$Column2))
+	list("text" = "by User", "link" = paste("my question with this column", r$data$Column2)),
+	list("text" = "by Company", "link" = paste("my other question with this column", r$data$Column2))
 )
 ```
+The `"text"` parameter will add a title to your link, which is essential when multiple drills are made from the same column.
 
 #### Pagination
 
@@ -207,12 +246,16 @@ r$valueLink$Column <- list(
 r$paginationSize <- 25
 ```
 
+Adds pagination of the specified size.
+
 #### Searchbar
 
 ```looqbox
 r$searchable <- T
 ```
+Boolean that adds a searchbar to the table(`FALSE` by default). 
 
 ## Advanced
 
+#### looq.responseFrame
 
