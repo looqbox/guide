@@ -60,6 +60,12 @@
                 </li>
             
             
+            
+                <li >
+                    <a href="tutorial/">Tutorial</a>
+                </li>
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -92,7 +98,7 @@
         
             <li><a href="#installation">Installation</a></li>
         
-            <li><a href="#first-steps">First steps</a></li>
+            <li><a href="#your-first-script">Your first script</a></li>
         
     
     
@@ -153,60 +159,30 @@
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </p></p>
 <p>To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.</p>
-<h2 id="first-steps">First steps</h2>
-<p>After completing this section you'll be able to run your first script inside Looqbox.</p>
-<!--
-
-- Admin panel 
-- Response panel
-- Create response
-- copy hello world template and add there
-- test scripts
-- there you have it, hurray
-
--->
-
-<h3 id="libraries">Libraries</h3>
-<p>In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.</p>
-<pre><code class="looqbox">library(looqbox)
-</code></pre>
-
-<h3 id="looq-response">Looq Response</h3>
-<p>This block is where your script will start the execution, simulating a main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from parser</p>
-<p>In this case, we are creating a looqbox standard message box and storing it in msg variable. In the first parameter we're passing a <code>paste</code> with the string collected above. The second parameter is the style type to display the box. </p>
-<p>Finally, we are creating a looqbox frame to be placed inside a board with <code>looq.responseFrame()</code></p>
-<pre><code class="looqbox">looq.response &lt;- function(par) {
-
-  # Receives the value inside a looqbox tag. In this case, we're looking for 
-  # $quotes tag and storing it in quotes
-  quotes &lt;- looq.lookTag(&quot;$quotes&quot;, par)
-
-  # Creates a looqbox standard message box and store it in msg variable. In
-  # the first parameter we're passing a paste with the string collected above
-  # the second parameter is the style type to display the box. 
-  msg &lt;- looq.objMessage(
-    paste(&quot;Hurray, my installation is working!!\n&quot;, quotes),
-    &quot;alert-success&quot;
-  )
-
-  # Creates a looqbox frame to be placed inside a board
-  looq.responseFrame(msg)
-}
-</code></pre>
-
-<h3 id="testing">Testing</h3>
-<p>This block is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be displayed in your client.</p>
-<pre><code class="looqbox">looq.testQuestion(
-  list(
-    &quot;$quotes&quot; = &quot;My test sentence&quot;
-  )
-)
-</code></pre>
-
-<h3 id="add-to-your-client">Add to your client</h3>
-<!-- Write about responses with a good image -->
-
-<p>You can find the complete script in our <a href="./templates/helloWorld.R">Github</a> or copy the code below. </p>
+<h2 id="your-first-script">Your first script</h2>
+<ol>
+<li>Click in settings in the right upper corner and then in Admin.</li>
+<li>Find Responses and click it.</li>
+<li>Press <code>New +</code> button and fill it with the following fields:<ul>
+<li><strong>Response Name:</strong> helloWorld</li>
+<li><strong>Response Group:</strong> admin</li>
+<li><strong>Language:</strong> pt-br</li>
+<li><strong>Keyword:</strong><ul>
+<li>hello</li>
+<li>world</li>
+<li>script</li>
+<li>$quotes</li>
+</ul>
+</li>
+<li><strong>Example:</strong> hello world script "this is my first script"</li>
+</ul>
+</li>
+<li>Press the green button <code>Create new</code> at the botton.</li>
+<li>Find <code>Response Files</code> and press <code>new</code> in <code>main file missing (new)</code>.</li>
+<li>Press <code>+ show editor</code> button.</li>
+<li>Copy the complete script in our <a href="./templates/helloWorld.R">Github</a> or copy the code below, paste it and press <code>save</code> button. </li>
+<li>Click at Looqbox image and type <strong>hello world script "any message that you want"</strong>. If the return was a message green box with the message <em>Hurray, my installation is working!!</em> in the first line and the message you wrote in the second line, your installation is complete.</li>
+</ol>
 <pre><code class="looqbox"># In order to develop a script for Looqbox you should use our Looqbox Package.
 # The package allows you to interact with the interface and help you structure
 # your data to be displayed in our client.
@@ -252,7 +228,8 @@ looq.testQuestion(
 )
 </code></pre>
 
-<p>Are you ready to learn more about Looqbox? Click <a href="./implementation">here</a> to continue.</p></div>
+<p><br></p>
+<h4 id="are-you-ready-to-learn-more-about-looqbox-click-here-to-continue">Are you ready to learn more about Looqbox? Click <a href="./implementation">here</a> to continue.</h4></div>
                 </div>
         </div>
 
