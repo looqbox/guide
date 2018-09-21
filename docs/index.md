@@ -36,7 +36,11 @@ All script files and configurations are backed up in Looqbox's Cloud. To transfe
 To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, click [here](/z-extras#docker-commands-for-looqbox).
 
 
+## First questions
 
+You can test your newly installed Looqbox by using pre implemented responses (those responses also serve as models for the responses will you implement later!).
+
+To see the list of available questions/responses, type "que perguntas posso fazer?"
 
 ## Your first script
 
