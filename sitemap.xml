@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>/implementation/</loc>
+     <loc>/Admin-Interface/</loc>
      <lastmod>2018-09-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -19,7 +19,7 @@
 
     
     <url>
-     <loc>/tutorial/</loc>
+     <loc>/R-Scripts/</loc>
      <lastmod>2018-09-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -27,7 +27,7 @@
 
     
     <url>
-     <loc>/z-extras/</loc>
+     <loc>/Read-more/</loc>
      <lastmod>2018-09-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
