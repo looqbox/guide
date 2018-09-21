@@ -106,7 +106,7 @@
         
             <li><a href="#first-questions">First questions</a></li>
         
-            <li><a href="#your-first-script">Your first script</a></li>
+            <li><a href="#your-first-responsescript">Your first response/script</a></li>
         
     
     
@@ -142,29 +142,34 @@
 <h2 id="first-questions">First questions</h2>
 <p>You can test your newly installed Looqbox by using pre implemented responses (those responses also serve as models for the responses will you implement later!).</p>
 <p>To see the list of available questions/responses, type "que perguntas posso fazer?"</p>
-<h2 id="your-first-script">Your first script</h2>
+<p>(the first time a question is asked after starting Looqbox, it takes about 8 seconds to respond)</p>
+<h2 id="your-first-responsescript">Your first response/script</h2>
+<p>Follow the steps bellow to create your first Response/Script. </p>
 <ol>
-<li>Click in settings in the right upper corner and then in Admin.</li>
-<li>Find Responses and click it.</li>
-<li>Press <code>New +</code> button and fill it with the following fields:<ul>
+<li>Click the cogs in the right upper corner and then in Admin (don't mistake it with the user area if the user's name you're using is "Admin"!).</li>
+<li>Find <code>Responses</code> and click it.</li>
+<li>Press <code>New +</code> button. Fill the following fields and leave all others with the default values:<ul>
 <li><strong>Response Name:</strong> helloWorld</li>
 <li><strong>Response Group:</strong> admin</li>
 <li><strong>Language:</strong> pt-br</li>
 <li><strong>Keyword:</strong><ul>
-<li>hello</li>
-<li>world</li>
-<li>script</li>
+<li>hello (press enter to open a new field)</li>
+<li>world (enter)</li>
+<li>script (enter)</li>
 <li>$quotes</li>
 </ul>
 </li>
 <li><strong>Example:</strong> hello world script "this is my first script"</li>
 </ul>
 </li>
-<li>Press the green button <code>Create new</code> at the botton.</li>
+<li>Press the green button <code>Create new</code> at the bottom. There will be a message "file saved" at the right upper corner.</li>
+</ol>
+<p>You just created you first Response! Now let's link it with a script.</p>
+<ol>
 <li>Find <code>Response Files</code> and press <code>new</code> in <code>main file missing (new)</code>.</li>
-<li>Press <code>+ show editor</code> button.</li>
+<li>Press <code>+ show editor</code> in grey located at the left from the <code>save</code> button.</li>
 <li>Copy the complete script in our <a href="./templates/helloWorld.R">Github</a> or copy the code below, paste it and press <code>save</code> button. </li>
-<li>Click at Looqbox image and type <strong>hello world script "any message that you want"</strong>. If the return was a message green box with the message <em>Hurray, my installation is working!!</em> in the first line and the message you wrote in the second line, your installation is complete.</li>
+<li>Click at Looqbox in the left upper corner to return to the search area, and type <strong>hello world script "any message that you want"</strong>. If the return was a message green box with the message <em>Hurray, my installation is working!!</em> in the first line and the message you wrote in the second line, your installation is complete.</li>
 </ol>
 <pre><code class="looqbox"># In order to develop a script for Looqbox you should use our Looqbox Package.
 # The package allows you to interact with the interface and help you structure
@@ -187,7 +192,7 @@ looq.response &lt;- function(par) {
   # the first parameter we're passing a paste with the string collected above
   # the second parameter is the style type to display the box. 
   msg &lt;- looq.objMessage(
-    paste(&quot;Hurray, my installation is working!!\n&quot;, quotes),
+    paste(&quot;Hurray, my installation is working!\n&quot;, quotes),
     &quot;alert-success&quot;
   )
 
