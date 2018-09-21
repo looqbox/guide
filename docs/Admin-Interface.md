@@ -1,4 +1,4 @@
-# Implementation
+# Admin Interface
 
 ## Looqbox must be fast - Implementation Flow
 
