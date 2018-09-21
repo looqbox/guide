@@ -1,4 +1,4 @@
-# R Tutorial
+# R Scripts 
 
 > This tutorial assumes you don't have any previous knowledge in the Looqbox Package.
 
@@ -15,13 +15,13 @@ This documentation's objective is to introduce you to the guidelines for creatin
 You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.
 
 
-### Setup 1: RStudio Serve
+### RStudio Serve Setup
 
 This is the quickest way to get started!
 
-Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http://localhost:8787)), enter your **username** and **password** and you're almost ready to go.
+Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http://localhost:8787)), enter **rstudio** as username and the **password** you created in the [installation](#installation) and you're almost ready to go.
 
-Under addins, select Looqbox and enter your admin **username** and **host** (if they're not already there).
+Under addins, select Looqbox and enter your looqbox **username** and **host** (if they're not already there).
 
 <p align="center">
   <img src="../img/addin.png" width="500">
@@ -30,27 +30,6 @@ Under addins, select Looqbox and enter your admin **username** and **host** (if 
 It is also recomended to have Looqbox opened on another tab, as your tests will be published there.
 
 You now have everything you need to begin, go ahead to the [basics section](#basics).
-
-### Setup 2: Local development environment
-
-This setup option requires a little more work at first glance, but it certainly pays off. 
-
-#### Downloads
-
-- R: [https://cran.r-project.org/bin/macosx/el-capitan/base/](https://cran.r-project.org/bin/macosx/el-capitan/base/)
-- RStudio: [https://www.rstudio.com/products/rstudio/#Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
-- Local Rstudio configuration file: <a href="../setup/test.bz2" download>Download</a>
-
-#### Configuration 
-To configure your local Rstudio environment to work with Looqbox's Rprofile, download the files listed above and extract the configuration file in your home directory (the **looqbox-dev** folder should appear).Open the terminal, `cd` to your looqbox-dev directory and execute `setProfile.sh` or run:
-
-```looqbox
-bash ~/looqbox-dev/setProfile.sh
-```
-
-To set up your user in RStudio you can either go to the Looqbox Addin, as described in [Setup 1](#setup-for-the-tutorial) or edit the *config/R/config.json* file and enter your looqbox username.
-
-See, it wasn't even that hard, and now you're set up to work from your local environment!
 
 ## Basics
 
@@ -112,7 +91,7 @@ looq.testQuestion(
 
 Now that you have a general understanding of how a script is properly constructed, let us go over a few of the package's most important functions. 
 
-NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation or Looqbox wiki.[ver depois]
+NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation.
 
 #### looq.lookTag
 
@@ -211,7 +190,8 @@ ORDER BY DATE DESC
 
 Easy right? And it gets better, `looq.sqlExecute` returns a `looq.objTable`, an object from the package that is ready to be imported to the interface.
 
-#### looq.objTable and it's fields
+#### looq.objTable and it's 
+
 The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as `data.frame` or `tbl` we have developed a special object, which is recognised by the interface and will help you create espoke tables, as it has a number of built-in customization options.
 
 Well go through it's most important parameters here, more advanced options will be treated in the 
@@ -323,5 +303,57 @@ r$searchable <- T
 
 ## Advanced
 
+### Other Vizualizations
+#### Graphs
+#### Media
+#### Deeper into looq.objTable
 #### looq.responseFrame
+
+###Advanced Package Functions
+
+## Good practices in R
+
+In this first section we'll talk a little bit about styling and good practices in R. Here at Looqbox, we like the `cammelCase`, so stick to it as much as you can when naming files, functions, variables and what-not.
+
+**Good names:**
+
+- `newFile.r`: even though R uses .R as a default extension, prefer .r (lower case) for Looqbox scripts
+- `getData()`: when naming functions, the ideal is to use verbs in it's name
+- `newVariable`: for variables, it is better to use nouns
+- `NOT_VARIABLE`: hey! this case is a little different, when defining constant values, use UPPER CASE all the way through!
+
+Always try to use names that have something to do with the object! Keep in mind that more often than not you or someone else will have to read, debug, or modify your code, so don't go writing some undecipherable Aztec codex!!
+
+Keep your code clean and with a single kind of indentation, we use 2 spaces by default. Enough reading for know, the rest, I'll show you in an example block of code.
+
+```looqbox
+sayHello <- function(language){ # Always use '<-' for assignment, never '='
+
+  hello <- c("Hello World", 'Olá Mundo') # Give double quotes priority!!
+     # ^  ^                ^
+     # Put spaces between operators and AFTER commas!
+
+  if (language == "en-uk"){     # Opening brackets don't have a whole line to 
+    say <- hello[1]             # themselves.      
+  } else if (language == "pt-br"){
+     say <- hello[2]  
+  } # Now, closing brackets are the opposite, they should always be alone unless
+    # accompanied by an 'else'
+
+  if (erro) return("Erro x")# Only use this kind of if format to treat errors, prefer the {} type
+
+  say   
+}
+```
+Also, in order to write code that remains readable once uploaded to the interface we should keep our lines below 80 characters in length. You can set a margin in RStudio to help you stay true to that.
+
+Just go to Preferences > Code > Display, and check the *Show margin* box. Type in 80 under *Margin column*.
+
+<p align="center">
+  <img src="../img/margin.png" width="500">
+</p> 
+
+
+## Model Scripts
+
 
