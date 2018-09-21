@@ -105,11 +105,13 @@
     
         <li class="main "><a href="#docker-commands-for-looqbox">Docker commands for looqbox</a></li>
         
-            <li><a href="#stop-looqbox">Stop Looqbox</a></li>
+            <li><a href="#stop-looqboxs-container">Stop Looqbox's container</a></li>
         
             <li><a href="#remove-looqboxs-image">Remove Looqbox's image :(</a></li>
         
             <li><a href="#pull-new-version">Pull new version</a></li>
+        
+            <li><a href="#start-looqbox">Start Looqbox</a></li>
         
             <li><a href="#check-looqboxs-logs">Check looqbox's logs</a></li>
         
@@ -162,7 +164,8 @@
 
 <p>It's not recommeded to use bellow 512mb. Looqbox is not a full stateless service, don't use it in High Availability without contacting our support.</p>
 <h3 id="docker-commands-for-looqbox">Docker commands for looqbox</h3>
-<h4 id="stop-looqbox">Stop Looqbox</h4>
+<p>Those are the most common Docker commands that will be used with Looqbox. Execute them in the order below to update Looqbox's version.</p>
+<h4 id="stop-looqboxs-container">Stop Looqbox's container</h4>
 <pre><code class="bash">docker stop looqbox-instance
 </code></pre>
 
@@ -172,6 +175,10 @@
 
 <h4 id="pull-new-version">Pull new version</h4>
 <pre><code class="bash">docker pull looqboxrep/fes-public:cloud002
+</code></pre>
+
+<h4 id="start-looqbox">Start Looqbox</h4>
+<pre><code class="bash">docker run -d --restart=always --name=looqbox-instance -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 </code></pre>
 
 <h4 id="check-looqboxs-logs">Check looqbox's logs</h4>
