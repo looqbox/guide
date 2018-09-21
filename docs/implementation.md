@@ -1,6 +1,6 @@
 # Implementation
 
-## Implementation Flow
+## Looqbox must be fast - Implementation Flow
 
 There are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.
 
