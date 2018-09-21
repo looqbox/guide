@@ -66,6 +66,12 @@
                 </li>
             
             
+            
+                <li >
+                    <a href="z-extras/">Z extras</a>
+                </li>
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -119,7 +125,7 @@
 </code></pre>
 
 <p>To check if looqbox started correctly, run: </p>
-<pre><code>docker logs -f --tail 200 looqbox-instance
+<pre><code class="bash">docker logs -f --tail 200 looqbox-instance
 </code></pre>
 
 <p>Expected result:
@@ -127,39 +133,10 @@
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </p></p>
 <p>You can now access looqbox in port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost</a>)</p>
-<h3 id="available-parameters">Available parameters</h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-e XMX="-Xmx512m"</code></td>
-<td>change maximum heap</td>
-</tr>
-<tr>
-<td><code>-e XMS="-Xms512m"</code></td>
-<td>change minimum heap</td>
-</tr>
-<tr>
-<td><code>-e PORT</code></td>
-<td>change Looqbox's port (default 80)</td>
-</tr>
-<tr>
-<td><code>-e PROXY_HOST="&lt;ip&gt;"</code></td>
-<td>when parameter exists, use host as proxy (must define proxy_port as well)</td>
-</tr>
-<tr>
-<td><code>-e PROXY_PORT="&lt;port&gt;"</code></td>
-<td>when parameter exists, use port as proxy (must define proxy_host as well)</td>
-</tr>
-</tbody>
-</table>
-<p>All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server, all you need to do is rerun the docker command above. It will automatically download all files to the new instance.</p>
-<p>To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.</p>
+<p>If you need to add a proxy or change Looqbox's initialization port, click <a href="./z-extras#additional-parameters">here</a>.</p>
+<h3 id="update-or-transfer-looqbox-to-another-servercomputer">Update or transfer Looqbox to another server/computer</h3>
+<p>All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. </p>
+<p>To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, click <a href="./z-extras#docker-commands-for-looqbox">here</a>.</p>
 <h2 id="your-first-script">Your first script</h2>
 <ol>
 <li>Click in settings in the right upper corner and then in Admin.</li>

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>R Tutorial - Looqbox User Guide</title>
+        <title>R Scripts - Looqbox User Guide</title>
         <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/highlight.css">
@@ -62,7 +62,13 @@
             
             
                 <li class="active">
-                    <a href="./">R Tutorial</a>
+                    <a href="./">R Scripts</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../z-extras/">Z extras</a>
                 </li>
             
             
@@ -75,8 +81,8 @@
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../z-extras/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -92,7 +98,7 @@
     <ul class="nav bs-sidenav">
       
     
-        <li class="main active"><a href="#r-tutorial">R Tutorial</a></li>
+        <li class="main active"><a href="#r-scripts">R Scripts</a></li>
         
             <li><a href="#setup-for-the-tutorial">Setup for the Tutorial</a></li>
         
@@ -100,13 +106,17 @@
         
             <li><a href="#advanced">Advanced</a></li>
         
+            <li><a href="#good-practices-in-r">Good practices in R</a></li>
+        
+            <li><a href="#model-scripts">Model Scripts</a></li>
+        
     
     
     </ul>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="r-tutorial">R Tutorial</h1>
+<h1 id="r-scripts">R Scripts</h1>
 <blockquote>
 <p>This tutorial assumes you don't have any previous knowledge in the Looqbox Package.</p>
 </blockquote>
@@ -119,31 +129,16 @@
 <h2 id="setup-for-the-tutorial">Setup for the Tutorial</h2>
 <p>This documentation's objective is to introduce you to the guidelines for creating organized and efficient R scripts for Looqbox as well as to make you confortable with the looqbox package and with the tool's environment and workflow. In this section we will focus on the creation and editing of the R scripts, so we recomend using Rstudio as the development environment.</p>
 <p>You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.</p>
-<h3 id="setup-1-rstudio-serve">Setup 1: RStudio Serve</h3>
+<h3 id="rstudio-serve-setup">RStudio Serve Setup</h3>
 <p>This is the quickest way to get started!</p>
-<p>Open your looqbox instance on port 8787 (usually: <a href="http://localhost:8787">http://localhost:8787</a>), enter your <strong>username</strong> and <strong>password</strong> and you're almost ready to go.</p>
-<p>Under addins, select Looqbox and enter your admin <strong>username</strong> and <strong>host</strong> (if they're not already there).</p>
+<p>Open your looqbox instance on port 8787 (usually: <a href="http://localhost:8787">http://localhost:8787</a>), enter <strong>rstudio</strong> as username and the <strong>password</strong> you created in the <a href="#installation">installation</a> and you're almost ready to go.</p>
+<p>Under addins, select Looqbox and enter your looqbox <strong>username</strong> and <strong>host</strong> (if they're not already there).</p>
 <p align="center">
   <img src="../img/addin.png" width="500">
 </p>
 
 <p>It is also recomended to have Looqbox opened on another tab, as your tests will be published there.</p>
 <p>You now have everything you need to begin, go ahead to the <a href="#basics">basics section</a>.</p>
-<h3 id="setup-2-local-development-environment">Setup 2: Local development environment</h3>
-<p>This setup option requires a little more work at first glance, but it certainly pays off. </p>
-<h4 id="downloads">Downloads</h4>
-<ul>
-<li>R: <a href="https://cran.r-project.org/bin/macosx/el-capitan/base/">https://cran.r-project.org/bin/macosx/el-capitan/base/</a></li>
-<li>RStudio: <a href="https://www.rstudio.com/products/rstudio/#Desktop">https://www.rstudio.com/products/rstudio/#Desktop</a></li>
-<li>Local Rstudio configuration file: <a href="../setup/test.bz2" download>Download</a></li>
-</ul>
-<h4 id="configuration">Configuration</h4>
-<p>To configure your local Rstudio environment to work with Looqbox's Rprofile, download the files listed above and extract the configuration file in your home directory (the <strong>looqbox-dev</strong> folder should appear).Open the terminal, <code>cd</code> to your looqbox-dev directory and execute <code>setProfile.sh</code> or run:</p>
-<pre><code class="looqbox">bash ~/looqbox-dev/setProfile.sh
-</code></pre>
-
-<p>To set up your user in RStudio you can either go to the Looqbox Addin, as described in <a href="#setup-for-the-tutorial">Setup 1</a> or edit the <em>config/R/config.json</em> file and enter your looqbox username.</p>
-<p>See, it wasn't even that hard, and now you're set up to work from your local environment!</p>
 <h2 id="basics">Basics</h2>
 <h3 id="script-sctructure">Script sctructure</h3>
 <p>In this section, you'll learn about the structure that your script should be implemented.</p>
@@ -187,7 +182,7 @@
 
 <h3 id="essential-functions">Essential functions</h3>
 <p>Now that you have a general understanding of how a script is properly constructed, let us go over a few of the package's most important functions. </p>
-<p>NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation or Looqbox wiki.[ver depois]</p>
+<p>NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation.</p>
 <h4 id="looqlooktag">looq.lookTag</h4>
 <p>Normally, the first thing your code will do once it enters your <code>looq.response()</code>(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in <code>get.data()</code>. </p>
 <ul>
@@ -274,7 +269,7 @@ ORDER BY DATE DESC
 </code></pre>
 
 <p>Easy right? And it gets better, <code>looq.sqlExecute</code> returns a <code>looq.objTable</code>, an object from the package that is ready to be imported to the interface.</p>
-<h4 id="looqobjtable-and-its-fields">looq.objTable and it's fields</h4>
+<h4 id="looqobjtable-and-its">looq.objTable and it's</h4>
 <p>The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as <code>data.frame</code> or <code>tbl</code> we have developed a special object, which is recognised by the interface and will help you create espoke tables, as it has a number of built-in customization options.</p>
 <p>Well go through it's most important parameters here, more advanced options will be treated in the 
 <a href="#advanced">Advanced Section</a>.</p>
@@ -356,7 +351,49 @@ r$valueLink$Column &lt;- list(
 </code></pre>
 
 <h2 id="advanced">Advanced</h2>
-<h4 id="looqresponseframe">looq.responseFrame</h4></div>
+<h3 id="other-vizualizations">Other Vizualizations</h3>
+<h4 id="graphs">Graphs</h4>
+<h4 id="media">Media</h4>
+<h4 id="deeper-into-looqobjtable">Deeper into looq.objTable</h4>
+<h4 id="looqresponseframe">looq.responseFrame</h4>
+<h3 id="advanced-package-functions">Advanced Package Functions</h3>
+<h2 id="good-practices-in-r">Good practices in R</h2>
+<p>In this first section we'll talk a little bit about styling and good practices in R. Here at Looqbox, we like the <code>cammelCase</code>, so stick to it as much as you can when naming files, functions, variables and what-not.</p>
+<p><strong>Good names:</strong></p>
+<ul>
+<li><code>newFile.r</code>: even though R uses .R as a default extension, prefer .r (lower case) for Looqbox scripts</li>
+<li><code>getData()</code>: when naming functions, the ideal is to use verbs in it's name</li>
+<li><code>newVariable</code>: for variables, it is better to use nouns</li>
+<li><code>NOT_VARIABLE</code>: hey! this case is a little different, when defining constant values, use UPPER CASE all the way through!</li>
+</ul>
+<p>Always try to use names that have something to do with the object! Keep in mind that more often than not you or someone else will have to read, debug, or modify your code, so don't go writing some undecipherable Aztec codex!!</p>
+<p>Keep your code clean and with a single kind of indentation, we use 2 spaces by default. Enough reading for know, the rest, I'll show you in an example block of code.</p>
+<pre><code class="looqbox">sayHello &lt;- function(language){ # Always use '&lt;-' for assignment, never '='
+
+  hello &lt;- c(&quot;Hello World&quot;, 'Olá Mundo') # Give double quotes priority!!
+     # ^  ^                ^
+     # Put spaces between operators and AFTER commas!
+
+  if (language == &quot;en-uk&quot;){     # Opening brackets don't have a whole line to 
+    say &lt;- hello[1]             # themselves.      
+  } else if (language == &quot;pt-br&quot;){
+     say &lt;- hello[2]  
+  } # Now, closing brackets are the opposite, they should always be alone unless
+    # accompanied by an 'else'
+
+  if (erro) return(&quot;Erro x&quot;)# Only use this kind of if format to treat errors, prefer the {} type
+
+  say   
+}
+</code></pre>
+
+<p>Also, in order to write code that remains readable once uploaded to the interface we should keep our lines below 80 characters in length. You can set a margin in RStudio to help you stay true to that.</p>
+<p>Just go to Preferences &gt; Code &gt; Display, and check the <em>Show margin</em> box. Type in 80 under <em>Margin column</em>.</p>
+<p align="center">
+  <img src="../img/margin.png" width="500">
+</p>
+
+<h2 id="model-scripts">Model Scripts</h2></div>
                 </div>
         </div>
 
