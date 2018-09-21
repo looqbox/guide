@@ -42,25 +42,33 @@ You can test your newly installed Looqbox by using pre implemented responses (th
 
 To see the list of available questions/responses, type "que perguntas posso fazer?"
 
-## Your first script
+(the first time a question is asked after starting Looqbox, it takes about 8 seconds to respond)
 
-1. Click in settings in the right upper corner and then in Admin.
-2. Find Responses and click it.
-3. Press `New +` button and fill it with the following fields:
+## Your first response/script
+
+Follow the steps bellow to create your first Response/Script. 
+
+1. Click the cogs in the right upper corner and then in Admin (don't mistake it with the user area if the user's name you're using is "Admin"!).
+2. Find `Responses` and click it.
+3. Press `New +` button. Fill the following fields and leave all others with the default values:
     - **Response Name:** helloWorld
     - **Response Group:** admin
     - **Language:** pt-br
     - **Keyword:**
-        - hello
-        - world
-        - script
+        - hello (press enter to open a new field)
+        - world (enter)
+        - script (enter)
         - $quotes
     - **Example:** hello world script "this is my first script"
-4. Press the green button `Create new` at the botton.
+4. Press the green button `Create new` at the bottom. There will be a message "file saved" at the right upper corner.
+
+You just created you first Response! Now let's link it with a script.
+
 5. Find `Response Files` and press `new` in `main file missing (new)`.
-6. Press `+ show editor` button.
+6. Press `+ show editor` in grey located at the left from the `save` button.
 7. Copy the complete script in our [Github](/templates/helloWorld.R) or copy the code below, paste it and press `save` button. 
-8. Click at Looqbox image and type **hello world script "any message that you want"**. If the return was a message green box with the message *Hurray, my installation is working!!* in the first line and the message you wrote in the second line, your installation is complete.
+8. Click at Looqbox in the left upper corner to return to the search area, and type **hello world script "any message that you want"**. If the return was a message green box with the message *Hurray, my installation is working!!* in the first line and the message you wrote in the second line, your installation is complete.
+
 
 ```looqbox
 # In order to develop a script for Looqbox you should use our Looqbox Package.
@@ -84,7 +92,7 @@ looq.response <- function(par) {
   # the first parameter we're passing a paste with the string collected above
   # the second parameter is the style type to display the box. 
   msg <- looq.objMessage(
-    paste("Hurray, my installation is working!!\n", quotes),
+    paste("Hurray, my installation is working!\n", quotes),
     "alert-success"
   )
   
