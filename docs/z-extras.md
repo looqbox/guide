@@ -29,7 +29,9 @@ It's not recommeded to use bellow 512mb. Looqbox is not a full stateless service
 
 ### Docker commands for looqbox
 
-#### Stop Looqbox
+Those are the most common Docker commands that will be used with Looqbox. Execute them in the order below to update Looqbox's version.
+
+#### Stop Looqbox's container
 ```bash
 docker stop looqbox-instance
 ```
@@ -44,8 +46,13 @@ docker rm looqbox-instance
 docker pull looqboxrep/fes-public:cloud002
 ```
 
+#### Start Looqbox
+```bash
+docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+```
 
 #### Check looqbox's logs
 ```bash
 docker logs -f --tail 200 looqbox-instance
 ```
+
