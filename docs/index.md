@@ -1,48 +1,58 @@
 # Home
 
-<p align="center">
-  <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
-</p>
+Looqbox is the data search solution for your business. 
+
+Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from you business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.
+
+As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox. 
+
+<br/>
+
+<div align="center">
+  <img style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
+</div>
 
 ## Introduction
 
+(under construction)
+
 ## Installation
 
-Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).
+Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS).
 
-After <a href="https://docs.docker.com/install/" target="_blank">installing docker</a>, start Looqbox's container:
+After <a href="https://docs.docker.com/install/" target="_blank">installing Docker</a>, start Looqbox's container:
 
 
 ```bash
 docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 ```
-To check if looqbox started correctly, run: 
+To check if Looqbox started correctly, run: 
 ```bash
 docker logs -f --tail 200 looqbox-instance
 ```
 Expected result:
-<p align="center">
+<div align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
-</p>
+</div>
 
-You can now access looqbox in port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost</a>)
+Looqbox is now serving at port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
 
-If you need to add a proxy or change Looqbox's initialization port, click [here](/z-extras#additional-parameters).
+If you need to add a proxy or change Looqbox's initialization port, [click here](/z-extras#additional-parameters).
 
 ### Update or transfer Looqbox to another server/computer
 
 All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. 
 
-To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, click [here](/z-extras#docker-commands-for-looqbox).
+To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, [click here](/z-extras#docker-commands-for-looqbox).
 
 
 ## First questions
 
-You can test your newly installed Looqbox by using pre implemented responses (those responses also serve as models for the responses will you implement later!).
+You can test your newly installed Looqbox by using pre-implemented responses (those responses also serve as models for the responses will you implement later!).
 
 To see the list of available questions/responses, type "que perguntas posso fazer?"
 
-(the first time a question is asked after starting Looqbox, it takes about 8 seconds to respond)
+(The first question asked after starting Looqbox takes about 8 seconds to respond. [Learn more](/structure#rkernel))
 
 ## Your first response/script
 
@@ -65,9 +75,9 @@ Follow the steps bellow to create your first Response/Script.
 You just created you first Response! Now let's link it with a script.
 
 5. Find `Response Files` and press `new` in `main file missing (new)`.
-6. Press `+ show editor` in grey located at the left from the `save` button.
+6. Press `+ show editor` in grey located at the left of the `save` button.
 7. Copy the complete script in our [Github](/templates/helloWorld.R) or copy the code below, paste it and press `save` button. 
-8. Click at Looqbox in the left upper corner to return to the search area, and type **hello world script "any message that you want"**. If the return was a message green box with the message *Hurray, my installation is working!!* in the first line and the message you wrote in the second line, your installation is complete.
+8. Click at Looqbox in the left upper corner to return to the search area, and type **hello world script "any message that you want"**. If the return was a green message box with the message *Hurray, my installation is working!* in the first line and the message you wrote in the second line, your installation is complete.
 
 
 ```looqbox
@@ -116,4 +126,4 @@ looq.testQuestion(
 )
 ```
 <br>
-#### Are you ready to learn more about Looqbox? Click [here](/implementation) to continue.
+#### Are you ready to learn more about Looqbox? [Click here](/implementation) to continue.
