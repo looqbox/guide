@@ -15,13 +15,13 @@ This documentation's objective is to introduce you to the guidelines for creatin
 You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.
 
 
-### Setup 1: RStudio Serve
+### RStudio Serve Setup
 
 This is the quickest way to get started!
 
-Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http://localhost:8787)), enter your **username** and **password** and you're almost ready to go.
+Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http://localhost:8787)), enter **rstudio** as username and the **password** you created in the [installation](#installation) and you're almost ready to go.
 
-Under addins, select Looqbox and enter your admin **username** and **host** (if they're not already there).
+Under addins, select Looqbox and enter your looqbox **username** and **host** (if they're not already there).
 
 <p align="center">
   <img src="../img/addin.png" width="500">
@@ -30,27 +30,6 @@ Under addins, select Looqbox and enter your admin **username** and **host** (if 
 It is also recomended to have Looqbox opened on another tab, as your tests will be published there.
 
 You now have everything you need to begin, go ahead to the [basics section](#basics).
-
-### Setup 2: Local development environment
-
-This setup option requires a little more work at first glance, but it certainly pays off. 
-
-#### Downloads
-
-- R: [https://cran.r-project.org/bin/macosx/el-capitan/base/](https://cran.r-project.org/bin/macosx/el-capitan/base/)
-- RStudio: [https://www.rstudio.com/products/rstudio/#Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
-- Local Rstudio configuration file: <a href="../resources/looqbox-dev.zip" download>Download</a>
-
-#### Configuration 
-To configure your local Rstudio environment to work with Looqbox's Rprofile, download the files listed above and extract the configuration file in your home directory (the **looqbox-dev** folder should appear).Open the terminal, `cd` to your looqbox-dev directory and execute `setProfile.sh` or run:
-
-```looqbox
-bash ~/looqbox-dev/setProfile.sh
-```
-
-To set up your user in RStudio you can either go to the Looqbox Addin, as described in [Setup 1](#setup-for-the-tutorial) or edit the *config/R/config.json* file and enter your looqbox username.
-
-See, it wasn't even that hard, and now you're set up to work from your local environment!
 
 ## Basics
 
