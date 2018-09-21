@@ -17,7 +17,7 @@ After <a href="https://docs.docker.com/install/" target="_blank">installing dock
 docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 ```
 To check if looqbox started correctly, run: 
-```
+```bash
 docker logs -f --tail 200 looqbox-instance
 ```
 Expected result:
@@ -27,21 +27,16 @@ Expected result:
 
 You can now access looqbox in port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost</a>)
 
-### Available parameters
+If you need to add a proxy or change Looqbox's initialization port, click [here](/z-extras#additional-parameters).
 
-| Parameter | Description |
-|------|------|
-| ```-e XMX="-Xmx512m"``` | change maximum heap |
-| ```-e XMS="-Xms512m"``` | change minimum heap |
-| ```-e PORT``` | change Looqbox's port (default 80) |
-| ```-e PROXY_HOST="<ip>"``` | when parameter exists, use host as proxy (must define proxy_port as well) |
-| ```-e PROXY_PORT="<port>"``` | when parameter exists, use port as proxy (must define proxy_host as well) |
+### Update or transfer Looqbox to another server/computer
 
-All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server, all you need to do is rerun the docker command above. It will automatically download all files to the new instance.
+All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. 
+
+To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, click [here](/z-extras#docker-commands-for-looqbox).
 
 
 
-To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.
 
 ## Your first script
 
