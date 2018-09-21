@@ -114,10 +114,19 @@
 <h2 id="introduction">Introduction</h2>
 <h2 id="installation">Installation</h2>
 <p>Looqbox must be installed in a Linux distribution that supports docker (e.g. Ubuntu 18.04 LTS).</p>
-<p>To start the container, run:</p>
+<p>After <a href="https://docs.docker.com/install/" target="_blank">installing docker</a>, start Looqbox's container:</p>
 <pre><code class="bash">docker run -d --restart=always --name=looqbox-instance -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 </code></pre>
 
+<p>To check if looqbox started correctly, run: </p>
+<pre><code>docker logs -f --tail 200 looqbox-instance
+</code></pre>
+
+<p>Expected result:
+<p align="center">
+  <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
+</p></p>
+<p>You can now access looqbox in port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost</a>)</p>
 <h3 id="available-parameters">Available parameters</h3>
 <table>
 <thead>
@@ -150,14 +159,6 @@
 </tbody>
 </table>
 <p>All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server, all you need to do is rerun the docker command above. It will automatically download all files to the new instance.</p>
-<p>To check if looqbox started correctly, run: </p>
-<pre><code>docker logs -f --tail 200 looqbox-instance
-</code></pre>
-
-<p>Expected result:
-<p align="center">
-  <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
-</p></p>
 <p>To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container.</p>
 <h2 id="your-first-script">Your first script</h2>
 <ol>
