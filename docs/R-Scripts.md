@@ -35,25 +35,63 @@ You now have everything you need to begin, go ahead to the [basics section](#bas
 
 ### Script sctructure
 
-In this section, you'll learn about the structure that your script should be implemented.
+In this section, you'll learn about the structure in which your script should be implemented.
 
 #### Dependencies
 
-In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.
+In order to develop a script for Looqbox you should use our Looqbox Package as it allows you to interact with the interface and helps you structure your data to be displayed in our environment.
 
 ```looqbox
-library(looqbox)
+library("looqbox")
 ```
 
 #### get.data
 
+This user defined functions is the core of the script, we keep in it all of the data retrieval and manipulation. In it we also receive as parameters the entities collected from the parser and create the objects and vizualizations which will become our response. 
+This function exists to keep the next block (looq.response) as clean and lean as possible.
+
+```looqbox
+get.data <- function(dateInt, parameter, value){
+
+sql <- "
+    SELECT
+        EXAMPLE AS Col1,
+        TEST AS Col2,
+        FIELD AS Col3,
+        DATE AS Date
+    FROM example.table
+    WHERE 1=1           
+        AND Date >= DATE_ADD(`1`, INTERVAL +3 HOUR) 
+        AND Date < DATE_ADD(`2`, INTERVAL +3 HOUR)
+        AND PARAMETER = `3`
+        AND VALUE = `4`
+    ORDER BY DATE DESC"
+
+r <- looq.sqlExecute("myDB", sql, list(dateInt[1], dateInt[2], parameter, value))
+if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "to", dateInt[2]))
+
+r$total <- list(
+		"Col1" = "Total",
+		"Col2" = sum(r$data$Col2)
+	)
+
+r$searcheable <- T
+r$paginationSize <- 25
+
+r
+}
+```
+Above we have a good example of a generic `get.data` function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply *r*(the `looq.objectTable`) because we assume `looq.map` will be used to call `get.data` in the `looq.response` block.
+
+Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.
+
 #### looq.response
 
-This block is where your script will start the execution, simulating a main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from the parser.
+This block is where your script's execution will start, it resembles the common main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from the parser.
 
-In this case, we are creating a looqbox standard message box and storing it in msg variable. In the first parameter we're passing a `paste` with the string collected above. The second parameter is the style type to display the box. 
+In this sample, we are creating a looqbox standard message box and storing it in the `msg` variable. In the first parameter we `paste` a string and the `quotes` entity's value, which was received from the parser. The second parameter message's style type(we will present the options later. 
 
-Finally, we are creating a looqbox frame to be placed inside a board with `looq.responseFrame()`.
+Finally, we are creating a looqbox frame with `looq.responseFrame()`, and so, creating a Looqbox intelligible board.
 
 ```looqbox
 looq.response <- function(par) {
@@ -62,7 +100,7 @@ looq.response <- function(par) {
   # $quotes tag and storing it in quotes
   quotes <- looq.lookTag("$quotes", par)
   
-  # Creates a looqbox standard message box and store it in msg variable. In
+  # Creates a looqbox standard message box and stores it in msg variable. In
   # the first parameter we're passing a paste with the string collected above
   # the second parameter is the style type to display the box. 
   msg <- looq.objMessage(
@@ -77,7 +115,9 @@ looq.response <- function(par) {
 
 #### Test Block
 
-This block is used to test your response from **RStudio**, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using **Ctrl + Shift + S** and it will be displayed in your client.
+This block is used to test your response from **RStudio**, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using **Ctrl + Shift + S** and it will be published to your client.
+
+In this block you should assign test values to any entities that your script calls for.  
 
 ```looqbox
 looq.testQuestion(
