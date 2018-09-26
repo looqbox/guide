@@ -1,4 +1,4 @@
-# Home
+# Quickstart
 
 Looqbox is the data search solution for your business. 
 
