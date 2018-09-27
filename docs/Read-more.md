@@ -32,7 +32,7 @@ A new RKernel take about 7 seconds to start.
 
 Looqbox has the right to limit the number of RKernel available to each client, and if more than 1 on-premise instance of Looqbox is online at the same time for the same company, the total number of RKernels available will be divided between the instances.
 
-### Available parameters
+### Available parameters when starting Looqbox
 
 The parameters bellow can be added when starting looqbox.
 
