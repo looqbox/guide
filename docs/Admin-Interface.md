@@ -87,9 +87,9 @@ Note that keywords can be optional. This is useful for entites that may appear i
 
 
 
-<p align="center">
+<div align="center">
   <img src="../img/responses_screen.png" width="1074">
-</p>
+</div>
 
 ## Creating User
 
@@ -112,9 +112,9 @@ Admin: select if a user can edit user, responses, entities and so on.
 Active: (self explanatory)
 
 
-<p align="center">
+<div align="center">
   <img src="../img/user_screen.png" width="1074">
-</p>
+</div>
 
 ## Creating UserGroup 
 
@@ -126,9 +126,9 @@ Response Groups: Define which [Response Groups](#creating-responsegroup) are lin
 User Group Suggestions: Suggestions added will be shown to users that belong to this userGroup in the favorites and autocomplete.
 
 
-<p align="center">
+<div align="center">
   <img src="../img/user_group_screen.png" width="1074">
-</p>
+</div>
 
 ## Creating ResponseGroup
 
@@ -136,9 +136,9 @@ Each [response](#creating-a-response) belongs to a single responseGroup. When [c
 
 Response Group Name: define a name for a responseGroup. 
 
-<p align="center">
+<div align="center">
   <img src="../img/response_group_screen.png" width="1074">
-</p>
+</div>
 
 ## Entity
 
