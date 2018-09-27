@@ -211,8 +211,59 @@ Similar to $quotes, any text between square brackets will be treated as exact va
 
 
 ### Entity By Code
+Most used entity. With EntityByCode, you can define a pattern that, if preceded by a "head", will return a value to the R script. E.g.:
+
+> $store
+
+> entity head: `lojas?|filial|filiais`, entity pattern: `\d+`
+
+>When "venda na loja 20" is asked, the R script will receive the entity $store with the value 20.
+
+Note that the pattern \d+ is used to determine if what comes after [loja, lojas, filial, filiais] is a number, and Looqbox will already apply this pattern to a list of stores if necessary, reducing the complexity of patterns that needs to be implemented by you. E.g.:
+
+>The same example above also works for "venda na loja 20, 21 e 22", which returns the values [20, 21, 22] to the R script.
+
+Another way to implement EntityByCode is by combining it with [$diamond](#diamond). The advantage of using $diamond with EntityByCode can be seem in 2 cases:
+
+
+1. A id is not available, and a exact text must be passed to a new question by a drill down, so it can be used to query information in the DB. 
+> $store
+>
+> entity head: `lojas?|filial|filiais`, entity pattern: <>
+>
+>When "venda na loja [Fides]" is asked, the R script will receive the entity $store with the value `Fides`. Now this string can be used to query this specific name in the DB.
+
+
+2. A id and a name for the entity are available, and you want to show the name of a pattern to the user, while using the id to query data in the DB.
+> $store
+>
+> entity head: `lojas?|filial|filiais`, entity pattern: <>
+>
+>When "venda na loja [Fides|20]" is asked, the R script will receive the entity $store with the value 20. The advantage of this case is that the user sees a highlight with `Fides`, improving the readability of the question.
+
+A useful feature when adding a EntityByCode is to provide a CSV with all entries that you have in your data source, so when a user types a entity head, the entity autocomplete feature will start helping the user with all possible entries provided in the CSV.
+
+(under construction)
+
 
 ### Entity By Name
+EntityByName is useful when there is a small amount of entries that you want to link with a value (string or number) to be used in R scripts.
+
+This is recommended for a fast implementation when it's known that a user has no knowledge about the id of a entity and types the name of this entity. For cases with a long list of possibilities, we recommend implementing [EntityByCode](#entity-by-code) and upload a CSV with all entries, so the entity autocomplete feature can be used by the user asking the question.
+
+Here are some examples:
+
+> $city, output: number
+> 
+> prefix: cidade
+>
+> from: salinas, to: 1
+>
+> from: belem, to: 2
+>
+> When "venda na cidade Belem" is asked, the R script will receive the entity $city with the value 2.
+
+(under construction - example with output:string)
 
 ## Replacements
 
