@@ -19,6 +19,30 @@ Here is a sequence of questions to illustrate this scenario:
 - sales $date by department
 - sales $date by supplier
 
+## Basics 
+Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.
+To help navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP), you can use the commands below after a questions to execute special admin commands.
+
+#### $debug
+This is your main command to visualize the parameters that Looqbox undestands from a question. If you are getting a unexpected behavior, or if the wrong script is being run when a specific question is asked, you can use $debug to see the response, the entities retrieved from the question and so on.
+
+(Please test the examples below. This command will be most useful in the [Entities section](#entity))
+
+* venda ontem $debug
+* top 10 produtos $debug
+* meta ontem versus hj $debug
+* venda do ano passado por mes $debug
+
+#### $response
+Sends the user to the [response](#creating-a-response) that Looqbox links to the script that would run with the given question.
+
+* venda ontem $response
+
+#### $script
+Sends the user to the R script that Looqbox would run with the given question.
+
+* venda ontem $script
+
 ## Database Connection
 
 ## Creating a response
@@ -124,6 +148,7 @@ The most used entity is "$date", which is preimplemented by Looqbox. Other entit
 
 E.g.: "sales last week" -> $date: [2018-09-10, 2018-09-16]
 
+To visualize the sections bellow, test the examples with the [$debug command](#debug) in Looqbox's interface.
 
 ### Default entities by Looqbox
 
@@ -167,6 +192,10 @@ Used for ranking. $topn shows the number of elements that the user intents to se
 * top 8 menores
 
 #### $email
+Used to return email found in question.
+
+* contact@looqbox.com
+* jobs@looqbox.com
 
 #### $quotes
 Anything between quotes is treated as plain text (no rules about entities will be applyed). It's commonly used to refer about product, store name and other text that must have a exact value.
@@ -183,7 +212,9 @@ Similar to $quotes, any text between square brackets will be treated as exact va
 
 ### Entity By Code
 
-
 ### Entity By Name
 
 ## Replacements
+
+
+
