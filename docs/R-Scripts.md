@@ -349,50 +349,7 @@ r$searchable <- T
 #### Deeper into looq.objTable
 #### looq.responseFrame
 
-###Advanced Package Functions
-
-## Good practices in R
-
-In this first section we'll talk a little bit about styling and good practices in R. Here at Looqbox, we like the `cammelCase`, so stick to it as much as you can when naming files, functions, variables and what-not.
-
-**Good names:**
-
-- `newFile.r`: even though R uses .R as a default extension, prefer .r (lower case) for Looqbox scripts
-- `getData()`: when naming functions, the ideal is to use verbs in it's name
-- `newVariable`: for variables, it is better to use nouns
-- `NOT_VARIABLE`: hey! this case is a little different, when defining constant values, use UPPER CASE all the way through!
-
-Always try to use names that have something to do with the object! Keep in mind that more often than not you or someone else will have to read, debug, or modify your code, so don't go writing some undecipherable Aztec codex!!
-
-Keep your code clean and with a single kind of indentation, we use 2 spaces by default. Enough reading for know, the rest, I'll show you in an example block of code.
-
-```looqbox
-sayHello <- function(language){ # Always use '<-' for assignment, never '='
-
-  hello <- c("Hello World", 'Olá Mundo') # Give double quotes priority!!
-     # ^  ^                ^
-     # Put spaces between operators and AFTER commas!
-
-  if (language == "en-uk"){     # Opening brackets don't have a whole line to 
-    say <- hello[1]             # themselves.      
-  } else if (language == "pt-br"){
-     say <- hello[2]  
-  } # Now, closing brackets are the opposite, they should always be alone unless
-    # accompanied by an 'else'
-
-  if (erro) return("Erro x")# Only use this kind of if format to treat errors, prefer the {} type
-
-  say   
-}
-```
-Also, in order to write code that remains readable once uploaded to the interface we should keep our lines below 80 characters in length. You can set a margin in RStudio to help you stay true to that.
-
-Just go to Preferences > Code > Display, and check the *Show margin* box. Type in 80 under *Margin column*.
-
-<p align="center">
-  <img src="../img/margin.png" width="500">
-</p> 
-
+### Advanced Package Functions
 
 ## Model Scripts
 
