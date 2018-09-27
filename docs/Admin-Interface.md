@@ -128,21 +128,61 @@ E.g.: "sales last week" -> $date: [2018-09-10, 2018-09-16]
 ### Default entities by Looqbox
 
 #### $date
+Looqbox interprets many different ways to refer to dates. Since it's the most used entity, it's always being improved by our team. Here are some examples from thousands of combinations of how a user can refer to a date in Looqbox:
+
+* ontem, hoje (hj), amanhã
+* semana passada, mes passado, ano passado, década passada
+* semana que vem, mes que vem, ano que vem, década que vem
+* 1 de abril, 24 de dezembro
+* setembro de 2018, janeiro do ano passado
+* 1 de abril de 2018
+* 28/01/1991, 02-02-2010
+* segunda feira, segunda feira da semana passada, segunda da semana que vem
 
 #### $datePartition
+Used to imply a way to split date value inside a script. Those references are:
+
+* por dia, diária, dia a dia
+* por semana, semanal, semana a semana
+* por mes, mensal, mes a mes
+* por bimestre, bimestral, bimestralmente, bimestre a bimestre 
+* (same as above for trimestre, quadrimestre, semestre)
+* por ano, anual, ano a ano
+
 
 #### $comparative
+Comparative works by indicating a comparison between 2 $dates. For example:
+
+* hj vs ontem
+* mes passado versus retrasado
+* ano semana passada versus semana atual
 
 #### $topN
+Used for ranking. $topn shows the number of elements that the user intents to select/work with. The maximum positive or negative number is 99,999.
+
+* top 5 
+* maiores 20
+* menores 15
+* top 8 maiores
+* top 8 menores
 
 #### $email
 
 #### $quotes
+Anything between quotes is treated as plain text (no rules about entities will be applyed). It's commonly used to refer about product, store name and other text that must have a exact value.
+
+* "coca cola"
+* "revista abril"
 
 #### $diamond
+Similar to $quotes, any text between square brackets will be treated as exact value and will have no rules applyed over. 
+
+* [Looqbox]
+* [350ml pkg 6units]
 
 
 ### Entity By Code
+
 
 ### Entity By Name
 
