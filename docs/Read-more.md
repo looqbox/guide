@@ -15,6 +15,23 @@ It's important to remember that when generating a visualization for a user, your
 </div>
 <br/>
 
+### RKernel
+Every R script in Looqbox is processed by a RKernel. RKernels are a logical unit that controls a session in R.
+
+The more RKernel available, the more scripts can be processed at the same time. On the other hand, more RAM in consumed.
+
+Since a good implementation of R scripts in Looqbox run on average below 2 seconds, even for hundreds of users, only a few RKernels are required (usually between 2 and 6). Don't worry, RKernels are started as needed to processes scripts if the current number is not enough.
+
+Every RKernel has a session, so it's possible that during the execution of a script, a RKernel enters in a bad state. In cases that you suspect some kind of bad state is influencing responses, destroy the RKernels. It's also possible that different packages loaded by R scripts have the same function name, in this case, inconsistency can be found while executing different scripts that fall in this case (prefix function calls with the package name to avoid such cases, e.g. httr::config and dplyr::config).
+
+In case of a script breaking (syntax error or exceptions), the RKernel is automatically destroyed (saving the last question asked for debugging purposes).
+
+If a user asks a question and all RKernels are currently being used to processes other responses, a new RKernel starts, and will be available in the pool.
+
+A new RKernel take about 7 seconds to start.
+
+Looqbox has the right to limit the number of RKernel available to each client, and if more than 1 on-premise instance of Looqbox is online at the same time for the same company, the total number of RKernels available will be divided between the instances.
+
 ### Available parameters
 
 The parameters bellow can be added when starting looqbox.
