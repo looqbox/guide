@@ -50,7 +50,7 @@
             
             
                 <li >
-                    <a href="..">Home</a>
+                    <a href="..">Quickstart</a>
                 </li>
             
             
@@ -106,8 +106,6 @@
         
             <li><a href="#advanced">Advanced</a></li>
         
-            <li><a href="#good-practices-in-r">Good practices in R</a></li>
-        
             <li><a href="#model-scripts">Model Scripts</a></li>
         
     
@@ -141,24 +139,59 @@
 <p>You now have everything you need to begin, go ahead to the <a href="#basics">basics section</a>.</p>
 <h2 id="basics">Basics</h2>
 <h3 id="script-sctructure">Script sctructure</h3>
-<p>In this section, you'll learn about the structure that your script should be implemented.</p>
+<p>In this section, you'll learn about the structure in which your script should be implemented.</p>
 <h4 id="dependencies">Dependencies</h4>
-<p>In order to develop a script for Looqbox you should use our Looqbox Package. The package allows you to interact with the interface and help you structure your data to be displayed in our client.</p>
-<pre><code class="looqbox">library(looqbox)
+<p>In order to develop a script for Looqbox you should use our Looqbox Package as it allows you to interact with the interface and helps you structure your data to be displayed in our environment.</p>
+<pre><code class="looqbox">library(&quot;looqbox&quot;)
 </code></pre>
 
 <h4 id="getdata">get.data</h4>
+<p>This user defined functions is the core of the script, we keep in it all of the data retrieval and manipulation. In it we also receive as parameters the entities collected from the parser and create the objects and vizualizations which will become our response. 
+This function exists to keep the next block (looq.response) as clean and lean as possible.</p>
+<pre><code class="looqbox">get.data &lt;- function(dateInt, parameter, value){
+
+sql &lt;- &quot;
+    SELECT
+        EXAMPLE AS Col1,
+        TEST AS Col2,
+        FIELD AS Col3,
+        DATE AS Date
+    FROM example.table
+    WHERE 1=1           
+        AND Date &gt;= DATE_ADD(`1`, INTERVAL +3 HOUR) 
+        AND Date &lt; DATE_ADD(`2`, INTERVAL +3 HOUR)
+        AND PARAMETER = `3`
+        AND VALUE = `4`
+    ORDER BY DATE DESC&quot;
+
+r &lt;- looq.sqlExecute(&quot;myDB&quot;, sql, list(dateInt[1], dateInt[2], parameter, value))
+if(r$rows == 0) return(paste(&quot;No data found from:\n&quot;, dateInt[1], &quot;to&quot;, dateInt[2]))
+
+r$total &lt;- list(
+        &quot;Col1&quot; = &quot;Total&quot;,
+        &quot;Col2&quot; = sum(r$data$Col2)
+    )
+
+r$searcheable &lt;- T
+r$paginationSize &lt;- 25
+
+r
+}
+</code></pre>
+
+<p>Above we have a good example of a generic <code>get.data</code> function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply <em>r</em>(the <code>looq.objectTable</code>) because we assume <code>looq.map</code> will be used to call <code>get.data</code> in the <code>looq.response</code> block.</p>
+<p>Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.</p>
 <h4 id="looqresponse">looq.response</h4>
-<p>This block is where your script will start the execution, simulating a main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from the parser.</p>
-<p>In this case, we are creating a looqbox standard message box and storing it in msg variable. In the first parameter we're passing a <code>paste</code> with the string collected above. The second parameter is the style type to display the box. </p>
-<p>Finally, we are creating a looqbox frame to be placed inside a board with <code>looq.responseFrame()</code>.</p>
+<p>This block is where your script's execution will start, it resembles the common main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from the parser.</p>
+<p>In this sample, we are creating a looqbox standard message box and storing it in the <code>msg</code> variable. In the first parameter we <code>paste</code> a string and the <code>quotes</code> entity's value, which was received from the parser. The second parameter message's style type(we will present the options later. </p>
+<p>Finally, we are creating a looqbox frame with <code>looq.responseFrame()</code>, and so, creating a Looqbox intelligible board.</p>
 <pre><code class="looqbox">looq.response &lt;- function(par) {
 
   # Receives the value inside a looqbox tag. In this case, we're looking for 
   # $quotes tag and storing it in quotes
   quotes &lt;- looq.lookTag(&quot;$quotes&quot;, par)
 
-  # Creates a looqbox standard message box and store it in msg variable. In
+  # Creates a looqbox standard message box and stores it in msg variable. In
   # the first parameter we're passing a paste with the string collected above
   # the second parameter is the style type to display the box. 
   msg &lt;- looq.objMessage(
@@ -172,7 +205,8 @@
 </code></pre>
 
 <h4 id="test-block">Test Block</h4>
-<p>This block is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be displayed in your client.</p>
+<p>This block is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be published to your client.</p>
+<p>In this block you should assign test values to any entities that your script calls for.  </p>
 <pre><code class="looqbox">looq.testQuestion(
   list(
     &quot;$quotes&quot; = &quot;My test sentence&quot;
@@ -357,42 +391,6 @@ r$valueLink$Column &lt;- list(
 <h4 id="deeper-into-looqobjtable">Deeper into looq.objTable</h4>
 <h4 id="looqresponseframe">looq.responseFrame</h4>
 <h3 id="advanced-package-functions">Advanced Package Functions</h3>
-<h2 id="good-practices-in-r">Good practices in R</h2>
-<p>In this first section we'll talk a little bit about styling and good practices in R. Here at Looqbox, we like the <code>cammelCase</code>, so stick to it as much as you can when naming files, functions, variables and what-not.</p>
-<p><strong>Good names:</strong></p>
-<ul>
-<li><code>newFile.r</code>: even though R uses .R as a default extension, prefer .r (lower case) for Looqbox scripts</li>
-<li><code>getData()</code>: when naming functions, the ideal is to use verbs in it's name</li>
-<li><code>newVariable</code>: for variables, it is better to use nouns</li>
-<li><code>NOT_VARIABLE</code>: hey! this case is a little different, when defining constant values, use UPPER CASE all the way through!</li>
-</ul>
-<p>Always try to use names that have something to do with the object! Keep in mind that more often than not you or someone else will have to read, debug, or modify your code, so don't go writing some undecipherable Aztec codex!!</p>
-<p>Keep your code clean and with a single kind of indentation, we use 2 spaces by default. Enough reading for know, the rest, I'll show you in an example block of code.</p>
-<pre><code class="looqbox">sayHello &lt;- function(language){ # Always use '&lt;-' for assignment, never '='
-
-  hello &lt;- c(&quot;Hello World&quot;, 'Olá Mundo') # Give double quotes priority!!
-     # ^  ^                ^
-     # Put spaces between operators and AFTER commas!
-
-  if (language == &quot;en-uk&quot;){     # Opening brackets don't have a whole line to 
-    say &lt;- hello[1]             # themselves.      
-  } else if (language == &quot;pt-br&quot;){
-     say &lt;- hello[2]  
-  } # Now, closing brackets are the opposite, they should always be alone unless
-    # accompanied by an 'else'
-
-  if (erro) return(&quot;Erro x&quot;)# Only use this kind of if format to treat errors, prefer the {} type
-
-  say   
-}
-</code></pre>
-
-<p>Also, in order to write code that remains readable once uploaded to the interface we should keep our lines below 80 characters in length. You can set a margin in RStudio to help you stay true to that.</p>
-<p>Just go to Preferences &gt; Code &gt; Display, and check the <em>Show margin</em> box. Type in 80 under <em>Margin column</em>.</p>
-<p align="center">
-  <img src="../img/margin.png" width="500">
-</p>
-
 <h2 id="model-scripts">Model Scripts</h2></div>
                 </div>
         </div>

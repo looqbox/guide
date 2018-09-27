@@ -50,7 +50,7 @@
             
             
                 <li >
-                    <a href="..">Home</a>
+                    <a href="..">Quickstart</a>
                 </li>
             
             
@@ -102,6 +102,8 @@
         
             <li><a href="#looqbox-must-be-fast-implementation-flow">Looqbox must be fast - Implementation Flow</a></li>
         
+            <li><a href="#basics">Basics</a></li>
+        
             <li><a href="#database-connection">Database Connection</a></li>
         
             <li><a href="#creating-a-response">Creating a response</a></li>
@@ -141,6 +143,28 @@
 <li>sales $date by store</li>
 <li>sales $date by department</li>
 <li>sales $date by supplier</li>
+</ul>
+<h2 id="basics">Basics</h2>
+<p>Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.
+To help navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP), you can use the commands below after a questions to execute special admin commands.</p>
+<h4 id="debug">$debug</h4>
+<p>This is your main command to visualize the parameters that Looqbox undestands from a question. If you are getting a unexpected behavior, or if the wrong script is being run when a specific question is asked, you can use $debug to see the response, the entities retrieved from the question and so on.</p>
+<p>(Please test the examples below. This command will be most useful in the <a href="#entity">Entities section</a>)</p>
+<ul>
+<li>venda ontem $debug</li>
+<li>top 10 produtos $debug</li>
+<li>meta ontem versus hj $debug</li>
+<li>venda do ano passado por mes $debug</li>
+</ul>
+<h4 id="response">$response</h4>
+<p>Sends the user to the <a href="#creating-a-response">response</a> that Looqbox links to the script that would run with the given question.</p>
+<ul>
+<li>venda ontem $response</li>
+</ul>
+<h4 id="script">$script</h4>
+<p>Sends the user to the R script that Looqbox would run with the given question.</p>
+<ul>
+<li>venda ontem $script</li>
 </ul>
 <h2 id="database-connection">Database Connection</h2>
 <h2 id="creating-a-response">Creating a response</h2>
@@ -205,14 +229,64 @@ When <a href="#creating-user">creating users</a>, you can define which userGroup
 <p>Entities are patterns that can be found in the question, and retrieved as values to be used inside scripts.</p>
 <p>The most used entity is "$date", which is preimplemented by Looqbox. Other entities can be implemented as you need.</p>
 <p>E.g.: "sales last week" -&gt; $date: [2018-09-10, 2018-09-16]</p>
+<p>To visualize the sections bellow, test the examples with the <a href="#debug">$debug command</a> in Looqbox's interface.</p>
 <h3 id="default-entities-by-looqbox">Default entities by Looqbox</h3>
 <h4 id="date">$date</h4>
+<p>Looqbox interprets many different ways to refer to dates. Since it's the most used entity, it's always being improved by our team. Here are some examples from thousands of combinations of how a user can refer to a date in Looqbox:</p>
+<ul>
+<li>ontem, hoje (hj), amanhã</li>
+<li>semana passada, mes passado, ano passado, década passada</li>
+<li>semana que vem, mes que vem, ano que vem, década que vem</li>
+<li>1 de abril, 24 de dezembro</li>
+<li>setembro de 2018, janeiro do ano passado</li>
+<li>1 de abril de 2018</li>
+<li>28/01/1991, 02-02-2010</li>
+<li>segunda feira, segunda feira da semana passada, segunda da semana que vem</li>
+</ul>
 <h4 id="datepartition">$datePartition</h4>
+<p>Used to imply a way to split date value inside a script. Those references are:</p>
+<ul>
+<li>por dia, diária, dia a dia</li>
+<li>por semana, semanal, semana a semana</li>
+<li>por mes, mensal, mes a mes</li>
+<li>por bimestre, bimestral, bimestralmente, bimestre a bimestre </li>
+<li>(same as above for trimestre, quadrimestre, semestre)</li>
+<li>por ano, anual, ano a ano</li>
+</ul>
 <h4 id="comparative">$comparative</h4>
+<p>Comparative works by indicating a comparison between 2 $dates. For example:</p>
+<ul>
+<li>hj vs ontem</li>
+<li>mes passado versus retrasado</li>
+<li>ano semana passada versus semana atual</li>
+</ul>
 <h4 id="topn">$topN</h4>
+<p>Used for ranking. $topn shows the number of elements that the user intents to select/work with. The maximum positive or negative number is 99,999.</p>
+<ul>
+<li>top 5 </li>
+<li>maiores 20</li>
+<li>menores 15</li>
+<li>top 8 maiores</li>
+<li>top 8 menores</li>
+</ul>
 <h4 id="email">$email</h4>
+<p>Used to return email found in question.</p>
+<ul>
+<li>contact@looqbox.com</li>
+<li>jobs@looqbox.com</li>
+</ul>
 <h4 id="quotes">$quotes</h4>
+<p>Anything between quotes is treated as plain text (no rules about entities will be applyed). It's commonly used to refer about product, store name and other text that must have a exact value.</p>
+<ul>
+<li>"coca cola"</li>
+<li>"revista abril"</li>
+</ul>
 <h4 id="diamond">$diamond</h4>
+<p>Similar to $quotes, any text between square brackets will be treated as exact value and will have no rules applyed over. </p>
+<ul>
+<li>[Looqbox]</li>
+<li>[350ml pkg 6units]</li>
+</ul>
 <h3 id="entity-by-code">Entity By Code</h3>
 <h3 id="entity-by-name">Entity By Name</h3>
 <h2 id="replacements">Replacements</h2></div>

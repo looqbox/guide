@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Read more - Looqbox User Guide</title>
+        <title>Read More - Looqbox User Guide</title>
         <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/highlight.css">
@@ -50,7 +50,7 @@
             
             
                 <li >
-                    <a href="..">Home</a>
+                    <a href="..">Quickstart</a>
                 </li>
             
             
@@ -68,7 +68,7 @@
             
             
                 <li class="active">
-                    <a href="./">Read more</a>
+                    <a href="./">Read More</a>
                 </li>
             
             
@@ -98,22 +98,13 @@
     <ul class="nav bs-sidenav">
       
     
-        <li class="main active"><a href="#available-parameters">Available parameters</a></li>
+        <li class="main active"><a href="#read-more">Read More</a></li>
         
-            <li><a href="#examples">Examples</a></li>
+            <li><a href="#architecture">Architecture</a></li>
         
-    
-        <li class="main "><a href="#docker-commands-for-looqbox">Docker commands for looqbox</a></li>
+            <li><a href="#available-parameters">Available parameters</a></li>
         
-            <li><a href="#stop-looqboxs-container">Stop Looqbox's container</a></li>
-        
-            <li><a href="#remove-looqboxs-image">Remove Looqbox's image :(</a></li>
-        
-            <li><a href="#pull-new-version">Pull new version</a></li>
-        
-            <li><a href="#start-looqbox">Start Looqbox</a></li>
-        
-            <li><a href="#check-looqboxs-logs">Check looqbox's logs</a></li>
+            <li><a href="#docker-commands-for-looqbox">Docker commands for looqbox</a></li>
         
     
     
@@ -121,6 +112,18 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
+<h1 id="read-more">Read More</h1>
+<p>This section has extra documentation about different areas that don't fall in any other category.</p>
+<h3 id="architecture">Architecture</h3>
+<p>Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.</p>
+<p>All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. </p>
+<p>This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, <a href="#available-parameters">click here</a>.</p>
+<p>It's important to remember that when generating a visualization for a user, your on-premise instance <strong>doesn't send the information retrieved from your Data Sources to Looqbox's cloud</strong>.</p>
+<div align="center">
+  <img src="../img/architecture.jpeg" width="455">
+</div>
+
+<p><br/></p>
 <h3 id="available-parameters">Available parameters</h3>
 <p>The parameters bellow can be added when starting looqbox.</p>
 <table>
