@@ -45,13 +45,13 @@ In order to develop a script for Looqbox you should use our Looqbox Package as i
 library("looqbox")
 ```
 
-#### get.data
+#### get_data
 
 This user defined functions is the core of the script, we keep in it all of the data retrieval and manipulation. In it we also receive as parameters the entities collected from the parser and create the objects and vizualizations which will become our response. 
 This function exists to keep the next block (looq.response) as clean and lean as possible.
 
 ```looqbox
-get.data <- function(dateInt, parameter, value){
+get_data <- function(dateInt, parameter, value){
 
 sql <- "
     SELECT
@@ -81,7 +81,7 @@ r$paginationSize <- 25
 r
 }
 ```
-Above we have a good example of a generic `get.data` function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply *r*(the `looq.objectTable`) because we assume `looq.map` will be used to call `get.data` in the `looq.response` block.
+Above we have a good example of a generic `get_data` function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply *r*(the `looq.objectTable`) because we assume `looq.map` will be used to call `get_data` in the `looq.response` block.
 
 Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.
 
@@ -135,7 +135,7 @@ NOTE: In this material we'll be working with practical examples. If you wish to 
 
 #### looq.lookTag
 
-Normally, the first thing your code will do once it enters your `looq.response()`(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in `get.data()`. 
+Normally, the first thing your code will do once it enters your `looq.response()`(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in `get_data()`. 
 
 - `looq.lookTag()` acomplishes this task, searching for specific tags and returning their values.
 
@@ -159,16 +159,16 @@ In the code above, if no `$date` value is recognised by the parser it will choos
 #### looq.map
 This function is, perhaps, the core of the whole script.
 ```looqbox
-looq.map(get.data, date, company)
+looq.map(get_data, date, company)
 ```
-What it does is fairly simple, the first argument is your `get.data()` function, and the remaining are  variables defined by `looq.lookTag()`. 
+What it does is fairly simple, the first argument is your `get_data()` function, and the remaining are  variables defined by `looq.lookTag()`. 
 
 - `looq.map()` calls the function and passes the variables as arguments to it.
-- Additionally, it wraps everything in a Looqbox response frame making `get.data`'s 
+- Additionally, it wraps everything in a Looqbox response frame making `get_data`'s 
 output intelligible by the interface. 
 
 #### looq.sqlExecute
-Now that we've got `looq.response` covered, we'll go inside `get.data`. Think of it as the backstage of your script, it's where everything is prepared so that your main function keeps neat.
+Now that we've got `looq.response` covered, we'll go inside `get_data`. Think of it as the backstage of your script, it's where everything is prepared so that your main function keeps neat.
 
 Most of our scripts involve some kind of query to a database, `looq.sqlExecute()` is a funtion that makes this interaction extremely simple. 
 
@@ -352,5 +352,3 @@ r$searchable <- T
 ### Advanced Package Functions
 
 ## Model Scripts
-
-
