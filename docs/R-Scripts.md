@@ -87,7 +87,7 @@ Don't worry if you still can't understand what each of these functions do, we ha
 
 #### looq.response
 
-This block is where your script's execution will start, it resembles the common main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from the parser.
+This block is where your script's execution will start, it's a S3 object and resembles the common main function. Inside it, you should use `looq.lookTag()`  to receive the value inside a looqbox tag from the parser.
 
 In this sample, we are creating a looqbox standard message box and storing it in the `msg` variable. In the first parameter we `paste` a string and the `quotes` entity's value, which was received from the parser. The second parameter message's style type(we will present the options later. 
 
@@ -115,7 +115,7 @@ looq.response <- function(par) {
 
 #### Test Block
 
-This block is used to test your response from **RStudio**, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using **Ctrl + Shift + S** and it will be published to your client.
+This block is a S3 object and is used to test your response from **RStudio**, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using **Ctrl + Shift + S** and it will be published to your client.
 
 In this block you should assign test values to any entities that your script calls for.  
 
