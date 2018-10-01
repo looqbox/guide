@@ -8,6 +8,12 @@ Everyone participating in this project is governed by our [code of conduct](CODE
 
 ### How to contribute
 
+### Reporting Bugs
+
+If you don't know markdown sintax or don't want to write the documentation but saw something that can be improved or is wrong, please feel confortable to open an issue in this repository.
+
+### Making changes
+
 We use [MkDocs](https://www.mkdocs.org/) ti build our documentation using simple Markdown sintax. To properly see how your changes affects our guide, install the following packages:
 
 ```python
