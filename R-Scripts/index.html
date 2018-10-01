@@ -182,7 +182,7 @@ r
 <p>Above we have a good example of a generic <code>get_data</code> function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply <em>r</em>(the <code>looq.objectTable</code>) because we assume <code>looq.map</code> will be used to call <code>get_data</code> in the <code>looq.response</code> block.</p>
 <p>Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.</p>
 <h4 id="looqresponse">looq.response</h4>
-<p>This block is where your script's execution will start, it resembles the common main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from the parser.</p>
+<p>This block is where your script's execution will start, it's a S3 object and resembles the common main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from the parser.</p>
 <p>In this sample, we are creating a looqbox standard message box and storing it in the <code>msg</code> variable. In the first parameter we <code>paste</code> a string and the <code>quotes</code> entity's value, which was received from the parser. The second parameter message's style type(we will present the options later. </p>
 <p>Finally, we are creating a looqbox frame with <code>looq.responseFrame()</code>, and so, creating a Looqbox intelligible board.</p>
 <pre><code class="looqbox">looq.response &lt;- function(par) {
@@ -205,7 +205,7 @@ r
 </code></pre>
 
 <h4 id="test-block">Test Block</h4>
-<p>This block is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be published to your client.</p>
+<p>This block is a S3 object and is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be published to your client.</p>
 <p>In this block you should assign test values to any entities that your script calls for.  </p>
 <pre><code class="looqbox">looq.testQuestion(
   list(
