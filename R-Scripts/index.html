@@ -145,10 +145,10 @@
 <pre><code class="looqbox">library(&quot;looqbox&quot;)
 </code></pre>
 
-<h4 id="getdata">get.data</h4>
+<h4 id="get_data">get_data</h4>
 <p>This user defined functions is the core of the script, we keep in it all of the data retrieval and manipulation. In it we also receive as parameters the entities collected from the parser and create the objects and vizualizations which will become our response. 
 This function exists to keep the next block (looq.response) as clean and lean as possible.</p>
-<pre><code class="looqbox">get.data &lt;- function(dateInt, parameter, value){
+<pre><code class="looqbox">get_data &lt;- function(dateInt, parameter, value){
 
 sql &lt;- &quot;
     SELECT
@@ -179,7 +179,7 @@ r
 }
 </code></pre>
 
-<p>Above we have a good example of a generic <code>get.data</code> function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply <em>r</em>(the <code>looq.objectTable</code>) because we assume <code>looq.map</code> will be used to call <code>get.data</code> in the <code>looq.response</code> block.</p>
+<p>Above we have a good example of a generic <code>get_data</code> function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply <em>r</em>(the <code>looq.objectTable</code>) because we assume <code>looq.map</code> will be used to call <code>get_data</code> in the <code>looq.response</code> block.</p>
 <p>Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.</p>
 <h4 id="looqresponse">looq.response</h4>
 <p>This block is where your script's execution will start, it resembles the common main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from the parser.</p>
@@ -218,7 +218,7 @@ r
 <p>Now that you have a general understanding of how a script is properly constructed, let us go over a few of the package's most important functions. </p>
 <p>NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation.</p>
 <h4 id="looqlooktag">looq.lookTag</h4>
-<p>Normally, the first thing your code will do once it enters your <code>looq.response()</code>(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in <code>get.data()</code>. </p>
+<p>Normally, the first thing your code will do once it enters your <code>looq.response()</code>(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in <code>get_data()</code>. </p>
 <ul>
 <li><code>looq.lookTag()</code> acomplishes this task, searching for specific tags and returning their values.</li>
 </ul>
@@ -238,17 +238,17 @@ r
 <p>In the code above, if no <code>$date</code> value is recognised by the parser it will choose the default, in this case, the period starting yesterday and ending today (whenever that is).</p>
 <h4 id="looqmap">looq.map</h4>
 <p>This function is, perhaps, the core of the whole script.</p>
-<pre><code class="looqbox">looq.map(get.data, date, company)
+<pre><code class="looqbox">looq.map(get_data, date, company)
 </code></pre>
 
-<p>What it does is fairly simple, the first argument is your <code>get.data()</code> function, and the remaining are  variables defined by <code>looq.lookTag()</code>. </p>
+<p>What it does is fairly simple, the first argument is your <code>get_data()</code> function, and the remaining are  variables defined by <code>looq.lookTag()</code>. </p>
 <ul>
 <li><code>looq.map()</code> calls the function and passes the variables as arguments to it.</li>
-<li>Additionally, it wraps everything in a Looqbox response frame making <code>get.data</code>'s 
+<li>Additionally, it wraps everything in a Looqbox response frame making <code>get_data</code>'s 
 output intelligible by the interface. </li>
 </ul>
 <h4 id="looqsqlexecute">looq.sqlExecute</h4>
-<p>Now that we've got <code>looq.response</code> covered, we'll go inside <code>get.data</code>. Think of it as the backstage of your script, it's where everything is prepared so that your main function keeps neat.</p>
+<p>Now that we've got <code>looq.response</code> covered, we'll go inside <code>get_data</code>. Think of it as the backstage of your script, it's where everything is prepared so that your main function keeps neat.</p>
 <p>Most of our scripts involve some kind of query to a database, <code>looq.sqlExecute()</code> is a funtion that makes this interaction extremely simple. </p>
 <pre><code class="looqbox"># We generally store looq.sqlExecute's output in a variable called r
 r &lt;- looq.sqlExecute(&quot;mySQLDev&quot;, sql, list(dateInt[1], dateInt[2], company, value))
