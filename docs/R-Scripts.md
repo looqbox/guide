@@ -23,9 +23,10 @@ Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http:/
 
 Under addins, select Looqbox and enter your looqbox **username** and **host** (if they're not already there).
 
-<p align="center">
-  <img src="../img/addin.png" width="500">
-</p> 
+<div align="center">
+  <img src="../img/addin.png" width="500" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div> 
 
 It is also recomended to have Looqbox opened on another tab, as your tests will be published there.
 
@@ -230,9 +231,9 @@ ORDER BY DATE DESC
 
 Easy right? And it gets better, `looq.sqlExecute` returns a `looq.objTable`, an object from the package that is ready to be imported to the interface.
 
-#### looq.objTable and it's 
+#### looq.objTable and it's parameters
 
-The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as `data.frame` or `tbl` we have developed a special object, which is recognised by the interface and will help you create espoke tables, as it has a number of built-in customization options.
+The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as `data.frame` or `tbl` we have developed a special object, which is recognised by the interface and will help you create bespoke tables, as it has a number of built-in customization options.
 
 Well go through it's most important parameters here, more advanced options will be treated in the 
 [Advanced Section](#advanced).
@@ -343,12 +344,32 @@ r$searchable <- T
 
 ## Advanced
 
+Now that you're already familiar with the basics for creating scripts, we'll begin exploring the full potential of looqbox responses. With more complex functions and different kinds of vizualizations you can bid farewell to the simple tables you learned to create and welcome a whole new range of possibilities. 
+
 ### Other Vizualizations
 #### Graphs
+When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created `looq.objPlotly()`, an object which accepts both [Plotly](https://plot.ly/r/) and `ggplot` graphs and histograms as input and(once again) adapts them to the interface.
+
+```looqbox
+
+```
+
 #### Media
+We also have similar objects that allow you to import media into your answers and compose them with other objects. It is all very straightforward:
+
+ - `looq.objImage()`: 
+ - `looq.objVideo()`: 
+ - `looq.objAudio()`: 
+
 #### Deeper into looq.objTable
-#### looq.responseFrame
+
+
+<!-- #### looq.responseFrame --> 
 
 ### Advanced Package Functions
 
-## Model Scripts
+#### looq.findToken 
+#### looq.sqlIn 
+#### looq.sqlUpdate
+
+
