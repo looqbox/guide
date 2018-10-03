@@ -54,32 +54,32 @@ This function exists to keep the next block (looq.response) as clean and lean as
 ```looqbox
 get_data <- function(dateInt, parameter, value){
 
-sql <- "
-    SELECT
-        EXAMPLE AS Col1,
-        TEST AS Col2,
-        FIELD AS Col3,
-        DATE AS Date
-    FROM example.table
-    WHERE 1=1           
-        AND Date >= DATE_ADD(`1`, INTERVAL +3 HOUR) 
-        AND Date < DATE_ADD(`2`, INTERVAL +3 HOUR)
-        AND PARAMETER = `3`
-        AND VALUE = `4`
-    ORDER BY DATE DESC"
+	sql <- "
+	    SELECT
+		EXAMPLE AS Col1,
+		TEST AS Col2,
+		FIELD AS Col3,
+		DATE AS Date
+	    FROM example.table
+	    WHERE 1=1           
+		AND Date >= DATE_ADD(`1`, INTERVAL +3 HOUR) 
+		AND Date < DATE_ADD(`2`, INTERVAL +3 HOUR)
+		AND PARAMETER = `3`
+		AND VALUE = `4`
+	    ORDER BY DATE DESC"
 
-r <- looq.sqlExecute("myDB", sql, list(dateInt[1], dateInt[2], parameter, value))
-if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "to", dateInt[2]))
+	r <- looq.sqlExecute("myDB", sql, list(dateInt[1], dateInt[2], parameter, value))
+	if(r$rows == 0) return(paste("No data found from:\n", dateInt[1], "to", dateInt[2]))
 
-r$total <- list(
+	r$total <- list(
 		"Col1" = "Total",
 		"Col2" = sum(r$data$Col2)
 	)
 
-r$searcheable <- T
-r$paginationSize <- 25
+	r$searcheable <- T
+	r$paginationSize <- 25
 
-r
+	r
 }
 ```
 Above we have a good example of a generic `get_data` function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply *r*(the `looq.objectTable`) because we assume `looq.map` will be used to call `get_data` in the `looq.response` block.
