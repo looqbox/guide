@@ -271,7 +271,6 @@ r$title <- c(
 Add styling to single or multiple columns through `r$value$Style`. Good examples are values that turn red if negative but green if positive. The color can be defined as either hex(#fff) or rgb(255,255,255). 
 
 ```looqbox
-
 # Styling single column
 r$valueStyle$Column <- style
 
@@ -371,5 +370,3 @@ We also have similar objects that allow you to import media into your answers an
 #### looq.findToken 
 #### looq.sqlIn 
 #### looq.sqlUpdate
-
-
