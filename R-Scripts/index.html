@@ -106,8 +106,6 @@
         
             <li><a href="#advanced">Advanced</a></li>
         
-            <li><a href="#model-scripts">Model Scripts</a></li>
-        
     
     
     </ul>
@@ -131,9 +129,10 @@
 <p>This is the quickest way to get started!</p>
 <p>Open your looqbox instance on port 8787 (usually: <a href="http://localhost:8787">http://localhost:8787</a>), enter <strong>rstudio</strong> as username and the <strong>password</strong> you created in the <a href="#installation">installation</a> and you're almost ready to go.</p>
 <p>Under addins, select Looqbox and enter your looqbox <strong>username</strong> and <strong>host</strong> (if they're not already there).</p>
-<p align="center">
-  <img src="../img/addin.png" width="500">
-</p>
+<div align="center">
+  <img src="../img/addin.png" width="500" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div>
 
 <p>It is also recomended to have Looqbox opened on another tab, as your tests will be published there.</p>
 <p>You now have everything you need to begin, go ahead to the <a href="#basics">basics section</a>.</p>
@@ -150,32 +149,32 @@
 This function exists to keep the next block (looq.response) as clean and lean as possible.</p>
 <pre><code class="looqbox">get_data &lt;- function(dateInt, parameter, value){
 
-sql &lt;- &quot;
-    SELECT
+    sql &lt;- &quot;
+        SELECT
         EXAMPLE AS Col1,
         TEST AS Col2,
         FIELD AS Col3,
         DATE AS Date
-    FROM example.table
-    WHERE 1=1           
+        FROM example.table
+        WHERE 1=1           
         AND Date &gt;= DATE_ADD(`1`, INTERVAL +3 HOUR) 
         AND Date &lt; DATE_ADD(`2`, INTERVAL +3 HOUR)
         AND PARAMETER = `3`
         AND VALUE = `4`
-    ORDER BY DATE DESC&quot;
+        ORDER BY DATE DESC&quot;
 
-r &lt;- looq.sqlExecute(&quot;myDB&quot;, sql, list(dateInt[1], dateInt[2], parameter, value))
-if(r$rows == 0) return(paste(&quot;No data found from:\n&quot;, dateInt[1], &quot;to&quot;, dateInt[2]))
+    r &lt;- looq.sqlExecute(&quot;myDB&quot;, sql, list(dateInt[1], dateInt[2], parameter, value))
+    if(r$rows == 0) return(paste(&quot;No data found from:\n&quot;, dateInt[1], &quot;to&quot;, dateInt[2]))
 
-r$total &lt;- list(
+    r$total &lt;- list(
         &quot;Col1&quot; = &quot;Total&quot;,
         &quot;Col2&quot; = sum(r$data$Col2)
     )
 
-r$searcheable &lt;- T
-r$paginationSize &lt;- 25
+    r$searcheable &lt;- T
+    r$paginationSize &lt;- 25
 
-r
+    r
 }
 </code></pre>
 
@@ -303,8 +302,8 @@ ORDER BY DATE DESC
 </code></pre>
 
 <p>Easy right? And it gets better, <code>looq.sqlExecute</code> returns a <code>looq.objTable</code>, an object from the package that is ready to be imported to the interface.</p>
-<h4 id="looqobjtable-and-its">looq.objTable and it's</h4>
-<p>The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as <code>data.frame</code> or <code>tbl</code> we have developed a special object, which is recognised by the interface and will help you create espoke tables, as it has a number of built-in customization options.</p>
+<h4 id="looqobjtable-and-its-parameters">looq.objTable and it's parameters</h4>
+<p>The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as <code>data.frame</code> or <code>tbl</code> we have developed a special object, which is recognised by the interface and will help you create bespoke tables, as it has a number of built-in customization options.</p>
 <p>Well go through it's most important parameters here, more advanced options will be treated in the 
 <a href="#advanced">Advanced Section</a>.</p>
 <h4 id="data">Data</h4>
@@ -330,8 +329,7 @@ r$title &lt;- c(
 
 <h4 id="style">Style</h4>
 <p>Add styling to single or multiple columns through <code>r$value$Style</code>. Good examples are values that turn red if negative but green if positive. The color can be defined as either hex(#fff) or rgb(255,255,255). </p>
-<pre><code class="looqbox">
-# Styling single column
+<pre><code class="looqbox"># Styling single column
 r$valueStyle$Column &lt;- style
 
 # Styling multiple columns at once
@@ -385,13 +383,27 @@ r$valueLink$Column &lt;- list(
 </code></pre>
 
 <h2 id="advanced">Advanced</h2>
+<p>Now that you're already familiar with the basics for creating scripts, we'll begin exploring the full potential of looqbox responses. With more complex functions and different kinds of vizualizations you can bid farewell to the simple tables you learned to create and welcome a whole new range of possibilities. </p>
 <h3 id="other-vizualizations">Other Vizualizations</h3>
 <h4 id="graphs">Graphs</h4>
+<p>When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created <code>looq.objPlotly()</code>, an object which accepts both <a href="https://plot.ly/r/">Plotly</a> and <code>ggplot</code> graphs and histograms as input and(once again) adapts them to the interface.</p>
+<pre><code class="looqbox">
+</code></pre>
+
 <h4 id="media">Media</h4>
+<p>We also have similar objects that allow you to import media into your answers and compose them with other objects. It is all very straightforward:</p>
+<ul>
+<li><code>looq.objImage()</code>: </li>
+<li><code>looq.objVideo()</code>: </li>
+<li><code>looq.objAudio()</code>: </li>
+</ul>
 <h4 id="deeper-into-looqobjtable">Deeper into looq.objTable</h4>
-<h4 id="looqresponseframe">looq.responseFrame</h4>
+<!-- #### looq.responseFrame -->
+
 <h3 id="advanced-package-functions">Advanced Package Functions</h3>
-<h2 id="model-scripts">Model Scripts</h2></div>
+<h4 id="looqfindtoken">looq.findToken</h4>
+<h4 id="looqsqlin">looq.sqlIn</h4>
+<h4 id="looqsqlupdate">looq.sqlUpdate</h4></div>
                 </div>
         </div>
 
