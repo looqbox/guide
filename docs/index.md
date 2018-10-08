@@ -14,7 +14,14 @@ As the number of responses grow, your BI team will stop wasting time repeating w
 
 ## Introduction
 
-(under construction)
+In the sections below you'll be able to install Looqbox, login, ask your first questions and implement a response by your own!
+
+After this Quickstart, you can:
+
+- [Read more about the admin interface](/admin-interface)
+- [See common scenarios that you'll find throughout the implementation in the Cookbook](/cookbook)
+- [Understand how to use Looqbox's R package in scripts](/r-scripts)
+- [Read about Looqbox's architecture and additional parameters when initializing](/read-more)
 
 ## Installation
 
