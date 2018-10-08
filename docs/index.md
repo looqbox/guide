@@ -37,7 +37,7 @@ Expected result:
 
 Looqbox is now serving at port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
 
-Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](/z-extras#additional-parameters).
+Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](/read-more#additional-parameters).
 
 ### Update or transfer Looqbox to another server/computer
 
@@ -126,4 +126,4 @@ looq.testQuestion(
 )
 ```
 <br>
-#### Are you ready to learn more about Looqbox? [Click here](/implementation) to continue.
+#### Are you ready to learn more about Looqbox? [Click here](/admin-interface) to continue.
