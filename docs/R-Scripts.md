@@ -23,10 +23,12 @@ Open your looqbox instance on port 8787 (usually: [http://localhost:8787](http:/
 
 Under addins, select Looqbox and enter your looqbox **username** and **host** (if they're not already there).
 
+<br/>
 <div align="center">
   <img src="../img/addin.png" width="500" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
   <p></p>
 </div> 
+<br/>
 
 It is also recomended to have Looqbox opened on another tab, as your tests will be published there.
 
