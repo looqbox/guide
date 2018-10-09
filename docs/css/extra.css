@@ -1,3 +1,7 @@
+body {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
 footer {
 	display: none;
 }
@@ -80,7 +84,7 @@ pre .looqbox {
 	color: #a2be62f2;
 }
 
-blockquote {
+blockquote p{
 	font-size: 14px !important;
 	border-left-color: #007b50;
 	background-color: white;
