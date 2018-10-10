@@ -17,8 +17,8 @@ If you don't know markdown sintax or don't want to write the documentation but s
 We use [MkDocs](https://www.mkdocs.org/) ti build our documentation using simple Markdown sintax. To properly see how your changes affects our guide, install the following packages:
 
 ```python
-pip install mkdocs==0.17
-pip install mkdocs-bootstrap==0.2
+pip install mkdocs
+pip install mkdocs-cinder
 ```
 
 After that, clone our repository and inside the folder run `mkdocs serve`, open your broser and go to `http://localhost:8000/`. Whenever you change a file related to our pages and save, mkdocs will update the page you are seeing in your localhost.
