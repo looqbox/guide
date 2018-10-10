@@ -14,7 +14,6 @@ This documentation's objective is to introduce you to the guidelines for creatin
 
 You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.
 
-
 ### RStudio Serve Setup
 
 This is the quickest way to get started!
@@ -84,6 +83,7 @@ get_data <- function(dateInt, parameter, value){
 	r
 }
 ```
+
 Above we have a good example of a generic `get_data` function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply *r*(the `looq.objectTable`) because we assume `looq.map` will be used to call `get_data` in the `looq.response` block.
 
 Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.
@@ -241,8 +241,7 @@ Easy right? And it gets better, `looq.sqlExecute` returns a `looq.objTable`, an 
 
 The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as `data.frame` or `tbl` we have developed a special object, which is recognised by the interface and will help you create bespoke tables, as it has a number of built-in customization options.
 
-Well go through it's most important parameters here, more advanced options will be treated in the 
-[Advanced Section](#advanced).
+Well go through it's most important parameters here, more advanced options will be treated in [Advanced Section](#advanced).
 
 #### Data
  
@@ -250,7 +249,6 @@ Well go through it's most important parameters here, more advanced options will 
 r$data
 ```
 All of the data retrieved from queries or imported from elsewhere will be available in this variable, which is a `tbl`. 
-
 
 #### Title
 
@@ -289,7 +287,7 @@ r$valueStyle <- list(
 
 #### Formating my data
 
-`r$valueFormat` lets you format numbers and dates, adding percentages, defining number of decimal points son so on.  You should write the names of each column followed by the format.
+`r$valueFormat` lets you format numbers and dates, adding percentages, defining number of decimal points son so on. You should write the names of each column followed by the format.
 
 ```looqbox
 r$valueFormat <- list(
@@ -313,7 +311,7 @@ r$total <- list(
 
 To add drill down options that link to other scripts, you should use `r$ValueLink$[Your Column Here]`. The question text will be posted as a new question, efectively linking the scripts together. 
 
-Using `paste` or `paste0` we can ad variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired `r$data$column`. 
+Using `paste` or `paste0` we can add variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired `r$data$column`. 
 
 The `"text"` parameter will add a title to your link, which is essential when multiple drills are made from the same column.
 
@@ -352,10 +350,10 @@ r$searchable <- T
 Now that you're already familiar with the basics for creating scripts, we'll begin exploring the full potential of looqbox responses. With more complex functions and different kinds of vizualizations you can bid farewell to the simple tables you learned to create and welcome a whole new range of possibilities. 
 
 ### Other Vizualizations
-When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created `looq.objPlotly()`, an object which accepts both [Plotly](https://plot.ly/r/) and `ggplot` graphs and histograms as input and(once again) adapts them to the interface.
 
 #### Plots
 
+When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created `looq.objPlotly()`, an object which accepts both [Plotly](https://plot.ly/r/) and `ggplot` graphs and histograms as input and adapts them to the interface.
 
 ```looqbox
 
