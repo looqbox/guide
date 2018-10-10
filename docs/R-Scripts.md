@@ -161,6 +161,7 @@ In the code above, if no `$date` value is recognised by the parser it will choos
 
 #### looq.map
 This function is, perhaps, the core of the whole script.
+
 ```looqbox
 looq.map(get_data, date, company)
 ```
@@ -210,12 +211,15 @@ sql <- "
 The values between backticks (`` ` ` ``)  are recognised by the function and substituted with the variables passed in the third argument of `looq.SQLExecute`, in order of appearance. 
 
 Say that:
+
 ```looqbox
 company <- 0
 dateInt <- c('2018-07-09', '2018-08-09')
 value <- 1120
 ```
+
 The query sent to the database would be:
+
 ```looqbox
 SELECT
 	EXAMPLE,
@@ -348,27 +352,32 @@ r$searchable <- T
 Now that you're already familiar with the basics for creating scripts, we'll begin exploring the full potential of looqbox responses. With more complex functions and different kinds of vizualizations you can bid farewell to the simple tables you learned to create and welcome a whole new range of possibilities. 
 
 ### Other Vizualizations
-#### Graphs
 When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created `looq.objPlotly()`, an object which accepts both [Plotly](https://plot.ly/r/) and `ggplot` graphs and histograms as input and(once again) adapts them to the interface.
+
+#### Plots
+
 
 ```looqbox
 
 ```
 
 #### Media
+
 We also have similar objects that allow you to import media into your answers and compose them with other objects. It is all very straightforward:
 
  - `looq.objImage()`: 
  - `looq.objVideo()`: 
  - `looq.objAudio()`: 
 
+### Advanced Package Functions
+
+#### looq.findToken 
+
+#### looq.sqlIn 
+
+#### looq.sqlUpdate
+
 #### Deeper into looq.objTable
 
 
 <!-- #### looq.responseFrame --> 
-
-### Advanced Package Functions
-
-#### looq.findToken 
-#### looq.sqlIn 
-#### looq.sqlUpdate
