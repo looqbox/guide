@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>R Scripts - Looqbox User Guide</title>
-        <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/highlight.css">
-        <link href="../css/base.css" rel="stylesheet">
-        <link href="../css/extra.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>R Scripts - Looqbox User Guide</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <script src="../js/jquery-1.10.2.min.js"></script>
-        <script src="../js/bootstrap-3.3.7.min.js"></script>
-        <script src="../js/highlight.pack.js"></script>
-         
-    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
 
-    <body>
+    
+</head>
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
 
         <!-- Collapsed navigation -->
@@ -40,77 +53,93 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            
+
+            <!-- Main title -->
+
             <a class="navbar-brand" href="..">Looqbox User Guide</a>
         </div>
 
         <!-- Expanded navigation -->
         <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li >
-                    <a href="..">Quickstart</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../Admin-Interface/">Admin Interface</a>
-                </li>
-            
-            
-            
-                <li class="active">
-                    <a href="./">R Scripts</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../Read-more/">Read more</a>
-                </li>
-            
-            
-            </ul>
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Quickstart</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Admin-Interface/">Admin</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">R Scripts</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Cookbook/">Cookbook</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Read-more/">Read More</a>
+                    </li>
+                
+                
+                </ul>
 
-            <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
                     <li >
                         <a rel="next" href="../Admin-Interface/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Read-more/">
+                        <a rel="prev" href="../Cookbook/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
-                
+                    <li>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/R-Scripts.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
 </div>
 
-        <div class="container">
-                <div class="row">
-                    <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-      
-    
-        <li class="main active"><a href="#r-scripts">R Scripts</a></li>
-        
-            <li><a href="#setup-for-the-tutorial">Setup for the Tutorial</a></li>
-        
-            <li><a href="#basics">Basics</a></li>
-        
-            <li><a href="#advanced">Advanced</a></li>
-        
-    
-    
+        <li class="first-level active"><a href="#r-scripts">R Scripts</a></li>
+            <li class="second-level"><a href="#setup-for-the-tutorial">Setup for the Tutorial</a></li>
+                
+                <li class="third-level"><a href="#rstudio-serve-setup">RStudio Serve Setup</a></li>
+            <li class="second-level"><a href="#basics">Basics</a></li>
+                
+                <li class="third-level"><a href="#script-sctructure">Script sctructure</a></li>
+                <li class="third-level"><a href="#essential-functions">Essential functions</a></li>
+            <li class="second-level"><a href="#advanced">Advanced</a></li>
+                
+                <li class="third-level"><a href="#other-vizualizations">Other Vizualizations</a></li>
+                <li class="third-level"><a href="#advanced-package-functions">Advanced Package Functions</a></li>
     </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+        <div class="col-md-9" role="main">
 
 <h1 id="r-scripts">R Scripts</h1>
 <blockquote>
@@ -129,11 +158,12 @@
 <p>This is the quickest way to get started!</p>
 <p>Open your looqbox instance on port 8787 (usually: <a href="http://localhost:8787">http://localhost:8787</a>), enter <strong>rstudio</strong> as username and the <strong>password</strong> you created in the <a href="#installation">installation</a> and you're almost ready to go.</p>
 <p>Under addins, select Looqbox and enter your looqbox <strong>username</strong> and <strong>host</strong> (if they're not already there).</p>
+<p><br/>
 <div align="center">
   <img src="../img/addin.png" width="500" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
   <p></p>
-</div>
-
+</div> 
+<br/></p>
 <p>It is also recomended to have Looqbox opened on another tab, as your tests will be published there.</p>
 <p>You now have everything you need to begin, go ahead to the <a href="#basics">basics section</a>.</p>
 <h2 id="basics">Basics</h2>
@@ -304,8 +334,7 @@ ORDER BY DATE DESC
 <p>Easy right? And it gets better, <code>looq.sqlExecute</code> returns a <code>looq.objTable</code>, an object from the package that is ready to be imported to the interface.</p>
 <h4 id="looqobjtable-and-its-parameters">looq.objTable and it's parameters</h4>
 <p>The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as <code>data.frame</code> or <code>tbl</code> we have developed a special object, which is recognised by the interface and will help you create bespoke tables, as it has a number of built-in customization options.</p>
-<p>Well go through it's most important parameters here, more advanced options will be treated in the 
-<a href="#advanced">Advanced Section</a>.</p>
+<p>Well go through it's most important parameters here, more advanced options will be treated in <a href="#advanced">Advanced Section</a>.</p>
 <h4 id="data">Data</h4>
 <pre><code class="looqbox">r$data
 </code></pre>
@@ -340,7 +369,7 @@ r$valueStyle &lt;- list(
 </code></pre>
 
 <h4 id="formating-my-data">Formating my data</h4>
-<p><code>r$valueFormat</code> lets you format numbers and dates, adding percentages, defining number of decimal points son so on.  You should write the names of each column followed by the format.</p>
+<p><code>r$valueFormat</code> lets you format numbers and dates, adding percentages, defining number of decimal points son so on. You should write the names of each column followed by the format.</p>
 <pre><code class="looqbox">r$valueFormat &lt;- list(
     &quot;numeric column&quot; = &quot;number:2&quot;,
     &quot;percent column&quot; = &quot;percent:2&quot;
@@ -357,7 +386,7 @@ r$valueStyle &lt;- list(
 
 <h4 id="drill-down">Drill Down</h4>
 <p>To add drill down options that link to other scripts, you should use <code>r$ValueLink$[Your Column Here]</code>. The question text will be posted as a new question, efectively linking the scripts together. </p>
-<p>Using <code>paste</code> or <code>paste0</code> we can ad variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired <code>r$data$column</code>. </p>
+<p>Using <code>paste</code> or <code>paste0</code> we can add variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired <code>r$data$column</code>. </p>
 <p>The <code>"text"</code> parameter will add a title to your link, which is essential when multiple drills are made from the same column.</p>
 <pre><code class="looqbox"># Simple drill
 r$valueLink$Column &lt;- &quot;my question text here&quot;
@@ -385,8 +414,8 @@ r$valueLink$Column &lt;- list(
 <h2 id="advanced">Advanced</h2>
 <p>Now that you're already familiar with the basics for creating scripts, we'll begin exploring the full potential of looqbox responses. With more complex functions and different kinds of vizualizations you can bid farewell to the simple tables you learned to create and welcome a whole new range of possibilities. </p>
 <h3 id="other-vizualizations">Other Vizualizations</h3>
-<h4 id="graphs">Graphs</h4>
-<p>When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created <code>looq.objPlotly()</code>, an object which accepts both <a href="https://plot.ly/r/">Plotly</a> and <code>ggplot</code> graphs and histograms as input and(once again) adapts them to the interface.</p>
+<h4 id="plots">Plots</h4>
+<p>When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created <code>looq.objPlotly()</code>, an object which accepts both <a href="https://plot.ly/r/">Plotly</a> and <code>ggplot</code> graphs and histograms as input and adapts them to the interface.</p>
 <pre><code class="looqbox">
 </code></pre>
 
@@ -397,23 +426,59 @@ r$valueLink$Column &lt;- list(
 <li><code>looq.objVideo()</code>: </li>
 <li><code>looq.objAudio()</code>: </li>
 </ul>
-<h4 id="deeper-into-looqobjtable">Deeper into looq.objTable</h4>
-<!-- #### looq.responseFrame -->
-
 <h3 id="advanced-package-functions">Advanced Package Functions</h3>
 <h4 id="looqfindtoken">looq.findToken</h4>
 <h4 id="looqsqlin">looq.sqlIn</h4>
-<h4 id="looqsqlupdate">looq.sqlUpdate</h4></div>
-                </div>
-        </div>
-
-    <hr>
-    <footer class="container">
+<h4 id="looqsqlupdate">looq.sqlUpdate</h4>
+<h4 id="deeper-into-looqobjtable">Deeper into looq.objTable</h4>
+<!-- #### looq.responseFrame --></div>
         
-        <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
     </footer>
-        <script src="../js/base.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
+
 </html>

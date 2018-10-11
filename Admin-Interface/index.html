@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Admin Interface - Looqbox User Guide</title>
-        <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/highlight.css">
-        <link href="../css/base.css" rel="stylesheet">
-        <link href="../css/extra.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Admin - Looqbox User Guide</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <script src="../js/jquery-1.10.2.min.js"></script>
-        <script src="../js/bootstrap-3.3.7.min.js"></script>
-        <script src="../js/highlight.pack.js"></script>
-         
-    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
 
-    <body>
+    
+</head>
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
 
         <!-- Collapsed navigation -->
@@ -40,42 +53,56 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            
+
+            <!-- Main title -->
+
             <a class="navbar-brand" href="..">Looqbox User Guide</a>
         </div>
 
         <!-- Expanded navigation -->
         <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li >
-                    <a href="..">Quickstart</a>
-                </li>
-            
-            
-            
-                <li class="active">
-                    <a href="./">Admin Interface</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../R-Scripts/">R Scripts</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../Read-more/">Read more</a>
-                </li>
-            
-            
-            </ul>
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Quickstart</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Admin</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../R-Scripts/">R Scripts</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Cookbook/">Cookbook</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Read-more/">Read More</a>
+                    </li>
+                
+                
+                </ul>
 
-            <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
                     <li >
                         <a rel="next" href="..">
                             <i class="fa fa-arrow-left"></i> Previous
@@ -86,45 +113,52 @@
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
-                
+                    <li>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/Admin-Interface.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
             </ul>
         </div>
     </div>
 </div>
 
-        <div class="container">
-                <div class="row">
-                    <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-      
-    
-        <li class="main active"><a href="#admin-interface">Admin Interface</a></li>
-        
-            <li><a href="#looqbox-must-be-fast-implementation-flow">Looqbox must be fast - Implementation Flow</a></li>
-        
-            <li><a href="#basics">Basics</a></li>
-        
-            <li><a href="#database-connection">Database Connection</a></li>
-        
-            <li><a href="#creating-a-response">Creating a response</a></li>
-        
-            <li><a href="#creating-user">Creating User</a></li>
-        
-            <li><a href="#creating-usergroup">Creating UserGroup</a></li>
-        
-            <li><a href="#creating-responsegroup">Creating ResponseGroup</a></li>
-        
-            <li><a href="#entity">Entity</a></li>
-        
-            <li><a href="#replacements">Replacements</a></li>
-        
-    
-    
+        <li class="first-level active"><a href="#admin">Admin</a></li>
+            <li class="second-level"><a href="#looqbox-must-be-fast-implementation-flow">Looqbox must be fast - Implementation Flow</a></li>
+                
+            <li class="second-level"><a href="#basics">Basics</a></li>
+                
+                <li class="third-level"><a href="#debug">$debug</a></li>
+                <li class="third-level"><a href="#response">$response</a></li>
+                <li class="third-level"><a href="#script">$script</a></li>
+        <li class="first-level "><a href="#admin-interface">Admin Interface</a></li>
+            <li class="second-level"><a href="#database-connection">Database Connection</a></li>
+                
+            <li class="second-level"><a href="#creating-a-response">Creating a response</a></li>
+                
+                <li class="third-level"><a href="#basic-info">Basic info</a></li>
+                <li class="third-level"><a href="#response-files">Response files</a></li>
+                <li class="third-level"><a href="#keyword-group">Keyword Group</a></li>
+            <li class="second-level"><a href="#creating-user">Creating User</a></li>
+                
+            <li class="second-level"><a href="#creating-usergroup">Creating UserGroup</a></li>
+                
+            <li class="second-level"><a href="#creating-responsegroup">Creating ResponseGroup</a></li>
+                
+            <li class="second-level"><a href="#entity">Entity</a></li>
+                
+                <li class="third-level"><a href="#default-entities-by-looqbox">Default entities by Looqbox</a></li>
+                <li class="third-level"><a href="#entity-by-code">Entity By Code</a></li>
+                <li class="third-level"><a href="#entity-by-name">Entity By Name</a></li>
+            <li class="second-level"><a href="#replacements">Replacements</a></li>
+                
     </ul>
 </div></div>
-                    <div class="col-md-9" role="main">
+        <div class="col-md-9" role="main">
 
-<h1 id="admin-interface">Admin Interface</h1>
+<h1 id="admin">Admin</h1>
 <h2 id="looqbox-must-be-fast-implementation-flow">Looqbox must be fast - Implementation Flow</h2>
 <p>There are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.</p>
 <ol>
@@ -145,8 +179,9 @@
 <li>sales $date by supplier</li>
 </ul>
 <h2 id="basics">Basics</h2>
-<p>Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.
-To help navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP), you can use the commands below after a questions to execute special admin commands.</p>
+<p>Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.</p>
+<p>There are 3 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): <a href="#debug">$debug</a>, <a href="#response">$response</a>, <a href="#script">$script</a></p>
+<p>(under construction - add gif)</p>
 <h4 id="debug">$debug</h4>
 <p>This is your main command to visualize the parameters that Looqbox undestands from a question. If you are getting a unexpected behavior, or if the wrong script is being run when a specific question is asked, you can use $debug to see the response, the entities retrieved from the question and so on.</p>
 <p>(Please test the examples below. This command will be most useful in the <a href="#entity">Entities section</a>)</p>
@@ -166,6 +201,8 @@ To help navigate quickly to the most important screens and to understand the mai
 <ul>
 <li>venda ontem $script</li>
 </ul>
+<p><br/><br/><br/></p>
+<h1 id="admin-interface">Admin Interface</h1>
 <h2 id="database-connection">Database Connection</h2>
 <h2 id="creating-a-response">Creating a response</h2>
 <p>Here you can link keywords to a script. 
@@ -219,7 +256,7 @@ When <a href="#creating-user">creating users</a>, you can define which userGroup
 </div>
 
 <h2 id="creating-responsegroup">Creating ResponseGroup</h2>
-<p>Each <a href="#creating-a-response">response</a> belongs to a single responseGroup. When <a href="../$creating-usergroup">creating userGroups</a>, you can choose multiple responseGroups that access is allowed to the userGroup.</p>
+<p>Each <a href="#creating-a-response">response</a> belongs to a single responseGroup. When <a href="$creating-usergroup">creating userGroups</a>, you can choose multiple responseGroups that access is allowed to the userGroup.</p>
 <p>Response Group Name: define a name for a responseGroup. </p>
 <div align="center">
   <img src="../img/response_group_screen.png" width="1074">
@@ -332,16 +369,53 @@ When <a href="#creating-user">creating users</a>, you can define which userGroup
 </blockquote>
 <p>(under construction - example with output:string)</p>
 <h2 id="replacements">Replacements</h2></div>
-                </div>
-        </div>
-
-    <hr>
-    <footer class="container">
         
-        <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
     </footer>
-        <script src="../js/base.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
+
 </html>
