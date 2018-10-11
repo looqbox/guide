@@ -18,10 +18,10 @@ In the sections below you'll be able to install Looqbox, login, ask your first q
 
 After this Quickstart, you can:
 
-- [Read more about the admin interface](/admin-interface)
-- [See common scenarios that you'll find throughout the implementation in the Cookbook](/cookbook)
-- [Understand how to use Looqbox's R package in scripts](/r-scripts)
-- [Read about Looqbox's architecture and additional parameters when initializing](/read-more)
+- [Read more about the admin interface](admin-interface)
+- [See common scenarios that you'll find throughout the implementation in the Cookbook](cookbook)
+- [Understand how to use Looqbox's R package in scripts](r-scripts)
+- [Read about Looqbox's architecture and additional parameters when initializing](read-more)
 
 ## Installation
 
@@ -44,13 +44,13 @@ Expected result:
 
 Looqbox is now serving at port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
 
-Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](/read-more#additional-parameters).
+Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](read-more#additional-parameters).
 
 ### Update or transfer Looqbox to another server/computer
 
 All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. 
 
-To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, [click here](/z-extras#docker-commands-for-looqbox).
+To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, [click here](read-more#docker-commands-for-looqbox).
 
 
 ## First questions
@@ -59,7 +59,7 @@ You can test your newly installed Looqbox by using pre-implemented responses (th
 
 To see the list of available questions/responses, type "que perguntas posso fazer?"
 
-(The first question asked after starting Looqbox takes about 8 seconds to respond. [Learn more](/structure#rkernel))
+(The first question asked after starting Looqbox takes about 8 seconds to respond. [Learn more](read-more#rkernel))
 
 ## Your first response/script
 
@@ -133,4 +133,4 @@ looq.testQuestion(
 )
 ```
 <br>
-#### Are you ready to learn more about Looqbox? [Click here](/admin-interface) to continue.
+#### Are you ready to learn more about Looqbox? [Click here](admin-interface) to continue.
