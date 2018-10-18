@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Admin - Looqbox User Guide</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">Looqbox User Guide</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Quickstart</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Admin</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../r-scripts/">R Scripts</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../cookbook/">Cookbook</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../read-more/">Read More</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../r-scripts/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/admin-interface.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#admin">Admin</a></li>
+            <li class="second-level"><a href="#looqbox-must-be-fast-implementation-flow">Looqbox must be fast - Implementation Flow</a></li>
+                
+            <li class="second-level"><a href="#basics">Basics</a></li>
+                
+                <li class="third-level"><a href="#debug">$debug</a></li>
+                <li class="third-level"><a href="#response">$response</a></li>
+                <li class="third-level"><a href="#script">$script</a></li>
+        <li class="first-level "><a href="#admin-interface">Admin Interface</a></li>
+            <li class="second-level"><a href="#database-connection">Database Connection</a></li>
+                
+            <li class="second-level"><a href="#creating-a-response">Creating a response</a></li>
+                
+                <li class="third-level"><a href="#basic-info">Basic info</a></li>
+                <li class="third-level"><a href="#response-files">Response files</a></li>
+                <li class="third-level"><a href="#keyword-group">Keyword Group</a></li>
+            <li class="second-level"><a href="#creating-user">Creating User</a></li>
+                
+            <li class="second-level"><a href="#creating-usergroup">Creating UserGroup</a></li>
+                
+            <li class="second-level"><a href="#creating-responsegroup">Creating ResponseGroup</a></li>
+                
+            <li class="second-level"><a href="#entity">Entity</a></li>
+                
+                <li class="third-level"><a href="#default-entities-by-looqbox">Default entities by Looqbox</a></li>
+                <li class="third-level"><a href="#entity-by-code">Entity By Code</a></li>
+                <li class="third-level"><a href="#entity-by-name">Entity By Name</a></li>
+            <li class="second-level"><a href="#replacements">Replacements</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="admin">Admin</h1>
+<h2 id="looqbox-must-be-fast-implementation-flow">Looqbox must be fast - Implementation Flow</h2>
+<p>There are 2 important concepts that you should know to understand our recommentation about how responses should be implemented in Looqbox.</p>
+<ol>
+<li>
+<p>Looqbox runs a R script for each question asked by the users. Each of those scripts access a datasource (e.g. MySQL), so the time that a users waits is mainly the response time from the query or API. The maximum recommended time for a response is 2 seconds.</p>
+</li>
+<li>
+<p>Users usually need a bit of experience with the interface to start asking more complex questions, so starting with short and general questions help new users to navigate.</p>
+</li>
+</ol>
+<p>We discorage the implementation of complex dashboards in Looqbox, since it usually depends of multiple queries, which result in a long response time.</p>
+<p>To guarantee the best user experience, responses should be implemented in a way that users can ask simple questions, and navigate to more specific information using features like drill down. Navigating between 4 tables of content waiting 2 seconds for each load in much better than waiting 8 seconds for a single dashboard.</p>
+<p>Here is a sequence of questions to illustrate this scenario:</p>
+<ul>
+<li>sales $date</li>
+<li>sales $date by store</li>
+<li>sales $date by department</li>
+<li>sales $date by supplier</li>
+</ul>
+<h2 id="basics">Basics</h2>
+<p>Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.</p>
+<p>There are 3 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): <a href="#debug">$debug</a>, <a href="#response">$response</a>, <a href="#script">$script</a></p>
+<p>(under construction - add gif)</p>
+<h4 id="debug">$debug</h4>
+<p>This is your main command to visualize the parameters that Looqbox undestands from a question. If you are getting a unexpected behavior, or if the wrong script is being run when a specific question is asked, you can use $debug to see the response, the entities retrieved from the question and so on.</p>
+<p>(Please test the examples below. This command will be most useful in the <a href="#entity">Entities section</a>)</p>
+<ul>
+<li>venda ontem $debug</li>
+<li>top 10 produtos $debug</li>
+<li>meta ontem versus hj $debug</li>
+<li>venda do ano passado por mes $debug</li>
+</ul>
+<h4 id="response">$response</h4>
+<p>Sends the user to the <a href="#creating-a-response">response</a> that Looqbox links to the script that would run with the given question.</p>
+<ul>
+<li>venda ontem $response</li>
+</ul>
+<h4 id="script">$script</h4>
+<p>Sends the user to the R script that Looqbox would run with the given question.</p>
+<ul>
+<li>venda ontem $script</li>
+</ul>
+<p><br/><br/><br/></p>
+<h1 id="admin-interface">Admin Interface</h1>
+<h2 id="database-connection">Database Connection</h2>
+<h2 id="creating-a-response">Creating a response</h2>
+<p>Here you can link keywords to a script. 
+We will divide this section 3 parts.</p>
+<h4 id="basic-info">Basic info</h4>
+<p>Response Name: use a name to find this response easily later</p>
+<p>Response Group: each response must belong to a response group, used to control who can access this resource</p>
+<p><span style="color: #999">Engine: R (default) is the only engine available for scripts</span></p>
+<p><span style="color: #999">Custom evaluation time limit: ATTENTION. Don't modify unless it's extremely necessary. This field is used to modify the default timeout (30s) for a script to respond. Good scripts run under 2 seconds, so there should be really no reason to modify this value</span></p>
+<p><span style="color: #999">Active: (self explanatory)</span></p>
+<h4 id="response-files">Response files</h4>
+<p>Response files: Use this area to upload scripts or help files. The main file will/must always have the same name as the responseName. <span style="font-weight: bold;">IMPORTANT</span>: .r extension MUST be lowercase</p>
+<h4 id="keyword-group">Keyword Group</h4>
+<p><span style="color: #999">Language: language that will use this keyword group</span></p>
+<p>Keyword: <span style="font-weight: bold;">IMPORTANT</span>. Here you can define which keywords must be present in a sentence to run this response. The script that will be executed will always be chosen by the highest number of entities found inside a question that in linked to a response.
+Keywords can be divided in 2 groups:</p>
+<ul>
+<li>simple words: usually stem or a verb in infitive. E.g. for a report about sales, use as keyword "sales", and all variations such as "sell", "sold", "selling" can be registered under <a href="#replacements">Replacements</a>. </li>
+<li>entities: starts with "$", and represent a pattern that can be found in the question. The most used entity is "$date", which is preimplemented by Looqbox. You can create your own entities (see <a href="#entity-by-code">EntityByCode</a> and <a href="#entity-by-name">EntityByName</a>)</li>
+</ul>
+<p>A list of synonyms can be used by separating words with pipes. E.g.: sales|revenue</p>
+<p>Note that keywords can be optional. This is useful for entites that may appear in a question, but is not fundamental for the main usage case for a response. To illustrate:</p>
+<blockquote>
+<p>Imagine that it's important for a user to ask about sales "sales yesterday" (which returns a table with the sales in each store), but it's also common to modify the answer by asking "sales yesterday store 1, 2 and 3" (which returns a table with the sales of store 1, 2 and 3). In this case, the entity $store is optional, and when available, all values about store (in our example, 1 to 3) will be fowarded to the script within the entity $store.</p>
+</blockquote>
+<div align="center">
+  <img src="../img/responses_screen.png" width="1074">
+</div>
+
+<h2 id="creating-user">Creating User</h2>
+<p>In this section you are able to create users that will have access to Looqbox.</p>
+<p>User Login: name used by the user to login.</p>
+<p>Short Name: alias for the user.</p>
+<p>Email: used when a user forgets the password.</p>
+<p>Password: (self explanatory)</p>
+<p>User Group: Each user must have a <a href="#creating-usergroup">User Group</a>. User groups are usually divided in roles inside a company (sales, marketing etc)l</p>
+<p>Language: default language for this user.</p>
+<p>Admin: select if a user can edit user, responses, entities and so on.</p>
+<p>Active: (self explanatory)</p>
+<div align="center">
+  <img src="../img/user_screen.png" width="1074">
+</div>
+
+<h2 id="creating-usergroup">Creating UserGroup</h2>
+<p>User groups are usually divided in roles inside a company (sales, marketing etc).
+When <a href="#creating-user">creating users</a>, you can define which userGroup this user belongs to.</p>
+<p>Response Groups: Define which <a href="#creating-responsegroup">Response Groups</a> are linked to this user group. </p>
+<p>User Group Suggestions: Suggestions added will be shown to users that belong to this userGroup in the favorites and autocomplete.</p>
+<div align="center">
+  <img src="../img/user_group_screen.png" width="1074">
+</div>
+
+<h2 id="creating-responsegroup">Creating ResponseGroup</h2>
+<p>Each <a href="#creating-a-response">response</a> belongs to a single responseGroup. When <a href="$creating-usergroup">creating userGroups</a>, you can choose multiple responseGroups that access is allowed to the userGroup.</p>
+<p>Response Group Name: define a name for a responseGroup. </p>
+<div align="center">
+  <img src="../img/response_group_screen.png" width="1074">
+</div>
+
+<h2 id="entity">Entity</h2>
+<p>Entities are patterns that can be found in the question, and retrieved as values to be used inside scripts.</p>
+<p>The most used entity is "$date", which is preimplemented by Looqbox. Other entities can be implemented as you need.</p>
+<p>E.g.: "sales last week" -&gt; $date: [2018-09-10, 2018-09-16]</p>
+<p>To visualize the sections bellow, test the examples with the <a href="#debug">$debug command</a> in Looqbox's interface.</p>
+<h3 id="default-entities-by-looqbox">Default entities by Looqbox</h3>
+<h4 id="date">$date</h4>
+<p>Looqbox interprets many different ways to refer to dates. Since it's the most used entity, it's always being improved by our team. Here are some examples from thousands of combinations of how a user can refer to a date in Looqbox:</p>
+<ul>
+<li>ontem, hoje (hj), amanhã</li>
+<li>semana passada, mes passado, ano passado, década passada</li>
+<li>semana que vem, mes que vem, ano que vem, década que vem</li>
+<li>1 de abril, 24 de dezembro</li>
+<li>setembro de 2018, janeiro do ano passado</li>
+<li>1 de abril de 2018</li>
+<li>28/01/1991, 02-02-2010</li>
+<li>segunda feira, segunda feira da semana passada, segunda da semana que vem</li>
+</ul>
+<h4 id="datepartition">$datePartition</h4>
+<p>Used to imply a way to split date value inside a script. Those references are:</p>
+<ul>
+<li>por dia, diária, dia a dia</li>
+<li>por semana, semanal, semana a semana</li>
+<li>por mes, mensal, mes a mes</li>
+<li>por bimestre, bimestral, bimestralmente, bimestre a bimestre </li>
+<li>(same as above for trimestre, quadrimestre, semestre)</li>
+<li>por ano, anual, ano a ano</li>
+</ul>
+<h4 id="comparative">$comparative</h4>
+<p>Comparative works by indicating a comparison between 2 $dates. For example:</p>
+<ul>
+<li>hj vs ontem</li>
+<li>mes passado versus retrasado</li>
+<li>ano semana passada versus semana atual</li>
+</ul>
+<h4 id="topn">$topN</h4>
+<p>Used for ranking. $topn shows the number of elements that the user intents to select/work with. The maximum positive or negative number is 99,999.</p>
+<ul>
+<li>top 5 </li>
+<li>maiores 20</li>
+<li>menores 15</li>
+<li>top 8 maiores</li>
+<li>top 8 menores</li>
+</ul>
+<h4 id="email">$email</h4>
+<p>Used to return email found in question.</p>
+<ul>
+<li>contact@looqbox.com</li>
+<li>jobs@looqbox.com</li>
+</ul>
+<h4 id="quotes">$quotes</h4>
+<p>Anything between quotes is treated as plain text (no rules about entities will be applyed). It's commonly used to refer about product, store name and other text that must have a exact value.</p>
+<ul>
+<li>"coca cola"</li>
+<li>"revista abril"</li>
+</ul>
+<h4 id="diamond">$diamond</h4>
+<p>Similar to $quotes, any text between square brackets will be treated as exact value and will have no rules applyed over. </p>
+<ul>
+<li>[Looqbox]</li>
+<li>[350ml pkg 6units]</li>
+</ul>
+<h3 id="entity-by-code">Entity By Code</h3>
+<p>Most used entity. With EntityByCode, you can define a pattern that, if preceded by a "head", will return a value to the R script. E.g.:</p>
+<blockquote>
+<p>$store</p>
+<p>entity head: <code>lojas?|filial|filiais</code>, entity pattern: <code>\d+</code></p>
+<p>When "venda na loja 20" is asked, the R script will receive the entity $store with the value 20.</p>
+</blockquote>
+<p>Note that the pattern \d+ is used to determine if what comes after [loja, lojas, filial, filiais] is a number, and Looqbox will already apply this pattern to a list of stores if necessary, reducing the complexity of patterns that needs to be implemented by you. E.g.:</p>
+<blockquote>
+<p>The same example above also works for "venda na loja 20, 21 e 22", which returns the values [20, 21, 22] to the R script.</p>
+</blockquote>
+<p>Another way to implement EntityByCode is by combining it with <a href="#diamond">$diamond</a>. The advantage of using $diamond with EntityByCode can be seem in 2 cases:</p>
+<ol>
+<li>
+<p>A id is not available, and a exact text must be passed to a new question by a drill down, so it can be used to query information in the DB. </p>
+<blockquote>
+<p>$store</p>
+<p>entity head: <code>lojas?|filial|filiais</code>, entity pattern: &lt;&gt;</p>
+<p>When "venda na loja [Fides]" is asked, the R script will receive the entity $store with the value <code>Fides</code>. Now this string can be used to query this specific name in the DB.</p>
+</blockquote>
+</li>
+<li>
+<p>A id and a name for the entity are available, and you want to show the name of a pattern to the user, while using the id to query data in the DB.</p>
+<blockquote>
+<p>$store</p>
+<p>entity head: <code>lojas?|filial|filiais</code>, entity pattern: &lt;&gt;</p>
+<p>When "venda na loja [Fides|20]" is asked, the R script will receive the entity $store with the value 20. The advantage of this case is that the user sees a highlight with <code>Fides</code>, improving the readability of the question.</p>
+</blockquote>
+</li>
+</ol>
+<p>A useful feature when adding a EntityByCode is to provide a CSV with all entries that you have in your data source, so when a user types a entity head, the entity autocomplete feature will start helping the user with all possible entries provided in the CSV.</p>
+<p>(under construction)</p>
+<h3 id="entity-by-name">Entity By Name</h3>
+<p>EntityByName is useful when there is a small amount of entries that you want to link with a value (string or number) to be used in R scripts.</p>
+<p>This is recommended for a fast implementation when it's known that a user has no knowledge about the id of a entity and types the name of this entity. For cases with a long list of possibilities, we recommend implementing <a href="#entity-by-code">EntityByCode</a> and upload a CSV with all entries, so the entity autocomplete feature can be used by the user asking the question.</p>
+<p>Here are some examples:</p>
+<blockquote>
+<p>$city, output: number</p>
+<p>prefix: cidade</p>
+<p>from: salinas, to: 1</p>
+<p>from: belem, to: 2</p>
+<p>When "venda na cidade Belem" is asked, the R script will receive the entity $city with the value 2.</p>
+</blockquote>
+<p>(under construction - example with output:string)</p>
+<h2 id="replacements">Replacements</h2></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
