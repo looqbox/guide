@@ -6,11 +6,24 @@ Our recommendation is to implement, according to user feedback, all recurrent qu
 
 As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox. 
 
-<br/>
-
+<br>
 <div align="center">
   <img style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
 </div>
+<br>
+
+Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.
+
+All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. 
+
+This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, [click here](#available-parameters).
+
+It's important to remember that when generating a visualization for a user, your on-premise instance **doesn't send the information retrieved from your Data Sources to Looqbox's cloud**.
+
+<div align="center">
+  <img src="../img/architecture.jpeg" width="500">
+</div>
+<br/>
 
 ## Introduction
 
