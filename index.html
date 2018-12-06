@@ -73,25 +73,25 @@
                 
                 
                     <li >
-                        <a href="admin-interface/">Admin</a>
+                        <a href="admin-interface">Admin</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="r-scripts/">R Scripts</a>
+                        <a href="r-scripts">R Scripts</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="cookbook/">Cookbook</a>
+                        <a href="cookbook">Cookbook</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="read-more/">Read More</a>
+                        <a href="read-more">Read More</a>
                     </li>
                 
                 
@@ -101,16 +101,6 @@
                     <li>
                         <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                             <i class="fa fa-search"></i> Search
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a rel="next" >
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="prev" href="admin-interface/">
-                            Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
@@ -144,11 +134,20 @@
 <p>Looqbox is the data search solution for your business. </p>
 <p>Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from you business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.</p>
 <p>As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox. </p>
-<p><br/></p>
+<p><br>
 <div align="center">
   <img style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
 </div>
+<br></p>
+<p>Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.</p>
+<p>All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. </p>
+<p>This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, <a href="#available-parameters">click here</a>.</p>
+<p>It's important to remember that when generating a visualization for a user, your on-premise instance <strong>doesn't send the information retrieved from your Data Sources to Looqbox's cloud</strong>.</p>
+<div align="center">
+  <img src="../img/architecture.jpeg" width="500">
+</div>
 
+<p><br/></p>
 <h2 id="introduction">Introduction</h2>
 <p>In the sections below you'll be able to install Looqbox, login, ask your first questions and implement a response by your own!</p>
 <p>After this Quickstart, you can:</p>
@@ -309,5 +308,5 @@ looq.testQuestion(
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2018-10-11 17:30:44
+Build Date UTC : 2018-12-06 13:30:45
 -->

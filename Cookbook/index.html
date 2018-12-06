@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Cookbook - Looqbox User Guide</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">Looqbox User Guide</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Quickstart</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../admin-interface">Admin</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../r-scripts">R Scripts</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../cookbook">Cookbook</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../read-more">Read More</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/Cookbook.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#cookbook">Cookbook</a></li>
+            <li class="second-level"><a href="#example-1-implementing-a-response-with-access-to-a-database">Example 1 - Implementing a response with access to a database</a></li>
+                
+                <li class="third-level"><a href="#scenario">Scenario</a></li>
+                <li class="third-level"><a href="#solution">Solution</a></li>
+            <li class="second-level"><a href="#example-2-retrieving-patterns-from-questions">Example 2 - Retrieving patterns from questions</a></li>
+                
+                <li class="third-level"><a href="#scenario_1">Scenario</a></li>
+                <li class="third-level"><a href="#solution-1-entity-by-code-store">Solution 1 - Entity By Code ($store)</a></li>
+                <li class="third-level"><a href="#solution-2-entity-by-code-store-autocomplete">Solution 2 - Entity By Code ($store + autocomplete)</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="cookbook">Cookbook</h1>
+<p>This section provides well known use scenarios for Looqbox, and how to implement them.</p>
+<p>Each section below has a <strong>scenario</strong> and a <strong>solution</strong>. We recommend you to read all scenarios, and if any of them apply to you, follow the related instructions.</p>
+<h2 id="example-1-implementing-a-response-with-access-to-a-database">Example 1 - Implementing a response with access to a database</h2>
+<h4 id="scenario">Scenario</h4>
+<p>In this section you can see how to implement the main type of response in Looqbox!</p>
+<p>Questions such as "venda ontem" are the most fundamental for users. They are usually composed by a simple keyword + a entity (in this case $date). We are going to see how to implement a response with a query to a DB, and a filter based on date.</p>
+<h4 id="solution">Solution</h4>
+<h5 id="step-1-add-a-connection-to-a-database">Step 1: Add a connection to a database</h5>
+<p>Add a database connection if you don't have one already. To see the basics about adding a connection, <a href="/admin-interface#database-connection"><strong>click here</strong></a>.
+Your connection screen should be similar to the image below:</p>
+<p><br/>
+<div align="center">
+  <img src="../img/example_conn.png" width="847" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div> 
+<br/></p>
+<p>It's important to notice that the connection's name that you chose will be used in the R script.</p>
+<p><br/></p>
+<h5 id="step-2-create-a-response">Step 2: Create a response</h5>
+<p>You can see the basics about creating a response <a href="/admin-interface#creating-a-response"><strong>here</strong></a>.</p>
+<p>Go to Admin &gt; Responses and fill the fields just like in the image below:</p>
+<p><br/>
+<div align="center">
+  <img src="../img/creating-jdbc-response.png" width="854" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div> 
+<br/></p>
+<p>Hit Create New at the bottom.</p>
+<p>Now you have a response that will be executed whenever a user types "venda" and any variation of a date. "venda ontem", "venda hj", "venda na segunda quinzena de abril de 2017".</p>
+<p><br/></p>
+<h5 id="step-3-add-a-script">Step 3: Add a script</h5>
+<pre><code class="looqbox">library(&quot;looqbox&quot;)
+
+#-----------------------------------------------------------------------------#
+#----  get.data
+#-----------------------------------------------------------------------------#
+
+# get.data is one of the 3 main functions when creating a script. It's a logical
+# division in the script to gether information from a data source.
+# In this case, it's receiving a dateInt (date interval) and a storeList
+get.data &lt;- function(dateInt,storeList) {
+
+  # The query below will run against the database, and can accept filters in 2 forms.
+  # 1 - Numbers between back ticks (``): for mandatory filters, use `1` and `2` and 
+  # so on as placeholders. Those placeholders will be replaced by values passed 
+  # during the looq.sqlExecute 
+  # 2 - looq.sqlIn function: for optional variables, you can use this funcion. 
+  # looq.sqlIn accepts 2 arguments. The first one is a segment of the query, and 
+  # the second in a variable. If the variable (in this case storeList) is NULL, 
+  # the funcion returns a empty string, not affecting in any way the query. If the 
+  # variable has a value, the second argument will be pasted (between brackets) along 
+  # with the first argument in the query.
+
+  #####
+  ##### IMPORTANT: change the query so that it matches you database!
+  #####
+  sql &lt;- paste(
+    &quot;
+    SELECT
+    c.STORE_NAME as Loja
+    ,sum(s.SALES_VALUE) as Venda
+    FROM looqdata.data_store_sales as s
+    inner join
+    looqdata.data_store_cad as c
+    using(STORE_CODE)
+    where 1=1
+    and date(s.DATE) between date(`1`) and date(`2`)
+    &quot;, looq.sqlIn(&quot;and s.STORE_CODE in &quot;,storeList),&quot;
+    group by c.STORE_NAME
+    order by 1&quot;
+  )
+
+  # looq.sqlExecute receives 3 arguments.
+  # 1 - A connection name, created in Looqbox's interface in Admin &gt; Connections
+  # 2 - A query, like the &quot;sql&quot; variable created above
+  # 3 - A list of parameters that will replace the placeholder (`1`, `2` ...) in the given order
+  #
+  # The query run, and the result is a objTable (a object that can be already 
+  # displayed in Looqbox's interface). This table is stored in the atribute $date
+  # of the given variable (in this case, r$data)
+
+  #####
+  ##### IMPORTANT: Remember to use the name of the connection that you set up in step 1!
+  #####
+  r &lt;- looq.sqlExecute(&quot;looqdata&quot;, sql, list(dateInt[1],dateInt[2]))
+
+  # If a table returns with empty content, the code stops here and a message is returned to the user
+  # This section prevents the script to attempt to manipulate data of a empty table
+  if(r$rows == 0) return(paste(&quot;Sem dados no período de:\n&quot;, dateInt[1], &quot;a&quot;, dateInt[2]))
+
+  # Rename columns, so it's easier to work with the table throughout the code
+  names(r$data) &lt;- c(&quot;Loja&quot;, &quot;Venda&quot;)
+
+  # This attribute creates a footer for the table, with a hardcoded value, and a calculated value
+  r$total &lt;- list(&quot;Total&quot;,sum(r$data$Venda))
+
+  # $title creates a title above the table when the table is presented in 
+  # the interface. It can receive a string or a vector of strings (which will be stacked)
+  r$title &lt;- c(&quot;Vendas&quot;,
+               # looq.titleForList verifies if there is a storeList. If 
+               # there is, executes a paste0() to create a segment of the title
+               looq.titleForList(&quot;Loja: &quot;, storeList),
+               # looq.titleWithDate() formats the date received to show in the title above the table
+               looq.titleWithDate(&quot;Período&quot;, dateInt)
+  )
+
+  # $valueFormat receives a named list (&quot;column&quot;=&quot;format&quot;,&quot;column2&quot;=&quot;format2&quot;) to format the columns. 
+  # The available formats are: &quot;number:n&quot;, &quot;percent:n&quot;, &quot;date&quot; e &quot;dateTime&quot;
+  # &quot;n&quot; is the number of decimals
+  r$valueFormat &lt;- list(
+    &quot;Venda&quot; = &quot;number:0&quot;
+  )
+
+  # The same as above, but for the total line
+  r$totalValueFormat &lt;- list(
+    &quot;Venda&quot; = &quot;number:0&quot;
+  )
+
+  # $paginationSize controls the default amount of lines in a table before pagination.
+  # It's a important feature when bigger tables should be shown in the interface
+  r$paginationSize &lt;- 15
+
+  # looq.responseFrame() displays in the interface the objects in the order that they are inputed. 
+  # In this case, it's only the objTable (r)
+  looq.responseFrame(r)
+
+}
+
+#-----------------------------------------------------------------------------#
+#---  Response
+#-----------------------------------------------------------------------------#
+
+# Looqbox's main function. This function is called by the system when a script is executed.
+# All scripts must have this funcion implemented.
+# All parameters comprehended by Looqbox's Cloud are passed in the argument &quot;par&quot;.
+looq.response &lt;- function(par){
+
+  # looq.lookTag() retrieves entities found in the user's question.
+  # If a entity is not found, NULL is returned. It's possible to define a default 
+  # value when a entity is not found. In the example below, this feature is used
+  # with the entity $date (used today's date if none is found in the user's question)
+  stores &lt;- looq.lookTag(&quot;$store&quot;, par)
+  date &lt;- looq.lookTag(&quot;$date&quot;, par, list(c(Sys.Date(), Sys.Date())))
+
+  # looq.map() maps the value of the entities to get.data
+  looq.map(get.data, date, list(stores))
+}
+
+#-----------------------------------------------------------------------------#
+#---  Test Block
+#-----------------------------------------------------------------------------#
+
+# This block is used to test scripts in RStudio or in Admin &gt; Test Scripts
+# Here you can define hardcoded values to simulate the entities found in a question
+# and simulate the behavior of your script
+looq.testQuestion(
+  list(
+    &quot;$date&quot;=list(c('2014-02-01','2014-02-28'))
+    ,&quot;$store&quot;=c()
+  )
+)
+
+</code></pre>
+
+<p><br/></p>
+<h5 id="step-4-test">Step 4: Test</h5>
+<p>Click at "Looqbox" in the upper left corner, and type "venda na semana passada". You should see a response similar the one below:</p>
+<p><br/>
+<div align="center">
+  <img src="../img/venda_ontem.png" width="862" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div> 
+<br/></p>
+<p>you can also type $debug after your question to see how dates are being </p>
+<h2 id="example-2-retrieving-patterns-from-questions">Example 2 - Retrieving patterns from questions</h2>
+<h4 id="scenario_1">Scenario</h4>
+<p>For questions such as: "venda na loja Fides". We would expect "Fides" do be retrieved as a value for the <code>$store</code> entity. But how should that entity be registered?</p>
+<h4 id="solution-1-entity-by-code-store">Solution 1 - Entity By Code ($store)</h4>
+<p>One good option is to register <code>$store</code> as a string-type entity, unsing diamonds(<code>&lt;&gt;</code>) as the pattern and <code>lojas?</code> as the entity head. As you can see below:</p>
+<p><br/>
+<div align="center">
+  <img src="../img/cookbookentity1.png" width="500" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div> 
+<br/></p>
+<h4 id="solution-2-entity-by-code-store-autocomplete">Solution 2 - Entity By Code ($store + autocomplete)</h4>
+<p>Another option, and perhaps the most stylish, is to register <code>$store</code> as either a string- or digit-based entity by code and add an autocomplete <code>.csv</code> file. This will enable looqbox to suggest the entity in real time as you type in your search. The <code>.csv</code> should have one of the formats shown below: </p>
+<pre><code class="looqbox">#For digit-based code-value entities
+
+code;value
+0;example
+1;Store
+2;Fides
+3;test
+
+#For string-based value only entities
+
+value
+example
+Store
+Fides
+test
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

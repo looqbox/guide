@@ -73,25 +73,25 @@
                 
                 
                     <li >
-                        <a href="../admin-interface/">Admin</a>
+                        <a href="../admin-interface">Admin</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../r-scripts/">R Scripts</a>
+                        <a href="../r-scripts">R Scripts</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../cookbook/">Cookbook</a>
+                        <a href="../cookbook">Cookbook</a>
                     </li>
                 
                 
                 
-                    <li class="active">
-                        <a href="./">Read More</a>
+                    <li >
+                        <a href="../read-more">Read More</a>
                     </li>
                 
                 
@@ -103,18 +103,8 @@
                             <i class="fa fa-search"></i> Search
                         </a>
                     </li>
-                    <li >
-                        <a rel="next" href="../cookbook/">
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a rel="prev" >
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </li>
                     <li>
-                        <a href="https://github.com/looqbox/guide/edit/master/docs/read-more.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/Read-more.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -126,8 +116,6 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#read-more">Read More</a></li>
-            <li class="second-level"><a href="#architecture">Architecture</a></li>
-                
             <li class="second-level"><a href="#rkernel">RKernel</a></li>
                 
             <li class="second-level"><a href="#available-parameters-when-starting-looqbox">Available parameters when starting Looqbox</a></li>
@@ -146,16 +134,6 @@
 
 <h1 id="read-more">Read More</h1>
 <p>This section has extra documentation about different areas that don't fall in any other category.</p>
-<h3 id="architecture">Architecture</h3>
-<p>Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.</p>
-<p>All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. </p>
-<p>This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, <a href="#available-parameters">click here</a>.</p>
-<p>It's important to remember that when generating a visualization for a user, your on-premise instance <strong>doesn't send the information retrieved from your Data Sources to Looqbox's cloud</strong>.</p>
-<div align="center">
-  <img src="../img/architecture.jpeg" width="455">
-</div>
-
-<p><br/></p>
 <h3 id="rkernel">RKernel</h3>
 <p>Every R script in Looqbox is processed by a RKernel. RKernels are a logical unit that controls a session in R.</p>
 <p>The more RKernel available, the more scripts can be processed at the same time. On the other hand, more RAM in consumed.</p>
