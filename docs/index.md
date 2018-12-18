@@ -38,10 +38,11 @@ After this Quickstart, you can:
 
 ## Installation
 
-Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS).
+Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS). You can use either Docker CE or Docker EE, but Docker CE is free. To see Docker's documentation about compatibility, <a href="https://docs.docker.com/install/" target="_blank">click here</a>.
 
-After <a href="https://docs.docker.com/install/" target="_blank">installing Docker</a>, start Looqbox's container:
+After <a href="https://docs.docker.com/glossary/?term=installation" target="_blank">installing Docker</a>, start Looqbox's container:
 
+> Don't forget to use the KEY and CLIENT provided by e-mail. RSTUDIO_PASS is a password chosen by you to access RStudio.
 
 ```bash
 docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
@@ -55,7 +56,7 @@ Expected result:
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </div>
 
-Looqbox is now serving at port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
+Looqbox is now serving at port 80 and RStudio is serving at port 8787 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
 
 Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](read-more#additional-parameters).
 
