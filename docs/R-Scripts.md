@@ -14,6 +14,19 @@ This documentation's objective is to introduce you to the guidelines for creatin
 
 You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.
 
+### Using Looqbox Dev Docker Container
+
+This option is a docker running with a local RStudio linked with your Looqbox-dev folder.
+First of all you need to install Docker in your local machine. More in [docker official site](https://www.docker.com/get-started).
+
+After installing docker you need to have a looqbox-dev folder in your machine.
+
+With the docker and the looqbox-dev folder installed you only need to execute these commands:
+  - `docker pull looqboxrep/looqbox-dev` to pull the image, use the default looqbox login to pull.
+  - `docker run -d --restart=always -v $HOME/looqbox-dev/config:/home/rstudio/looqbox -p 8787:8787 looqboxrep/looqbox-dev`. This command will set a local RStudio at port 8787 and will link to your config folder files in the _-v_ command. 
+
+To open your local RStudio you only have to access localhost:8787 in your browser!
+
 ### RStudio Serve Setup
 
 This is the quickest way to get started!
