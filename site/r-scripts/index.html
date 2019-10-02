@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>R Scripts - Looqbox User Guide</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">Looqbox User Guide</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Quickstart</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../admin-interface/">Admin</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">R Scripts</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../cookbook/">Cookbook</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../read-more/">Read More</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../admin-interface/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../cookbook/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/r-scripts.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#r-scripts">R Scripts</a></li>
+            <li class="second-level"><a href="#setup-for-the-tutorial">Setup for the Tutorial</a></li>
+                
+                <li class="third-level"><a href="#rstudio-serve-setup">RStudio Serve Setup</a></li>
+            <li class="second-level"><a href="#basics">Basics</a></li>
+                
+                <li class="third-level"><a href="#script-sctructure">Script sctructure</a></li>
+                <li class="third-level"><a href="#essential-functions">Essential functions</a></li>
+            <li class="second-level"><a href="#advanced">Advanced</a></li>
+                
+                <li class="third-level"><a href="#other-vizualizations">Other Vizualizations</a></li>
+                <li class="third-level"><a href="#advanced-package-functions">Advanced Package Functions</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="r-scripts">R Scripts</h1>
+<blockquote>
+<p>This tutorial assumes you don't have any previous knowledge in the Looqbox Package.</p>
+</blockquote>
+<!--
+## Prerequisites
+
+- R knowledge
+-->
+
+<h2 id="setup-for-the-tutorial">Setup for the Tutorial</h2>
+<p>This documentation's objective is to introduce you to the guidelines for creating organized and efficient R scripts for Looqbox as well as to make you confortable with the looqbox package and with the tool's environment and workflow. In this section we will focus on the creation and editing of the R scripts, so we recomend using Rstudio as the development environment.</p>
+<p>You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.</p>
+<h3 id="rstudio-serve-setup">RStudio Serve Setup</h3>
+<p>This is the quickest way to get started!</p>
+<p>Open your looqbox instance on port 8787 (usually: <a href="http://localhost:8787">http://localhost:8787</a>), enter <strong>rstudio</strong> as username and the <strong>password</strong> you created in the <a href="#installation">installation</a> and you're almost ready to go.</p>
+<p>Under addins, select Looqbox and enter your looqbox <strong>username</strong> and <strong>host</strong> (if they're not already there).</p>
+<p><br/>
+<div align="center">
+  <img src="../img/addin.png" width="500" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <p></p>
+</div> 
+<br/></p>
+<p>It is also recomended to have Looqbox opened on another tab, as your tests will be published there.</p>
+<p>You now have everything you need to begin, go ahead to the <a href="#basics">basics section</a>.</p>
+<h2 id="basics">Basics</h2>
+<h3 id="script-sctructure">Script sctructure</h3>
+<p>In this section, you'll learn about the structure in which your script should be implemented.</p>
+<h4 id="dependencies">Dependencies</h4>
+<p>In order to develop a script for Looqbox you should use our Looqbox Package as it allows you to interact with the interface and helps you structure your data to be displayed in our environment.</p>
+<pre><code class="looqbox">library(&quot;looqbox&quot;)
+</code></pre>
+
+<h4 id="get_data">get_data</h4>
+<p>This user defined functions is the core of the script, we keep in it all of the data retrieval and manipulation. In it we also receive as parameters the entities collected from the parser and create the objects and vizualizations which will become our response. 
+This function exists to keep the next block (looq.response) as clean and lean as possible.</p>
+<pre><code class="looqbox">get_data &lt;- function(dateInt, parameter, value){
+
+    sql &lt;- &quot;
+        SELECT
+        EXAMPLE AS Col1,
+        TEST AS Col2,
+        FIELD AS Col3,
+        DATE AS Date
+        FROM example.table
+        WHERE 1=1           
+        AND Date &gt;= DATE_ADD(`1`, INTERVAL +3 HOUR) 
+        AND Date &lt; DATE_ADD(`2`, INTERVAL +3 HOUR)
+        AND PARAMETER = `3`
+        AND VALUE = `4`
+        ORDER BY DATE DESC&quot;
+
+    r &lt;- looq.sqlExecute(&quot;myDB&quot;, sql, list(dateInt[1], dateInt[2], parameter, value))
+    if(r$rows == 0) return(paste(&quot;No data found from:\n&quot;, dateInt[1], &quot;to&quot;, dateInt[2]))
+
+    r$total &lt;- list(
+        &quot;Col1&quot; = &quot;Total&quot;,
+        &quot;Col2&quot; = sum(r$data$Col2)
+    )
+
+    r$searcheable &lt;- T
+    r$paginationSize &lt;- 25
+
+    r
+}
+</code></pre>
+
+<p>Above we have a good example of a generic <code>get_data</code> function, it receives some parameters, executes a query that uses them and creates a Looqbox table with a total line, searchbar and pagination. In this case the return is simply <em>r</em>(the <code>looq.objectTable</code>) because we assume <code>looq.map</code> will be used to call <code>get_data</code> in the <code>looq.response</code> block.</p>
+<p>Don't worry if you still can't understand what each of these functions do, we have a section dedicated entirely to their study.</p>
+<h4 id="looqresponse">looq.response</h4>
+<p>This block is where your script's execution will start, it's a S3 object and resembles the common main function. Inside it, you should use <code>looq.lookTag()</code>  to receive the value inside a looqbox tag from the parser.</p>
+<p>In this sample, we are creating a looqbox standard message box and storing it in the <code>msg</code> variable. In the first parameter we <code>paste</code> a string and the <code>quotes</code> entity's value, which was received from the parser. The second parameter message's style type(we will present the options later. </p>
+<p>Finally, we are creating a looqbox frame with <code>looq.responseFrame()</code>, and so, creating a Looqbox intelligible board.</p>
+<pre><code class="looqbox">looq.response &lt;- function(par) {
+
+  # Receives the value inside a looqbox tag. In this case, we're looking for 
+  # $quotes tag and storing it in quotes
+  quotes &lt;- looq.lookTag(&quot;$quotes&quot;, par)
+
+  # Creates a looqbox standard message box and stores it in msg variable. In
+  # the first parameter we're passing a paste with the string collected above
+  # the second parameter is the style type to display the box. 
+  msg &lt;- looq.objMessage(
+    paste(&quot;Hurray, my installation is working!!\n&quot;, quotes),
+    &quot;alert-success&quot;
+  )
+
+  # Creates a looqbox frame to be placed inside a board
+  looq.responseFrame(msg)
+}
+</code></pre>
+
+<h4 id="test-block">Test Block</h4>
+<p>This block is a S3 object and is used to test your response from <strong>RStudio</strong>, allowing you to simulate our parser and test your script without saving it in Looqbox client. If you have configured your Looqbox addin correctly, you can run your script using <strong>Ctrl + Shift + S</strong> and it will be published to your client.</p>
+<p>In this block you should assign test values to any entities that your script calls for.  </p>
+<pre><code class="looqbox">looq.testQuestion(
+  list(
+    &quot;$quotes&quot; = &quot;My test sentence&quot;
+  )
+)
+</code></pre>
+
+<h3 id="essential-functions">Essential functions</h3>
+<p>Now that you have a general understanding of how a script is properly constructed, let us go over a few of the package's most important functions. </p>
+<p>NOTE: In this material we'll be working with practical examples. If you wish to understand the full depth and parameters of each of these functions please refer to the package documentation.</p>
+<h4 id="looqlooktag">looq.lookTag</h4>
+<p>Normally, the first thing your code will do once it enters your <code>looq.response()</code>(main) function, is receive information from the parser (in JSON format). From this, we have to extract information such as entities and tags, which will be used as parameters in <code>get_data()</code>. </p>
+<ul>
+<li><code>looq.lookTag()</code> acomplishes this task, searching for specific tags and returning their values.</li>
+</ul>
+<pre><code class="looqbox">company &lt;- looq.lookTag(&quot;$company&quot;, par)
+</code></pre>
+
+<p>In the example above, <code>looq.lookTag</code> takes two parameters:</p>
+<ul>
+<li><code>"$company"</code>: The entity or pattern it will search for. </li>
+<li><code>par</code>: the parser string, as received by <code>looq.response(par)</code> </li>
+</ul>
+<p>It will then, return the company value and assign it to the variable <code>company</code>.</p>
+<p>If a certain value is an optional parameter for a question, <code>looq.lookTag()</code> also accepts a third parameter for setting a default value (should be a list). </p>
+<pre><code class="looqbox">date &lt;- looq.lookTag(&quot;$date&quot;, par, list(c('2018-01-01', '2019-01-01')))
+</code></pre>
+
+<p>In the code above, if no <code>$date</code> value is recognised by the parser it will choose the default, in this case, the period starting yesterday and ending today (whenever that is).</p>
+<h4 id="looqmap">looq.map</h4>
+<p>This function is, perhaps, the core of the whole script.</p>
+<pre><code class="looqbox">looq.map(get_data, date, company)
+</code></pre>
+
+<p>What it does is fairly simple, the first argument is your <code>get_data()</code> function, and the remaining are  variables defined by <code>looq.lookTag()</code>. </p>
+<ul>
+<li><code>looq.map()</code> calls the function and passes the variables as arguments to it.</li>
+<li>Additionally, it wraps everything in a Looqbox response frame making <code>get_data</code>'s 
+output intelligible by the interface. </li>
+</ul>
+<h4 id="looqsqlexecute">looq.sqlExecute</h4>
+<p>Now that we've got <code>looq.response</code> covered, we'll go inside <code>get_data</code>. Think of it as the backstage of your script, it's where everything is prepared so that your main function keeps neat.</p>
+<p>Most of our scripts involve some kind of query to a database, <code>looq.sqlExecute()</code> is a funtion that makes this interaction extremely simple. </p>
+<pre><code class="looqbox"># We generally store looq.sqlExecute's output in a variable called r
+r &lt;- looq.sqlExecute(&quot;mySQLDev&quot;, sql, list(dateInt[1], dateInt[2], company, value))
+
+# A simple error test follows the query, checking for data absence
+if(r$rows == 0) return(paste(&quot;No data found from:\n&quot;, dateInt[1], &quot;to&quot;, dateInt[2]))
+</code></pre>
+
+<p>Normally it will take three arguments:</p>
+<ul>
+<li><code>"mySQLDB"</code>: the database's name, as it was registered in the interface under connections.</li>
+<li><code>sql</code>: a string containing the SQL query (we'll cover it in depth) </li>
+<li><code>...</code>: a list of parameters that will be inserted into the query.</li>
+</ul>
+<p>In a simple manner, <code>looq.sqlExecute</code> does exatly what the name implies, it executes your query within the database, but more than that, it lets you insert values in the query. Take the following example string:</p>
+<pre><code class="looqbox">sql &lt;- &quot;
+    SELECT
+        EXAMPLE,
+        TEST,
+        FIELD,
+        DATE
+    FROM example.table
+    WHERE 1=1           
+        AND DATE &gt;= DATE_ADD(`1`, INTERVAL +3 HOUR) 
+        AND DATE &lt; DATE_ADD(`2`, INTERVAL +3 HOUR)
+        AND COMPANY = `3`
+        AND VALUE = `4`
+    ORDER BY DATE DESC
+&quot;
+</code></pre>
+
+<p>The values between backticks (<code>` `</code>)  are recognised by the function and substituted with the variables passed in the third argument of <code>looq.SQLExecute</code>, in order of appearance. </p>
+<p>Say that:</p>
+<pre><code class="looqbox">company &lt;- 0
+dateInt &lt;- c('2018-07-09', '2018-08-09')
+value &lt;- 1120
+</code></pre>
+
+<p>The query sent to the database would be:</p>
+<pre><code class="looqbox">SELECT
+    EXAMPLE,
+    TEST,
+    FIELD,
+    DATE
+FROM my.exampleDB
+WHERE 1=1
+    AND DATE &gt;= DATE_ADD('2018-07-09', INTERVAL +3 HOUR) 
+    AND DATE &lt; DATE_ADD('2018-08-09', INTERVAL +3 HOUR)
+    AND COMPANY = 0
+    AND VALUE = 1120
+ORDER BY DATE DESC
+</code></pre>
+
+<p>Easy right? And it gets better, <code>looq.sqlExecute</code> returns a <code>looq.objTable</code>, an object from the package that is ready to be imported to the interface.</p>
+<h4 id="looqobjtable-and-its-parameters">looq.objTable and it's parameters</h4>
+<p>The most common answer to Looqbox questions comes in the form of tables, but rather than using comon objects as <code>data.frame</code> or <code>tbl</code> we have developed a special object, which is recognised by the interface and will help you create bespoke tables, as it has a number of built-in customization options.</p>
+<p>Well go through it's most important parameters here, more advanced options will be treated in <a href="#advanced">Advanced Section</a>.</p>
+<h4 id="data">Data</h4>
+<pre><code class="looqbox">r$data
+</code></pre>
+
+<p>All of the data retrieved from queries or imported from elsewhere will be available in this variable, which is a <code>tbl</code>. </p>
+<h4 id="title">Title</h4>
+<p>You can create a title for your table with <code>r$title</code>, which will be visible as a header. Another style option is <code>r$framedTitle</code>. Go ahead and try it out!</p>
+<p>The <code>r$title</code> format accepts multiple lines, creating subtitles or passing other info as a header, <code>r$framedTitle</code> accepts only a string, but you may combine them to create interesting headers.</p>
+<pre><code class="looqbox"># Simple title
+r$title &lt;- &quot;Simple title&quot;
+
+# Example with framed title
+r$framedTitle &lt;- &quot;Framed title&quot;
+
+# Title with date
+r$title &lt;- c(
+    &quot;My title&quot;,
+    looq.titleWithDate(&quot;Períod:&quot;, dateInt)
+)
+</code></pre>
+
+<h4 id="style">Style</h4>
+<p>Add styling to single or multiple columns through <code>r$value$Style</code>. Good examples are values that turn red if negative but green if positive. The color can be defined as either hex(#fff) or rgb(255,255,255). </p>
+<pre><code class="looqbox"># Styling single column
+r$valueStyle$Column &lt;- style
+
+# Styling multiple columns at once
+r$valueStyle &lt;- list(
+    &quot;Column1&quot; = style,
+    &quot;Column2&quot; = style
+)
+</code></pre>
+
+<h4 id="formating-my-data">Formating my data</h4>
+<p><code>r$valueFormat</code> lets you format numbers and dates, adding percentages, defining number of decimal points son so on. You should write the names of each column followed by the format.</p>
+<pre><code class="looqbox">r$valueFormat &lt;- list(
+    &quot;numeric column&quot; = &quot;number:2&quot;,
+    &quot;percent column&quot; = &quot;percent:2&quot;
+)
+</code></pre>
+
+<h4 id="total-line">Total line</h4>
+<p>Add a total line to your table, it can be defined for each column. If a column is left blank it will be filled with <code>-</code> by default.</p>
+<pre><code class="looqbox">r$total &lt;- list(
+    `Column 1` = &quot;total&quot;,
+    `Column 2` = sum(r$data$`Column 2`)
+)
+</code></pre>
+
+<h4 id="drill-down">Drill Down</h4>
+<p>To add drill down options that link to other scripts, you should use <code>r$ValueLink$[Your Column Here]</code>. The question text will be posted as a new question, efectively linking the scripts together. </p>
+<p>Using <code>paste</code> or <code>paste0</code> we can add variables or values to the link, or, as you can see below, even add values from within the table, by pasting the desired <code>r$data$column</code>. </p>
+<p>The <code>"text"</code> parameter will add a title to your link, which is essential when multiple drills are made from the same column.</p>
+<pre><code class="looqbox"># Simple drill
+r$valueLink$Column &lt;- &quot;my question text here&quot;
+
+# Simple drill with variable
+r$valueLink$Column &lt;- paste(&quot;my question text here with this value&quot;, 203)
+
+# Text box drill
+r$valueLink$Column &lt;- list(
+    list(&quot;text&quot; = &quot;by User&quot;, &quot;link&quot; = paste(&quot;my question with this column&quot;, r$data$Column2)),
+    list(&quot;text&quot; = &quot;by Company&quot;, &quot;link&quot; = paste(&quot;my other question with this column&quot;, r$data$Column2))
+)
+</code></pre>
+
+<h4 id="pagination">Pagination</h4>
+<p>Adds pagination of the specified size.</p>
+<pre><code class="looqbox">r$paginationSize &lt;- 25
+</code></pre>
+
+<h4 id="searchbar">Searchbar</h4>
+<p>Boolean that adds a searchbar to the table(<code>FALSE</code> by default). </p>
+<pre><code class="looqbox">r$searchable &lt;- T
+</code></pre>
+
+<h2 id="advanced">Advanced</h2>
+<p>Now that you're already familiar with the basics for creating scripts, we'll begin exploring the full potential of looqbox responses. With more complex functions and different kinds of vizualizations you can bid farewell to the simple tables you learned to create and welcome a whole new range of possibilities. </p>
+<h3 id="other-vizualizations">Other Vizualizations</h3>
+<h4 id="plots">Plots</h4>
+<p>When someone thinks of vizualizing data the first thing that pops into mind is a graph. To allow graphs in our scripts we have created <code>looq.objPlotly()</code>, an object which accepts both <a href="https://plot.ly/r/">Plotly</a> and <code>ggplot</code> graphs and histograms as input and adapts them to the interface.</p>
+<pre><code class="looqbox">
+</code></pre>
+
+<h4 id="media">Media</h4>
+<p>We also have similar objects that allow you to import media into your answers and compose them with other objects. It is all very straightforward:</p>
+<ul>
+<li><code>looq.objImage()</code>: </li>
+<li><code>looq.objVideo()</code>: </li>
+<li><code>looq.objAudio()</code>: </li>
+</ul>
+<h3 id="advanced-package-functions">Advanced Package Functions</h3>
+<h4 id="looqfindtoken">looq.findToken</h4>
+<h4 id="looqsqlin">looq.sqlIn</h4>
+<h4 id="looqsqlupdate">looq.sqlUpdate</h4>
+<h4 id="deeper-into-looqobjtable">Deeper into looq.objTable</h4>
+<!-- #### looq.responseFrame --></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

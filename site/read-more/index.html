@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Read More - Looqbox User Guide</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">Looqbox User Guide</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Quickstart</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../admin-interface/">Admin</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../r-scripts/">R Scripts</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../cookbook/">Cookbook</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Read More</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../cookbook/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/read-more.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#read-more">Read More</a></li>
+            <li class="second-level"><a href="#architecture">Architecture</a></li>
+                
+            <li class="second-level"><a href="#rkernel">RKernel</a></li>
+                
+            <li class="second-level"><a href="#available-parameters-when-starting-looqbox">Available parameters when starting Looqbox</a></li>
+                
+                <li class="third-level"><a href="#examples">Examples</a></li>
+            <li class="second-level"><a href="#docker-commands-for-looqbox">Docker commands for looqbox</a></li>
+                
+                <li class="third-level"><a href="#stop-looqboxs-container">Stop Looqbox's container</a></li>
+                <li class="third-level"><a href="#remove-looqboxs-image">Remove Looqbox's image :(</a></li>
+                <li class="third-level"><a href="#pull-new-version">Pull new version</a></li>
+                <li class="third-level"><a href="#start-looqbox">Start Looqbox</a></li>
+                <li class="third-level"><a href="#check-looqboxs-logs">Check looqbox's logs</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="read-more">Read More</h1>
+<p>This section has extra documentation about different areas that don't fall in any other category.</p>
+<h3 id="architecture">Architecture</h3>
+<p>Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.</p>
+<p>All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. </p>
+<p>This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, <a href="#available-parameters">click here</a>.</p>
+<p>It's important to remember that when generating a visualization for a user, your on-premise instance <strong>doesn't send the information retrieved from your Data Sources to Looqbox's cloud</strong>.</p>
+<div align="center">
+  <img src="../img/architecture.jpeg" width="455">
+</div>
+
+<p><br/></p>
+<h3 id="rkernel">RKernel</h3>
+<p>Every R script in Looqbox is processed by a RKernel. RKernels are a logical unit that controls a session in R.</p>
+<p>The more RKernel available, the more scripts can be processed at the same time. On the other hand, more RAM in consumed.</p>
+<p>Since a good implementation of R scripts in Looqbox run on average below 2 seconds, even for hundreds of users, only a few RKernels are required (usually between 2 and 6). Don't worry, RKernels are started as needed to processes scripts if the current number is not enough.</p>
+<p>Every RKernel has a session, so it's possible that during the execution of a script, a RKernel enters in a bad state. In cases that you suspect some kind of bad state is influencing responses, destroy the RKernels. It's also possible that different packages loaded by R scripts have the same function name, in this case, inconsistency can be found while executing different scripts that fall in this case (prefix function calls with the package name to avoid such cases, e.g. httr::config and dplyr::config).</p>
+<p>In case of a script breaking (syntax error or exceptions), the RKernel is automatically destroyed (saving the last question asked for debugging purposes).</p>
+<p>If a user asks a question and all RKernels are currently being used to processes other responses, a new RKernel starts, and will be available in the pool.</p>
+<p>A new RKernel take about 7 seconds to start.</p>
+<p>Looqbox has the right to limit the number of RKernel available to each client, and if more than 1 on-premise instance of Looqbox is online at the same time for the same company, the total number of RKernels available will be divided between the instances.</p>
+<h3 id="available-parameters-when-starting-looqbox">Available parameters when starting Looqbox</h3>
+<p>The parameters bellow can be added when starting looqbox.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-e XMX="-Xmx512m"</code></td>
+<td>change maximum heap</td>
+</tr>
+<tr>
+<td><code>-e XMS="-Xms512m"</code></td>
+<td>change minimum heap</td>
+</tr>
+<tr>
+<td><code>-e PORT</code></td>
+<td>change Looqbox's port (default 80)</td>
+</tr>
+<tr>
+<td><code>-e PROXY_HOST="&lt;ip&gt;"</code></td>
+<td>when parameter exists, use host as proxy (must define proxy_port as well)</td>
+</tr>
+<tr>
+<td><code>-e PROXY_PORT="&lt;port&gt;"</code></td>
+<td>when parameter exists, use port as proxy (must define proxy_host as well)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples">Examples</h4>
+<p>To configure a proxy:</p>
+<pre><code class="bash">docker run -d --restart=always --name=looqbox-instance -e PROXY_HOST=&quot;127.0.0.1&quot; -e PROXY_PORT=&quot;8080&quot; -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+</code></pre>
+
+<p>To change the initial memory used by Java (default is 2Gb):</p>
+<pre><code class="bash">docker run -d --restart=always --name=looqbox-instance -e XMX=&quot;-Xmx512m&quot; -e XMS=&quot;-Xms512m&quot; -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+</code></pre>
+
+<p>It's not recommeded to use bellow 512mb. Looqbox is not a full stateless service, don't use it in High Availability without contacting our support.</p>
+<h3 id="docker-commands-for-looqbox">Docker commands for looqbox</h3>
+<p>Those are the most common Docker commands that will be used with Looqbox. Execute them in the order below to update Looqbox's version.</p>
+<h4 id="stop-looqboxs-container">Stop Looqbox's container</h4>
+<pre><code class="bash">docker stop looqbox-instance
+</code></pre>
+
+<h4 id="remove-looqboxs-image">Remove Looqbox's image :(</h4>
+<pre><code class="bash">docker rm looqbox-instance
+</code></pre>
+
+<h4 id="pull-new-version">Pull new version</h4>
+<pre><code class="bash">docker pull looqboxrep/fes-public:cloud002
+</code></pre>
+
+<h4 id="start-looqbox">Start Looqbox</h4>
+<pre><code class="bash">docker run -d --restart=always --name=looqbox-instance -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+</code></pre>
+
+<h4 id="check-looqboxs-logs">Check looqbox's logs</h4>
+<pre><code class="bash">docker logs -f --tail 200 looqbox-instance
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

@@ -1,4 +1,4 @@
-# Admin Interface
+# Admin
 
 ## Looqbox must be fast - Implementation Flow
 
@@ -21,7 +21,10 @@ Here is a sequence of questions to illustrate this scenario:
 
 ## Basics 
 Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.
-To help navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP), you can use the commands below after a questions to execute special admin commands.
+
+There are 3 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): [$debug](#debug), [$response](#response), [$script](#script)
+
+(under construction - add gif)
 
 #### $debug
 This is your main command to visualize the parameters that Looqbox undestands from a question. If you are getting a unexpected behavior, or if the wrong script is being run when a specific question is asked, you can use $debug to see the response, the entities retrieved from the question and so on.
@@ -42,6 +45,9 @@ Sends the user to the [response](#creating-a-response) that Looqbox links to the
 Sends the user to the R script that Looqbox would run with the given question.
 
 * venda ontem $script
+
+<br/><br/><br/>
+# Admin Interface
 
 ## Database Connection
 

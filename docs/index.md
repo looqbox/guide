@@ -6,22 +6,43 @@ Our recommendation is to implement, according to user feedback, all recurrent qu
 
 As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox. 
 
-<br/>
-
+<br>
 <div align="center">
   <img style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
 </div>
+<br>
+
+Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.
+
+All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. 
+
+This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, [click here](#available-parameters).
+
+It's important to remember that when generating a visualization for a user, your on-premise instance **doesn't send the information retrieved from your Data Sources to Looqbox's cloud**.
+
+<div align="center">
+  <img src="../img/architecture.jpeg" width="500">
+</div>
+<br/>
 
 ## Introduction
 
-(under construction)
+In the sections below you'll be able to install Looqbox, login, ask your first questions and implement a response by your own!
+
+After this Quickstart, you can:
+
+- [Read more about the admin interface](admin-interface)
+- [See common scenarios that you'll find throughout the implementation in the Cookbook](cookbook)
+- [Understand how to use Looqbox's R package in scripts](r-scripts)
+- [Read about Looqbox's architecture and additional parameters when initializing](read-more)
 
 ## Installation
 
-Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS).
+Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS). You can use either Docker CE or Docker EE, but Docker CE is free. To see Docker's documentation about compatibility, <a href="https://docs.docker.com/install/" target="_blank">click here</a>.
 
-After <a href="https://docs.docker.com/install/" target="_blank">installing Docker</a>, start Looqbox's container:
+After <a href="https://docs.docker.com/glossary/?term=installation" target="_blank">installing Docker</a>, start Looqbox's container:
 
+> Don't forget to use the KEY and CLIENT provided by e-mail. RSTUDIO_PASS is a password chosen by you to access RStudio.
 
 ```bash
 docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
@@ -35,15 +56,15 @@ Expected result:
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </div>
 
-Looqbox is now serving at port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
+Looqbox is now serving at port 80 and RStudio is serving at port 8787 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
 
-Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](/z-extras#additional-parameters).
+Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](read-more#additional-parameters).
 
 ### Update or transfer Looqbox to another server/computer
 
 All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. 
 
-To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, [click here](/z-extras#docker-commands-for-looqbox).
+To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, [click here](read-more#docker-commands-for-looqbox).
 
 
 ## First questions
@@ -52,7 +73,7 @@ You can test your newly installed Looqbox by using pre-implemented responses (th
 
 To see the list of available questions/responses, type "que perguntas posso fazer?"
 
-(The first question asked after starting Looqbox takes about 8 seconds to respond. [Learn more](/structure#rkernel))
+(The first question asked after starting Looqbox takes about 8 seconds to respond. [Learn more](read-more#rkernel))
 
 ## Your first response/script
 
@@ -126,4 +147,4 @@ looq.testQuestion(
 )
 ```
 <br>
-#### Are you ready to learn more about Looqbox? [Click here](/implementation) to continue.
+#### Are you ready to learn more about Looqbox? [Click here](admin-interface) to continue.
