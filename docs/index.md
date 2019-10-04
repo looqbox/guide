@@ -1,6 +1,6 @@
 # Quickstart
 
-Looqbox is the data search solution for your business. 
+Looqbox is the data search solution for your business!
 
 Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from you business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.
 
