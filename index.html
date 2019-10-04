@@ -131,7 +131,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="quickstart">Quickstart</h1>
-<p>Looqbox is the data search solution for your business. </p>
+<p>Looqbox is the data search solution for your business!</p>
 <p>Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from you business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.</p>
 <p>As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox. </p>
 <p><br>
@@ -158,8 +158,11 @@
 <li><a href="read-more">Read about Looqbox's architecture and additional parameters when initializing</a></li>
 </ul>
 <h2 id="installation">Installation</h2>
-<p>Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS).</p>
-<p>After <a href="https://docs.docker.com/install/" target="_blank">installing Docker</a>, start Looqbox's container:</p>
+<p>Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS). You can use either Docker CE or Docker EE, but Docker CE is free. To see Docker's documentation about compatibility, <a href="https://docs.docker.com/install/" target="_blank">click here</a>.</p>
+<p>After <a href="https://docs.docker.com/glossary/?term=installation" target="_blank">installing Docker</a>, start Looqbox's container:</p>
+<blockquote>
+<p>Don't forget to use the KEY and CLIENT provided by e-mail. RSTUDIO_PASS is a password chosen by you to access RStudio.</p>
+</blockquote>
 <pre><code class="bash">docker run -d --restart=always --name=looqbox-instance -e CLIENT=&quot;&lt;client name&gt;&quot; -e KEY=&quot;&lt;client key&gt;&quot; -e RSTUDIO_PASS=&quot;&lt;choose a password&gt;&quot; -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 </code></pre>
 
@@ -171,7 +174,7 @@
 <div align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </div></p>
-<p>Looqbox is now serving at port 80 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)</p>
+<p>Looqbox is now serving at port 80 and RStudio is serving at port 8787 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)</p>
 <p>Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, <a href="read-more#additional-parameters">click here</a>.</p>
 <h3 id="update-or-transfer-looqbox-to-another-servercomputer">Update or transfer Looqbox to another server/computer</h3>
 <p>All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. </p>
@@ -308,5 +311,5 @@ looq.testQuestion(
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2018-12-13 13:18:08
+Build Date UTC : 2019-10-04 21:01:09
 -->

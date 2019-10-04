@@ -79,7 +79,7 @@
                 
                 
                     <li >
-                        <a href=".">R Scripts</a>
+                        <a href="../r-scripts">R Scripts</a>
                     </li>
                 
                 
@@ -104,7 +104,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/looqbox/guide/edit/master/docs/r-scripts.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/R-Scripts.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -118,6 +118,7 @@
         <li class="first-level active"><a href="#r-scripts">R Scripts</a></li>
             <li class="second-level"><a href="#setup-for-the-tutorial">Setup for the Tutorial</a></li>
                 
+                <li class="third-level"><a href="#using-looqbox-dev-docker-container">Using Looqbox Dev Docker Container</a></li>
                 <li class="third-level"><a href="#rstudio-serve-setup">RStudio Serve Setup</a></li>
             <li class="second-level"><a href="#basics">Basics</a></li>
                 
@@ -144,6 +145,14 @@
 <h2 id="setup-for-the-tutorial">Setup for the Tutorial</h2>
 <p>This documentation's objective is to introduce you to the guidelines for creating organized and efficient R scripts for Looqbox as well as to make you confortable with the looqbox package and with the tool's environment and workflow. In this section we will focus on the creation and editing of the R scripts, so we recomend using Rstudio as the development environment.</p>
 <p>You can either write the code in your RStudio Serve, or you can set up a local development environment on your computer and use your local RStudio.</p>
+<h3 id="using-looqbox-dev-docker-container">Using Looqbox Dev Docker Container</h3>
+<p>This option is a docker running with a local RStudio linked with your Looqbox-dev folder.
+First of all you need to install Docker in your local machine. More in <a href="https://www.docker.com/get-started">docker official site</a>.</p>
+<p>After installing docker you need to have a looqbox-dev folder in your machine.</p>
+<p>With the docker and the looqbox-dev folder installed you only need to execute these commands:
+  - <code>docker pull looqboxrep/looqbox-dev</code> to pull the image, use the default looqbox login to pull.
+  - <code>docker run -d --restart=always -v $HOME/looqbox-dev/config:/home/rstudio/looqbox -p 8787:8787 looqboxrep/looqbox-dev</code>. This command will set a local RStudio at port 8787 and will link to your config folder files in the <em>-v</em> command. </p>
+<p>To open your local RStudio you only have to access localhost:8787 in your browser!</p>
 <h3 id="rstudio-serve-setup">RStudio Serve Setup</h3>
 <p>This is the quickest way to get started!</p>
 <p>Open your looqbox instance on port 8787 (usually: <a href="http://localhost:8787">http://localhost:8787</a>), enter <strong>rstudio</strong> as username and the <strong>password</strong> you created in the <a href="#installation">installation</a> and you're almost ready to go.</p>
