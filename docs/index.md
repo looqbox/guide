@@ -8,7 +8,7 @@ As the number of responses grows, your BI team will stop wasting time repeating 
 
 <br>
 <div align="center">
-  <img width="500" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);">
+  <img style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.6), 0 5px 15px 2px rgba(0,0,0,0.15), 0 0 0 1px rgba(0, 0, 0, 0.0);" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/question.gif" width="500">
 </div>
 <br>
 
@@ -21,7 +21,7 @@ This architecture allows that a simple rule of access from within your company's
 It's important to remember that when generating a visualization for a user, your on-premise instance **doesn't send the information retrieved from your Data Sources to Looqbox's cloud**.
 
 <div align="center">
-  <img width="500" src="../img/architecture.jpeg">
+  <img src="img/architecture.jpeg" width="500">
 </div>
 <br>
 
@@ -57,7 +57,7 @@ docker logs -f --tail 200 looqbox-instance
 
 Expected result:
 <div align="center">
-  <img width="469" src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png">
+  <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </div>
 
 Looqbox is now serving at port 80 and RStudio is serving at port 8787 (if it's a local instalation: <a target="_blank" href="http://localhost:80/">localhost:80</a>)
