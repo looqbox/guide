@@ -1,11 +1,10 @@
 site_name: Looqbox User Guide
 nav:
     - Quickstart: index.md
-    - Admin: admin-interface
-    - R Scripts: r-scripts
-    - Cookbook: cookbook
-    - Read More: read-more
-site_favicon: favicon.ico
+    - Admin: admin-interface.md
+    - R Scripts: R-Scripts.md
+    - Cookbook: Cookbook.md
+    - Read More: read-more.md
 repo_url: https://github.com/looqbox/guide
 theme: 
   name: cinder
