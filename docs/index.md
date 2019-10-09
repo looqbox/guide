@@ -60,7 +60,7 @@ Expected result:
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
 </div>
 
-Looqbox is now serving at port 80 and RStudio is serving at port 8787 (if it's a local instalation: <a target="_blank" href="http://localhost:80/">localhost:80</a>)
+Looqbox is now serving at port 80 and RStudio is serving at port 8787 (if it's a local instalation: <a href="http://localhost:80/" target="_blank">localhost:80</a>)
 
 Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or host in image above). If you need to add a proxy or change Looqbox's initialization port, [click here](read-more#additional-parameters).
 
