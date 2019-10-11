@@ -22,7 +22,7 @@ Here is a sequence of questions to illustrate this scenario:
 ## Basics 
 Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.
 
-There are 3 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): [$debug](#debug), [$response](#response), [$script](#script)
+There are 4 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): [$debug](#debug), [$response](#response), [$script](#script), [$query](#query)
 
 (under construction - add gif)
 
@@ -45,6 +45,11 @@ Sends the user to the [response](#creating-a-response) that Looqbox links to the
 Sends the user to the R script that Looqbox would run with the given question.
 
 * venda ontem $script
+
+#### $query
+Shows all queries executed by the script. If the script breaks, this command returns all queries already executed.
+
+* venda ontem $query
 
 <br/><br/><br/>
 # Admin Interface
