@@ -72,8 +72,8 @@
                 
                 
                 
-                    <li class="active">
-                        <a href="./">Admin</a>
+                    <li >
+                        <a href="../admin-interface.md">Admin</a>
                     </li>
                 
                 
@@ -91,7 +91,7 @@
                 
                 
                     <li >
-                        <a href="../read-more/">Read More</a>
+                        <a href="../read-more.md">Read More</a>
                     </li>
                 
                 
@@ -103,18 +103,8 @@
                             <i class="fa fa-search"></i> Search
                         </a>
                     </li>
-                    <li >
-                        <a rel="next" href="..">
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="prev" href="../R-Scripts/">
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </li>
                     <li>
-                        <a href="https://github.com/looqbox/guide/edit/master/docs/admin-interface.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/looqbox/guide/edit/master/docs/Admin-Interface.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -133,6 +123,7 @@
                 <li class="third-level"><a href="#debug">$debug</a></li>
                 <li class="third-level"><a href="#response">$response</a></li>
                 <li class="third-level"><a href="#script">$script</a></li>
+                <li class="third-level"><a href="#query">$query</a></li>
         <li class="first-level "><a href="#admin-interface">Admin Interface</a></li>
             <li class="second-level"><a href="#database-connection">Database Connection</a></li>
                 
@@ -180,7 +171,7 @@
 </ul>
 <h2 id="basics">Basics</h2>
 <p>Following the instructions below will allow a admin to perform all kinds of tasks inside Looqbox. Many of the tasks are similar to other systems, such as creating users, connections to DBs and so on.</p>
-<p>There are 3 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): <a href="#debug">$debug</a>, <a href="#response">$response</a>, <a href="#script">$script</a></p>
+<p>There are 4 admin commands that can be used after a question in Looqbox's main screen to navigate quickly to the most important screens and to understand the main feature about Looqbox (NLP): <a href="#debug">$debug</a>, <a href="#response">$response</a>, <a href="#script">$script</a>, <a href="#query">$query</a></p>
 <p>(under construction - add gif)</p>
 <h4 id="debug">$debug</h4>
 <p>This is your main command to visualize the parameters that Looqbox undestands from a question. If you are getting a unexpected behavior, or if the wrong script is being run when a specific question is asked, you can use $debug to see the response, the entities retrieved from the question and so on.</p>
@@ -200,6 +191,11 @@
 <p>Sends the user to the R script that Looqbox would run with the given question.</p>
 <ul>
 <li>venda ontem $script</li>
+</ul>
+<h4 id="query">$query</h4>
+<p>Shows all queries executed by the script. If the script breaks, this command returns all queries already executed.</p>
+<ul>
+<li>venda ontem $query</li>
 </ul>
 <p><br/><br/><br/></p>
 <h1 id="admin-interface">Admin Interface</h1>
