@@ -1,7 +1,7 @@
 site_name: Looqbox User Guide
 nav:
     - Quickstart: index.md
-    - Admin: admin-interface.md
+    - Admin: Admin-Interface.md
     - R Scripts: R-Scripts.md
     - Cookbook: Cookbook.md
     - Read More: read-more.md
