@@ -29,6 +29,7 @@ It's important to remember that when generating a visualization for a user, your
 
 In the sections below you'll be able to install Looqbox, login, ask your first questions and implement a response on your own!
 
+
 After this Quickstart, you can:
 
 - [Read more about the admin interface](admin-interface)
@@ -40,7 +41,7 @@ After this Quickstart, you can:
 
 Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS). You can use either Docker CE or Docker EE, although Docker CE is free to use and should be enough to run looqbox's instance. To see Docker's documentation about compatibility, <a target="_blank" href="https://docs.docker.com/install/">click here</a>.
 
-After <a target="_blank" href="https://docs.docker.com/glossary/?term=installation">installing Docker</a>, start Looqbox's container:
+After <a href="https://docs.docker.com/glossary/?term=installation" target="_blank">installing Docker</a>, start Looqbox's container:
 
 &gt;Your KEY and CLIENT values are provided by looqbox and sent through e-mail.
 
