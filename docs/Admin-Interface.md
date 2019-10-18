@@ -10,7 +10,7 @@ There are 2 important concepts that you should know to understand our recommenta
 
 We discorage the implementation of complex dashboards in Looqbox, since it usually depends of multiple queries, which result in a long response time.
 
-To guarantee the best user experience, responses should be implemented in a way that users can ask simple questions, and navigate to more specific information using features like drill down. Navigating between 4 tables of content waiting 2 seconds for each load in much better than waiting 8 seconds for a single dashboard.
+To guarantee the best user experience, responses should be implemented in a way that users can ask simple questions, and navigate to more specific information using features like drill down. Navigating between 4 tables of content waiting 2 seconds for each load is much better than waiting 8 seconds for a single dashboard.
 
 Here is a sequence of questions to illustrate this scenario:
 
@@ -59,7 +59,7 @@ Shows all queries executed by the script. If the script breaks, this command ret
 ## Creating a response
 
 Here you can link keywords to a script. 
-We will divide this section 3 parts.
+We will divide this section in 3 parts.
 
 
 #### Basic info
