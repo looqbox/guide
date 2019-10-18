@@ -21,7 +21,7 @@ This architecture allows that a simple rule of access from within your company's
 It's important to remember that when generating a visualization for a user, your on-premise instance **doesn't send the information retrieved from your Data Sources to Looqbox's cloud**.
 
 <div align="center">
-  <img src="img/architecture.jpeg" width="500">
+  <img src="./img/architecture.jpeg" width="500">
 </div>
 <br>
 
