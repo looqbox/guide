@@ -2,9 +2,9 @@
 
 Looqbox is the data search solution for your business!
 
-Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from you business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.
+Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from your business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.
 
-As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox. 
+As the number of responses grows, your BI team will stop wasting time repeating work that can be automated in Looqbox. 
 
 <br>
 <div align="center">
@@ -12,22 +12,23 @@ As the number of responses grow, your BI team will stop wasting time repeating w
 </div>
 <br>
 
-Your on-premise instance of Looqbox must connect to Looqbox's cloud at all times. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.
+Your on-premise instance of Looqbox must connect to Looqbox's cloud. The cloud is used to control user access, register access groups and linguistic parameters, and (most important) understand the questions typed by users.
 
 All users and admins connect directly to the on-premise instance. Only on-premise instances communicate with the cloud. 
 
-This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside company access the local instance. If you need to use proxy, [click here](#available-parameters).
+This architecture allows that a simple rule of access from within your company's network must be set (add the cloud DNS to a whitelist or allow access from a firewall), while users inside the company access the local instance. If you need to use a proxy, [click here](#available-parameters).
 
 It's important to remember that when generating a visualization for a user, your on-premise instance **doesn't send the information retrieved from your Data Sources to Looqbox's cloud**.
 
 <div align="center">
   <img src="./img/architecture.jpeg" width="500">
 </div>
-<br/>
+<br>
 
 ## Introduction
 
-In the sections below you'll be able to install Looqbox, login, ask your first questions and implement a response by your own!
+In the sections below you'll be able to install Looqbox, login, ask your first questions and implement a response on your own!
+
 
 After this Quickstart, you can:
 
@@ -38,19 +39,23 @@ After this Quickstart, you can:
 
 ## Installation
 
-Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS). You can use either Docker CE or Docker EE, but Docker CE is free. To see Docker's documentation about compatibility, <a href="https://docs.docker.com/install/" target="_blank">click here</a>.
+Looqbox must be installed in a Linux distribution that supports Docker (e.g. Ubuntu 18.04 LTS). You can use either Docker CE or Docker EE, although Docker CE is free to use and should be enough to run looqbox's instance. To see Docker's documentation about compatibility, <a target="_blank" href="https://docs.docker.com/install/">click here</a>.
 
 After <a href="https://docs.docker.com/glossary/?term=installation" target="_blank">installing Docker</a>, start Looqbox's container:
 
-> Don't forget to use the KEY and CLIENT provided by e-mail. RSTUDIO_PASS is a password chosen by you to access RStudio.
+&gt;Your KEY and CLIENT values are provided by looqbox and sent through e-mail.
+
+&gt;RSTUDIO_PASS is a password you have to choose in order to access RStudio.
 
 ```bash
-docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client name>" -e KEY="<client key>" -e RSTUDIO_PASS="<choose a password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
+docker run -d --restart=always --name=looqbox-instance -e CLIENT="<client-name>" -e KEY="<client-key>" -e RSTUDIO_PASS="<choose-a-password>" -p 80:80 -p 8787:8787 looqboxrep/fes-public:cloud002
 ```
 To check if Looqbox started correctly, run: 
+
 ```bash
 docker logs -f --tail 200 looqbox-instance
 ```
+
 Expected result:
 <div align="center">
   <img src="https://s3-sa-east-1.amazonaws.com/looqbox/github-images/logs-successful-start.png" width="469">
@@ -62,7 +67,7 @@ Your Looqbox instance connects to our cloud (https://cloud002.looqbox.com or hos
 
 ### Update or transfer Looqbox to another server/computer
 
-All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in aprox  45 seconds and all other information instantaneously. 
+All script files and configurations are backed up in Looqbox's Cloud. To transfer all your work between your local machine and a server or between servers, all you need to do is rerun the docker command above. It will automatically download all files to the new instance. If more than 1 instance is available, response scripts will sync in approx 45 seconds and all other information instantaneously. 
 
 To update Looqbox and Looqbox's R package, pull the image's newest version and start a new container. For more help about docker commands to stop and update Looqbox, [click here](read-more#docker-commands-for-looqbox).
 
@@ -77,7 +82,7 @@ To see the list of available questions/responses, type "que perguntas posso faze
 
 ## Your first response/script
 
-Follow the steps bellow to create your first Response/Script. 
+Follow the steps below to create your first Response/Script. 
 
 1. Click the cogs in the right upper corner and then in Admin (don't mistake it with the user area if the user's name you're using is "Admin"!).
 2. Find `Responses` and click it.
@@ -93,7 +98,7 @@ Follow the steps bellow to create your first Response/Script.
     - **Example:** hello world script "this is my first script"
 4. Press the green button `Create new` at the bottom. There will be a message "file saved" at the right upper corner.
 
-You just created you first Response! Now let's link it with a script.
+You just created your first Response! Now let's link it with a script.
 
 5. Find `Response Files` and press `new` in `main file missing (new)`.
 6. Press `+ show editor` in grey located at the left of the `save` button.
@@ -102,7 +107,7 @@ You just created you first Response! Now let's link it with a script.
 
 
 ```looqbox
-# In order to develop a script for Looqbox you should use our Looqbox Package.
+# To develop a script for Looqbox you should use our Looqbox Package.
 # The package allows you to interact with the interface and help you structure
 # your data to be displayed in our client.
 library(looqbox)
@@ -147,4 +152,4 @@ looq.testQuestion(
 )
 ```
 <br>
-#### Are you ready to learn more about Looqbox? [Click here](admin-interface) to continue.
+### Are you ready to learn more about Looqbox? [Click here](admin-interface) to continue.
