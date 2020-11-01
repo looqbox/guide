@@ -11,7 +11,7 @@
 
 Looqbox is the data search solution for your business.
 
-Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from you business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.
+Our recommendation is to implement, according to user feedback, all recurrent questions about KPIs from your business. Instead of executing the same database queries every week with different parameters to answer the same questions, just implement scripts once in Looqbox, and the users can ask as many times as they need.
 
 As the number of responses grow, your BI team will stop wasting time repeating work that can be automated in Looqbox.
 
