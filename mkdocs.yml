@@ -4,7 +4,7 @@ nav:
     - Admin: Admin-Interface.md
     - R Scripts: R-Scripts.md
     - Cookbook: Cookbook.md
-    - Read More: read-more.md
+    - Read More: Read-more.md
 repo_url: https://github.com/looqbox/guide
 theme: 
   name: cinder
